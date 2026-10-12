@@ -1,0 +1,25 @@
+{
+  "version": "0.1.2",
+  "verifiedAt": "2026-10-10T16:25:49.3422117+08:00",
+  "installerExitCode": 0,
+  "files": [
+    {
+      "file": "PiCareer.exe",
+      "sha256": "7BA136B9B820462CC603C67DDE955460FB1DB1A0AD97E74D19A0C11CEBE4AFAF",
+      "matches": true
+    },
+    {
+      "file": "resources\\app.asar",
+      "sha256": "6084D40CDD5BCC6AE4D798C4765C811BFF75B36B52EF9EC615CF3AB6C9BD4565",
+      "matches": true
+    },
+    {
+      "file": "resources\\resources\\pi\\worker.mjs",
+      "sha256": "76524229967F90856FEBB8F061660D772C92FFF99E983707DAD8F5F725E0BBAD",
+      "matches": true
+    }
+  ],
+  "shortcut": "C:\\Users\\HP\\Desktop\\PiCareer.lnk",
+  "target": "C:\\Users\\HP\\AppData\\Local\\Programs\\PiCareer\\PiCareer.exe",
+  "databasePreserved": true
+}

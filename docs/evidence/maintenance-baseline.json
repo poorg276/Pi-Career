@@ -1,0 +1,519 @@
+{
+  "applicationVersion": "0.1.13",
+  "git": {
+    "branch": "main",
+    "initialCommitTitle": "chore: establish PiCareer 0.1.13 baseline",
+    "annotatedTag": "v0.1.13",
+    "remoteCreated": false,
+    "reconstructedHistory": false
+  },
+  "validation": {
+    "typeCheck": true,
+    "tests": 132,
+    "archiveTests": 8,
+    "initialScanFiles": 297,
+    "credentialPatternFindings": 0,
+    "nonemptyCredentialJsonFields": 0,
+    "ignoredRuntimeScreenshots": true,
+    "protectedFingerprintsUnchanged": true,
+    "protectedCode": {
+      "core": {
+        "files": 47,
+        "sha256": "3b69f3c46b0c4eabedf2d19c02a382e39e3b9ee7151ed0bd857dc8bbe586881c"
+      },
+      "upstreamPi": {
+        "files": 1839,
+        "sha256": "707365d49b70393672b04f8579b005e9a4187fbdad855185123467cf8e5b8da7"
+      },
+      "yx": {
+        "files": 14,
+        "sha256": "053707ef677020da8b6f0b98116034420e650da68a6e32f094bed4d9c67dbd7c"
+      }
+    },
+    "stagedFiles": 298,
+    "trackedGeneratedOrUserData": 0,
+    "externalSiblingPaths": 0,
+    "whitespaceAudit": {
+      "newMaintenanceFilesPassed": true,
+      "existingWarningsPreserved": true,
+      "files": [
+        "package-lock.json",
+        "package.json",
+        "resources/THIRD-PARTY-NOTICES.txt",
+        "scripts/upgrade-0.1.5.ps1",
+        "scripts/upgrade-0.1.6.ps1",
+        "scripts/upgrade-0.1.7.ps1",
+        "scripts/upgrade-0.1.8.ps1",
+        "scripts/upgrade-0.1.9.ps1",
+        "scripts/upgrade-0.1.10.ps1",
+        "scripts/upgrade-0.1.11.ps1",
+        "scripts/upgrade-0.1.12.ps1",
+        "scripts/upgrade-0.1.13.ps1"
+      ]
+    }
+  },
+  "archiving": {
+    "keptVersions": [
+      "0.1.12",
+      "0.1.13"
+    ],
+    "movedFiles": 63,
+    "bytes": 4170900519,
+    "manifest": "archive/releases/manifests/archive-d7b843c6-5498-4a12-9489-1501abb841c9.json",
+    "allItemsVerified": true,
+    "repeatPreviewMoves": 0,
+    "permanentDeletion": false,
+    "installedApplicationChanged": false
+  },
+  "releaseFingerprints": [
+    {
+      "version": "0.1.0",
+      "acceptedAt": "2026-10-12T03:10:58.770Z",
+      "reason": "user-approved existing release baseline",
+      "files": [
+        {
+          "name": "PiCareer-0.1.0-source.zip",
+          "bytes": 745521,
+          "sha256": "53bb9236b2526e7c3c5183686f4997eeef40d03c0e1bf246c07b60e8a4904ad8"
+        },
+        {
+          "name": "PiCareer-0.1.0-x64.exe",
+          "bytes": 145172528,
+          "sha256": "b344d52eb2802950f09c0b7d17ff4c78b7f2c9b15ec75a4ffa9754fe0281caae"
+        },
+        {
+          "name": "PiCareer-0.1.0-x64.exe.blockmap",
+          "bytes": 152357,
+          "sha256": "1f7a10605aa206ca02532ce2b766b775ed90832f7cc2f23d4300f7fedc6509b2"
+        },
+        {
+          "name": "PiCareer-0.1.0-x64.zip",
+          "bytes": 194128785,
+          "sha256": "feb8e268deac0ec1232e646b3cd13ac14930ed2e198b9401565a9bebf30f1ac9"
+        }
+      ]
+    },
+    {
+      "version": "0.1.1",
+      "acceptedAt": "2026-10-12T03:10:59.055Z",
+      "reason": "user-approved existing release baseline",
+      "files": [
+        {
+          "name": "PiCareer-0.1.1-source.zip",
+          "bytes": 1358278,
+          "sha256": "77e92f978482b1790a2d43852f9c8857c739ae529009d204446af42dc6ce77a9"
+        },
+        {
+          "name": "PiCareer-0.1.1-x64.exe",
+          "bytes": 145172701,
+          "sha256": "0ecf661d6bc01b296e6b494172f9c74efff0462e9d0891a61b3c789456fce9b1"
+        },
+        {
+          "name": "PiCareer-0.1.1-x64.exe.blockmap",
+          "bytes": 152314,
+          "sha256": "efd8d4ae02bdfa68d6bfc0a184c971ef7b5a0da6fe9387ef87edaea118e1ed03"
+        },
+        {
+          "name": "PiCareer-0.1.1-x64.zip",
+          "bytes": 194128960,
+          "sha256": "c2858d8423eaa0323890f67f6734d1d40c5e669eca6833a6b71bfd198a398ff6"
+        },
+        {
+          "name": "外观调整-0.1.1.md",
+          "bytes": 2918,
+          "sha256": "28d4e1b4f43576238cf6490209da27d773ba352e808a4389fc2afcde5de05df9"
+        }
+      ]
+    },
+    {
+      "version": "0.1.2",
+      "acceptedAt": "2026-10-12T03:10:59.321Z",
+      "reason": "user-approved existing release baseline",
+      "files": [
+        {
+          "name": "PiCareer-0.1.2-source.zip",
+          "bytes": 1706474,
+          "sha256": "7be65f7eaeed524faad47698386c3eb58510d4ebb6460e265826b1df8c30c6ab"
+        },
+        {
+          "name": "PiCareer-0.1.2-x64.exe",
+          "bytes": 145174663,
+          "sha256": "b96da528ce6e837b66f97bc51cdaa787d8b4b5c533cfd4a945058a89106ba87e"
+        },
+        {
+          "name": "PiCareer-0.1.2-x64.exe.blockmap",
+          "bytes": 152281,
+          "sha256": "62f1459565ed5ec7f7219559a9f1c403a2a3380a3b306bffa6cb2cf9175059ef"
+        },
+        {
+          "name": "PiCareer-0.1.2-x64.zip",
+          "bytes": 194134891,
+          "sha256": "338008ccd40936744a77552b97b4517431994d9e0cc340dd4f60ffdcf2978332"
+        },
+        {
+          "name": "授权修复-0.1.2.md",
+          "bytes": 5681,
+          "sha256": "75fc7e3244fb8d9fa44981f175b697d8ca37cb1aa844fa2420ccc55586c23ae9"
+        }
+      ]
+    },
+    {
+      "version": "0.1.3",
+      "acceptedAt": "2026-10-12T03:10:59.584Z",
+      "reason": "user-approved existing release baseline",
+      "files": [
+        {
+          "name": "PiCareer-0.1.3-source.zip",
+          "bytes": 2028854,
+          "sha256": "b89da882ccf21b28d87e7ffb26b71d4027e8799eff147ace17b35aca907b2bfc"
+        },
+        {
+          "name": "PiCareer-0.1.3-x64.exe",
+          "bytes": 145727646,
+          "sha256": "ba2e96b54b9a2f3ae7538a91195641487f17e6484b0d18c6780777adb2b7b341"
+        },
+        {
+          "name": "PiCareer-0.1.3-x64.exe.blockmap",
+          "bytes": 152815,
+          "sha256": "1bb6cffca5d017f0830d5814748b6fa6c3f13d5499ad6743fa223af04c5a4e50"
+        },
+        {
+          "name": "PiCareer-0.1.3-x64.zip",
+          "bytes": 194773335,
+          "sha256": "11588a277bd42a38ba76e102f290e7ecf62df571a6fd4cfad1664db94858f667"
+        },
+        {
+          "name": "SHA256SUMS-0.1.3.txt",
+          "bytes": 273,
+          "sha256": "01834b12cb8b7ebe03f532a230c734c434e900b0c771545a8fe383840473e268"
+        },
+        {
+          "name": "授权修复-0.1.3.md",
+          "bytes": 6154,
+          "sha256": "91001f13d71b84306d74070968135de626183a341252d8d0dcdc8ea24434cc9a"
+        }
+      ]
+    },
+    {
+      "version": "0.1.4",
+      "acceptedAt": "2026-10-12T03:10:59.849Z",
+      "reason": "user-approved existing release baseline",
+      "files": [
+        {
+          "name": "PiCareer-0.1.4-source.zip",
+          "bytes": 2324811,
+          "sha256": "c6dd09cf59e29599a20c36958df65105d28029a944e8e7861023f0a0ed13074d"
+        },
+        {
+          "name": "PiCareer-0.1.4-x64.exe",
+          "bytes": 145777452,
+          "sha256": "1c3234d83ce3e1aa83eb0b8f1ddc31b903b48bfd3a2f79bdcfaf7b2268900aad"
+        },
+        {
+          "name": "PiCareer-0.1.4-x64.exe.blockmap",
+          "bytes": 152724,
+          "sha256": "e32191ace205ca1d8a85904049e9fcfd6d1993fc39b497962a0c367bebea2e84"
+        },
+        {
+          "name": "PiCareer-0.1.4-x64.zip",
+          "bytes": 194829502,
+          "sha256": "c0fd95f6db5d79bf04a2d54b213a4ef2943c5ad05d92c0191700bbbeff5fe38b"
+        },
+        {
+          "name": "SHA256SUMS-0.1.4.txt",
+          "bytes": 273,
+          "sha256": "27db1711b8469b02330c1c0b5401211ec61303ad55817dc8024afcdad21d7da8"
+        }
+      ]
+    },
+    {
+      "version": "0.1.5",
+      "acceptedAt": "2026-10-12T03:11:00.118Z",
+      "reason": "user-approved existing release baseline",
+      "files": [
+        {
+          "name": "PiCareer-0.1.5-source.zip",
+          "bytes": 2938068,
+          "sha256": "5e503208068ba490ddcc085289a821bef04548a9b0dad9b0fbd3a0ac090aa2b2"
+        },
+        {
+          "name": "PiCareer-0.1.5-x64.exe",
+          "bytes": 147039127,
+          "sha256": "97bba7051b67d468094804ecb8192a219a3a746b6427ecbe4f6b5b07b4528659"
+        },
+        {
+          "name": "PiCareer-0.1.5-x64.exe.blockmap",
+          "bytes": 154500,
+          "sha256": "3dac75be94936daa915a7ce11e728473cfb19ca1aee100b00c6f16596acbae97"
+        },
+        {
+          "name": "PiCareer-0.1.5-x64.zip",
+          "bytes": 196485159,
+          "sha256": "699a86c73d12d8f6574179778105729240f5ffd9e6944441001507ce86806401"
+        },
+        {
+          "name": "SHA256SUMS-0.1.5.txt",
+          "bytes": 273,
+          "sha256": "3722e67085cc2a1d7d62a07a1552b5a3a5440cebe709b55995794af43d0f52c3"
+        }
+      ]
+    },
+    {
+      "version": "0.1.6",
+      "acceptedAt": "2026-10-12T03:11:00.381Z",
+      "reason": "user-approved existing release baseline",
+      "files": [
+        {
+          "name": "PiCareer-0.1.6-source.zip",
+          "bytes": 3732036,
+          "sha256": "96e9c87d14c22cf978c10635818ea30d03af86120643691f2c64c5f90e91e5ae"
+        },
+        {
+          "name": "PiCareer-0.1.6-x64.exe",
+          "bytes": 147039354,
+          "sha256": "ecfcd900a5f7600282327e47193111bb99599b5e11f08898f02d26113764bbba"
+        },
+        {
+          "name": "PiCareer-0.1.6-x64.exe.blockmap",
+          "bytes": 154351,
+          "sha256": "931aa72e9cdda32c092de168fde0a4c3c9e11dbb3777e28a5c94d74c1a3a2b4f"
+        },
+        {
+          "name": "PiCareer-0.1.6-x64.zip",
+          "bytes": 196490948,
+          "sha256": "0516408406b7eb401e9406a801dac5318c671b9d12f54570b388069881b7eea6"
+        },
+        {
+          "name": "SHA256SUMS-0.1.6.txt",
+          "bytes": 273,
+          "sha256": "e1afe520382d3156d3afc1a9e31dc9a617acb1d5bcc813681d4644da4975248d"
+        }
+      ]
+    },
+    {
+      "version": "0.1.7",
+      "acceptedAt": "2026-10-12T03:11:00.669Z",
+      "reason": "user-approved existing release baseline",
+      "files": [
+        {
+          "name": "PiCareer-0.1.7-source.zip",
+          "bytes": 4412689,
+          "sha256": "ec458424f3befc917bf29c1050f80b482a18e57b5911810cc426ac7933d20e78"
+        },
+        {
+          "name": "PiCareer-0.1.7-x64.exe",
+          "bytes": 147046026,
+          "sha256": "c782bced73cd3fd6c51812bbdabf43d8a8bcea27246467b42f67e326218ea9a7"
+        },
+        {
+          "name": "PiCareer-0.1.7-x64.exe.blockmap",
+          "bytes": 154638,
+          "sha256": "b1db552b88f6ba8e3012fd1220c8a9ea97663e94a502d035fe6ce4e7253eb83a"
+        },
+        {
+          "name": "PiCareer-0.1.7-x64.zip",
+          "bytes": 196499171,
+          "sha256": "ccb725b74317527d0c547b9dfd20b676a1d80fe7de7767b9147364959843acbd"
+        },
+        {
+          "name": "SHA256SUMS-0.1.7.txt",
+          "bytes": 273,
+          "sha256": "0a0c993a48bebddce519d03fb20156a7844f0f3a63242ce584ce2d777a59a508"
+        }
+      ]
+    },
+    {
+      "version": "0.1.8",
+      "acceptedAt": "2026-10-12T03:11:00.935Z",
+      "reason": "user-approved existing release baseline",
+      "files": [
+        {
+          "name": "PiCareer-0.1.8-source.zip",
+          "bytes": 5101621,
+          "sha256": "31a85a19c49d3589b8c9838a882a09a3f6b134cacc2da8c955883715131d5f7f"
+        },
+        {
+          "name": "PiCareer-0.1.8-x64.exe",
+          "bytes": 147054175,
+          "sha256": "ab7043e6751599c9f5b9e61a70182175c52d4d4de6d353cc3bd282d98e108aa5"
+        },
+        {
+          "name": "PiCareer-0.1.8-x64.exe.blockmap",
+          "bytes": 154409,
+          "sha256": "66825acd1b50186876daa89ba84af213a1e0adaf826764040e4c7ad9a3aec013"
+        },
+        {
+          "name": "PiCareer-0.1.8-x64.zip",
+          "bytes": 196503316,
+          "sha256": "481b838694d78a757c84a3a5da5f724493c6b9691a92f5e2ce5287bdac4a6dc2"
+        },
+        {
+          "name": "SHA256SUMS-0.1.8.txt",
+          "bytes": 273,
+          "sha256": "7226e6ac46aaf04a3dc513969b260bee6b283727e493dcc89515b3fa0be1295d"
+        }
+      ]
+    },
+    {
+      "version": "0.1.9",
+      "acceptedAt": "2026-10-12T03:11:01.196Z",
+      "reason": "user-approved existing release baseline",
+      "files": [
+        {
+          "name": "PiCareer-0.1.9-source.zip",
+          "bytes": 6497070,
+          "sha256": "4881df7f6a3424c2128be2f1fa0fd7333ed1c4a4e77a8a688fff3c1f08dab2c4"
+        },
+        {
+          "name": "PiCareer-0.1.9-x64.exe",
+          "bytes": 142010327,
+          "sha256": "7ffd36882969394eedc15cb6d6660f171edbbec732f280901dd9f2b3cb232502"
+        },
+        {
+          "name": "PiCareer-0.1.9-x64.exe.blockmap",
+          "bytes": 149597,
+          "sha256": "c3e63290d8617bcba138ccf518f85da9151892b296590f342267e6c6af2c736e"
+        },
+        {
+          "name": "PiCareer-0.1.9-x64.zip",
+          "bytes": 190815488,
+          "sha256": "0907b0ab3914bfb5ce475cf475c68616e22bf272f894fb762e9cc605ec693c2a"
+        },
+        {
+          "name": "SHA256SUMS-0.1.9.txt",
+          "bytes": 273,
+          "sha256": "2cea2c2748fe6eb44a79e2767c72ba42fc3d1108bc0e8f86ffd523feff94e48e"
+        }
+      ]
+    },
+    {
+      "version": "0.1.10",
+      "acceptedAt": "2026-10-12T03:11:01.463Z",
+      "reason": "user-approved existing release baseline",
+      "files": [
+        {
+          "name": "PiCareer-0.1.10-source.zip",
+          "bytes": 7178736,
+          "sha256": "71bd9e394157d688c3cb9ef43ec4f68cee4f26ce204898cc531ace5ea665eaaf"
+        },
+        {
+          "name": "PiCareer-0.1.10-x64.exe",
+          "bytes": 142011918,
+          "sha256": "b234edc9fbaa883ee088fa44df035e9cf6b928880b0ef3e46a08569c82f5d862"
+        },
+        {
+          "name": "PiCareer-0.1.10-x64.exe.blockmap",
+          "bytes": 149599,
+          "sha256": "9fdbd066613b329845ea08a9a20f4d184e80b8b4eececbd5d0031e23cc336c7c"
+        },
+        {
+          "name": "PiCareer-0.1.10-x64.zip",
+          "bytes": 190846760,
+          "sha256": "9d509b586a207628bae0b8001b95a6b361f0752ff674eca739b55cd517892037"
+        },
+        {
+          "name": "SHA256SUMS-0.1.10.txt",
+          "bytes": 276,
+          "sha256": "678a776ea0c5ca80cb42f5b4fe9cb7ddd505d4f3527d9a22684900f9ad49c0a7"
+        }
+      ]
+    },
+    {
+      "version": "0.1.11",
+      "acceptedAt": "2026-10-12T03:11:01.753Z",
+      "reason": "user-approved existing release baseline",
+      "files": [
+        {
+          "name": "PiCareer-0.1.11-source.zip",
+          "bytes": 7853947,
+          "sha256": "2f17332ffd839577399e0ca55e30910b0673a8ee4e63de91b8fc511e81356fee"
+        },
+        {
+          "name": "PiCareer-0.1.11-x64.exe",
+          "bytes": 164266013,
+          "sha256": "92a14144529322913c67915bf105c7e51c239ccc7b3b39474b83eaad1a4aa091"
+        },
+        {
+          "name": "PiCareer-0.1.11-x64.exe.blockmap",
+          "bytes": 172499,
+          "sha256": "5eda5e60bbffe16c4f0ff229eb2c2ebe3d346e9904705214daf947ade5a1b13d"
+        },
+        {
+          "name": "PiCareer-0.1.11-x64.zip",
+          "bytes": 220009135,
+          "sha256": "720c7ca241d71bdc91722b5cf6fa3622e77036eb68557556dc28454956638d23"
+        },
+        {
+          "name": "SHA256SUMS-0.1.11.txt",
+          "bytes": 276,
+          "sha256": "c28717c4560f14d863acd4a5a9afc9444845d86697d4b2366153e743c6dd028b"
+        }
+      ]
+    },
+    {
+      "version": "0.1.12",
+      "acceptedAt": "2026-10-12T03:11:02.049Z",
+      "reason": "user-approved existing release baseline",
+      "files": [
+        {
+          "name": "PiCareer-0.1.12-source.zip",
+          "bytes": 8579922,
+          "sha256": "6284b8419c1b1aefae6da0fbea01fa70c1948c2bec9f1d7926394e9b3dc4b889"
+        },
+        {
+          "name": "PiCareer-0.1.12-x64.exe",
+          "bytes": 164261997,
+          "sha256": "c7277b833dbf09d630e9c8d5690ef209ae8f20c3e95a3fc644c3e82890b8d896"
+        },
+        {
+          "name": "PiCareer-0.1.12-x64.exe.blockmap",
+          "bytes": 172372,
+          "sha256": "07b346e1fca75cecb889b0835dde4beed743dc784eae417736e1922b754c2b2d"
+        },
+        {
+          "name": "PiCareer-0.1.12-x64.zip",
+          "bytes": 220009705,
+          "sha256": "06a298ebf69052807e6eb97a651c3ef1d410513cbf280ee3b267226c57fddbf8"
+        },
+        {
+          "name": "SHA256SUMS-0.1.12.txt",
+          "bytes": 276,
+          "sha256": "9746602827b8dc9a1c289bf120537ccad09e1f7467e41d27c29849c7c101ffa4"
+        }
+      ]
+    },
+    {
+      "version": "0.1.13",
+      "acceptedAt": "2026-10-12T03:11:02.357Z",
+      "reason": "user-approved existing release baseline",
+      "files": [
+        {
+          "name": "PiCareer-0.1.13-source.zip",
+          "bytes": 9723523,
+          "sha256": "6da5c6df5448189883131b46a202c970f67c874d3686f860e7372a5ae8348bd9"
+        },
+        {
+          "name": "PiCareer-0.1.13-x64.exe",
+          "bytes": 164263940,
+          "sha256": "0c1efe3db2d2aba3fc34b638289a5baea8a8b12183e59a665c01602d746cddea"
+        },
+        {
+          "name": "PiCareer-0.1.13-x64.exe.blockmap",
+          "bytes": 172325,
+          "sha256": "008bd7801275d855d99237d890b8f11d7a93aa3c5b0090c15b2adcb7104588bc"
+        },
+        {
+          "name": "PiCareer-0.1.13-x64.zip",
+          "bytes": 220012050,
+          "sha256": "bc6fa6044817b2041edbbc76803e0a112008acd868faae94f6657722c8a5ea45"
+        },
+        {
+          "name": "SHA256SUMS-0.1.13.txt",
+          "bytes": 276,
+          "sha256": "113196833c8f95fc7fcf84e44c47424dcd1ae1c055afa6d48088e8440ede27c7"
+        }
+      ]
+    }
+  ],
+  "at": "2026-10-12T03:14:39.595Z"
+}

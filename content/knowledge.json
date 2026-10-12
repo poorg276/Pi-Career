@@ -1,0 +1,3612 @@
+[
+  {
+    "id": "K001",
+    "category": "Python",
+    "question": "Python 可变对象和不可变对象的区别？",
+    "answer": "可变对象可在保持身份不变的情况下修改内容；整数、字符串、元组通常不可变，列表、字典可变。",
+    "explanation": "元组中的元素若是列表，列表内容仍能改变；不可变不等于递归不可变。",
+    "tags": [
+      "python",
+      "后端",
+      "基础"
+    ],
+    "level": "基础",
+    "source": "https://docs.python.org/3/reference/datamodel.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K002",
+    "category": "Python",
+    "question": "is 与 == 有何区别？",
+    "answer": "is 比较对象身份，== 调用相等性语义比较值。判断 None 用 is None。",
+    "explanation": "小整数缓存和字符串驻留是实现细节，不应用来推断业务值相等。",
+    "tags": [
+      "python",
+      "后端",
+      "基础"
+    ],
+    "level": "基础",
+    "source": "https://docs.python.org/3/reference/datamodel.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K003",
+    "category": "Python",
+    "question": "浅拷贝与深拷贝如何选择？",
+    "answer": "浅拷贝创建外层容器，内部对象仍共享；深拷贝递归复制并处理循环引用。",
+    "explanation": "共享缓存或连接对象通常不应深拷贝，应明确资源的生命周期。",
+    "tags": [
+      "python",
+      "后端",
+      "基础"
+    ],
+    "level": "基础",
+    "source": "https://docs.python.org/3/reference/datamodel.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K004",
+    "category": "Python",
+    "question": "为什么默认参数不要写成空列表？",
+    "answer": "默认参数在函数定义时求值，多次调用共享同一对象。用 None 作哨兵并在函数内部创建列表。",
+    "explanation": "这会导致不同请求之间意外共享累积数据，尤其影响长驻服务。",
+    "tags": [
+      "python",
+      "后端",
+      "基础"
+    ],
+    "level": "基础",
+    "source": "https://docs.python.org/3/reference/datamodel.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K005",
+    "category": "Python",
+    "question": "字典查找为什么通常是常数时间？",
+    "answer": "字典基于哈希表，平均查找为 O(1)，依赖合理散列与装载策略。",
+    "explanation": "哈希碰撞、键的哈希成本和扩容会影响实际耗时，不能把平均复杂度当作硬延迟保证。",
+    "tags": [
+      "python",
+      "后端",
+      "基础"
+    ],
+    "level": "基础",
+    "source": "https://docs.python.org/3/reference/datamodel.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K006",
+    "category": "Python",
+    "question": "什么对象可以作为字典键？",
+    "answer": "键需要可哈希，哈希值在生命周期内稳定，且相等对象必须具有相同哈希值。",
+    "explanation": "包含列表的元组不可哈希；自定义 __eq__ 时需要检查 __hash__ 的语义。",
+    "tags": [
+      "python",
+      "后端",
+      "基础"
+    ],
+    "level": "基础",
+    "source": "https://docs.python.org/3/reference/datamodel.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K007",
+    "category": "Python",
+    "question": "生成器如何节省内存？",
+    "answer": "生成器按需产出元素，暂停时保留局部执行状态，不必一次性构造所有结果。",
+    "explanation": "流式读取大文件时有优势，但若下游立刻 list()，仍会一次性占用内存。",
+    "tags": [
+      "python",
+      "后端",
+      "基础"
+    ],
+    "level": "基础",
+    "source": "https://docs.python.org/3/reference/datamodel.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K008",
+    "category": "Python",
+    "question": "迭代器和可迭代对象有何区别？",
+    "answer": "可迭代对象可通过 iter 得到迭代器；迭代器提供 next 并逐步消耗，耗尽后抛出 StopIteration。",
+    "explanation": "列表可多次独立遍历，同一个生成器通常只能消费一次。",
+    "tags": [
+      "python",
+      "后端",
+      "基础"
+    ],
+    "level": "基础",
+    "source": "https://docs.python.org/3/reference/datamodel.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K009",
+    "category": "Python",
+    "question": "上下文管理器解决什么问题？",
+    "answer": "通过进入与退出协议管理资源，确保异常路径也执行清理。",
+    "explanation": "文件、事务和锁适合用 with；退出时是否吞掉异常必须由实现明确决定。",
+    "tags": [
+      "python",
+      "后端",
+      "基础"
+    ],
+    "level": "基础",
+    "source": "https://docs.python.org/3/reference/datamodel.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K010",
+    "category": "Python",
+    "question": "装饰器如何保留被包装函数的信息？",
+    "answer": "装饰器返回包装函数，使用 functools.wraps 保留名称、文档及 __wrapped__ 等元数据。",
+    "explanation": "缺失这些信息会影响日志、反射、依赖注入和测试定位。",
+    "tags": [
+      "python",
+      "后端",
+      "基础"
+    ],
+    "level": "基础",
+    "source": "https://docs.python.org/3/reference/datamodel.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K011",
+    "category": "Python",
+    "question": "类属性和实例属性有什么差别？",
+    "answer": "类属性由类及实例共享查找；实例属性存放单个对象的状态，通常可遮蔽同名类属性。",
+    "explanation": "把可变列表放在类属性中可能造成所有实例共用数据。",
+    "tags": [
+      "python",
+      "面向对象",
+      "后端"
+    ],
+    "level": "基础",
+    "source": "https://docs.python.org/3/tutorial/classes.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K012",
+    "category": "Python",
+    "question": "实例方法、类方法和静态方法怎么选？",
+    "answer": "实例方法接收 self，类方法接收 cls，静态方法不自动接收实例或类。",
+    "explanation": "替代构造器适合类方法；与类组织相关但不依赖状态的纯函数可用静态方法。",
+    "tags": [
+      "python",
+      "面向对象",
+      "后端"
+    ],
+    "level": "基础",
+    "source": "https://docs.python.org/3/tutorial/classes.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K013",
+    "category": "Python",
+    "question": "Python 多继承如何确定方法查找顺序？",
+    "answer": "通过 C3 方法解析顺序 MRO 寻找属性；super 沿 MRO 的下一站调用。",
+    "explanation": "菱形继承应使用协作式 super 并保持参数约定，不能把 super 等同于某个固定父类。",
+    "tags": [
+      "python",
+      "面向对象",
+      "后端"
+    ],
+    "level": "基础",
+    "source": "https://docs.python.org/3/tutorial/classes.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K014",
+    "category": "Python",
+    "question": "鸭子类型与显式继承是什么关系？",
+    "answer": "鸭子类型关注对象是否实现所需行为，不要求继承同一父类。",
+    "explanation": "可以通过协议与类型提示描述接口，通过测试验证真实行为。",
+    "tags": [
+      "python",
+      "面向对象",
+      "后端"
+    ],
+    "level": "基础",
+    "source": "https://docs.python.org/3/tutorial/classes.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K015",
+    "category": "Python",
+    "question": "类型提示会在运行时自动校验吗？",
+    "answer": "普通 Python 类型提示不会自动强制检查；静态检查器与运行时验证库承担不同职责。",
+    "explanation": "API 边界仍需验证真实输入，不能只写注解就信任模型返回数据。",
+    "tags": [
+      "python",
+      "面向对象",
+      "后端"
+    ],
+    "level": "基础",
+    "source": "https://docs.python.org/3/tutorial/classes.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K016",
+    "category": "Python",
+    "question": "异常处理为什么不应无条件吞掉所有异常？",
+    "answer": "吞异常会掩盖失败并产生不一致状态；应按可恢复性处理，保留原因和必要上下文。",
+    "explanation": "清理资源使用 finally；捕获后重抛可用 raise 保留原始堆栈。",
+    "tags": [
+      "python",
+      "面向对象",
+      "后端"
+    ],
+    "level": "基础",
+    "source": "https://docs.python.org/3/tutorial/classes.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K017",
+    "category": "Python",
+    "question": "异常链如何帮助排障？",
+    "answer": "raise NewError from original 保留底层原因，同时提供面向调用者的错误语义。",
+    "explanation": "日志可以记录底层错误，界面显示可执行的修复建议，避免泄露敏感参数。",
+    "tags": [
+      "python",
+      "面向对象",
+      "后端"
+    ],
+    "level": "基础",
+    "source": "https://docs.python.org/3/tutorial/classes.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K018",
+    "category": "Python",
+    "question": "dataclass 的 default_factory 有何作用？",
+    "answer": "为每个实例调用工厂生成字段值，避免实例间共享同一个可变默认对象。",
+    "explanation": "它适合列表、字典等字段；不能用它替代对输入本身的验证。",
+    "tags": [
+      "python",
+      "面向对象",
+      "后端"
+    ],
+    "level": "基础",
+    "source": "https://docs.python.org/3/tutorial/classes.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K019",
+    "category": "Python",
+    "question": "闭包的延迟绑定是什么？",
+    "answer": "闭包通常在调用时读取外层变量，循环结束后可能都看到最后一个值。",
+    "explanation": "通过默认参数绑定当前值，或使用工厂函数生成独立作用域。",
+    "tags": [
+      "python",
+      "面向对象",
+      "后端"
+    ],
+    "level": "基础",
+    "source": "https://docs.python.org/3/tutorial/classes.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K020",
+    "category": "Python",
+    "question": "Python 内存回收主要依赖什么？",
+    "answer": "常见 CPython 以引用计数为基础，并用循环垃圾回收处理部分引用环。",
+    "explanation": "及时释放引用不保证进程内存马上归还操作系统；资源关闭仍应显式管理。",
+    "tags": [
+      "python",
+      "面向对象",
+      "后端"
+    ],
+    "level": "基础",
+    "source": "https://docs.python.org/3/tutorial/classes.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K021",
+    "category": "Python",
+    "question": "协程与线程的主要区别？",
+    "answer": "协程在事件循环中协作式调度，线程由操作系统调度；二者都需要考虑共享状态。",
+    "explanation": "协程适合大量等待型任务，CPU 密集计算不会因为加 async 自动变快。",
+    "tags": [
+      "python",
+      "asyncio",
+      "并发",
+      "性能"
+    ],
+    "level": "基础",
+    "source": "https://docs.python.org/3/library/asyncio.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K022",
+    "category": "Python",
+    "question": "async def 函数调用后立即执行吗？",
+    "answer": "调用通常返回协程对象，需要 await 或调度为 Task 才会推进执行。",
+    "explanation": "忘记 await 可能导致工作没有发生，异常也无法按预期传播。",
+    "tags": [
+      "python",
+      "asyncio",
+      "并发",
+      "性能"
+    ],
+    "level": "基础",
+    "source": "https://docs.python.org/3/library/asyncio.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K023",
+    "category": "Python",
+    "question": "为什么异步函数中不能直接做长时间阻塞调用？",
+    "answer": "阻塞调用占住事件循环线程，其他请求和取消信号无法及时处理。",
+    "explanation": "阻塞 I/O 可迁到线程；CPU 密集工作通常应使用进程或独立服务。",
+    "tags": [
+      "python",
+      "asyncio",
+      "并发",
+      "性能"
+    ],
+    "level": "基础",
+    "source": "https://docs.python.org/3/library/asyncio.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K024",
+    "category": "Python",
+    "question": "如何限制异步请求并发？",
+    "answer": "用信号量或有界队列控制同时在途任务，配合超时和取消。",
+    "explanation": "并发数限制不等于每秒请求数限制；供应商还可能按 token 计费限流。",
+    "tags": [
+      "python",
+      "asyncio",
+      "并发",
+      "性能"
+    ],
+    "level": "基础",
+    "source": "https://docs.python.org/3/library/asyncio.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K025",
+    "category": "Python",
+    "question": "asyncio 的取消应如何处理？",
+    "answer": "任务收到取消时应清理资源并传播取消，不应把取消当作普通业务成功。",
+    "explanation": "请求结束不代表远端副作用撤销，支付或写入仍需要幂等设计。",
+    "tags": [
+      "python",
+      "asyncio",
+      "并发",
+      "性能"
+    ],
+    "level": "基础",
+    "source": "https://docs.python.org/3/library/asyncio.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K026",
+    "category": "Python",
+    "question": "TaskGroup 相比随意创建任务有什么价值？",
+    "answer": "结构化并发把子任务生命周期约束在作用域内，便于统一等待、取消和处理失败。",
+    "explanation": "脱离作用域的后台任务可能丢失异常或阻碍关机。",
+    "tags": [
+      "python",
+      "asyncio",
+      "并发",
+      "性能"
+    ],
+    "level": "基础",
+    "source": "https://docs.python.org/3/library/asyncio.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K027",
+    "category": "Python",
+    "question": "GIL 对 Python 并发有什么影响？",
+    "answer": "传统有 GIL 的 CPython 中，同一解释器内执行 Python 字节码的线程受到限制；I/O 等待仍可并发。",
+    "explanation": "不同构建可能支持自由线程，不应把传统 GIL 行为当作所有版本的绝对规则。",
+    "tags": [
+      "python",
+      "asyncio",
+      "并发",
+      "性能"
+    ],
+    "level": "基础",
+    "source": "https://docs.python.org/3/library/asyncio.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K028",
+    "category": "Python",
+    "question": "多进程需要注意哪些成本？",
+    "answer": "进程有独立地址空间，跨进程通信通常涉及序列化、数据复制和启动开销。",
+    "explanation": "Windows 的进程启动方式要求入口保护，不能盲目在模块导入时创建进程。",
+    "tags": [
+      "python",
+      "asyncio",
+      "并发",
+      "性能"
+    ],
+    "level": "基础",
+    "source": "https://docs.python.org/3/library/asyncio.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K029",
+    "category": "Python",
+    "question": "线程安全和协程安全是否相同？",
+    "answer": "线程与协程的切换条件不同，但跨 await 的读改写同样可能发生竞争。",
+    "explanation": "保护共享余额或计数需要锁或数据库事务，不能只因为单线程就认定安全。",
+    "tags": [
+      "python",
+      "asyncio",
+      "并发",
+      "性能"
+    ],
+    "level": "基础",
+    "source": "https://docs.python.org/3/library/asyncio.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K030",
+    "category": "Python",
+    "question": "如何诊断 Python 内存增长？",
+    "answer": "观察对象与分配来源、缓存大小、队列积压和引用关系，再定位持续存活的对象。",
+    "explanation": "先区分泄漏、正常缓存、瞬时峰值与分配器保留，避免盲目调用垃圾回收。",
+    "tags": [
+      "python",
+      "asyncio",
+      "并发",
+      "性能"
+    ],
+    "level": "基础",
+    "source": "https://docs.python.org/3/library/asyncio.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K031",
+    "category": "网络",
+    "question": "HTTP 幂等是什么意思？",
+    "answer": "重复执行相同请求，其预期服务器状态效果与执行一次相同，不要求每次响应完全相同。",
+    "explanation": "GET、PUT、DELETE 的语义通常幂等；业务实现仍需符合约定。",
+    "tags": [
+      "http",
+      "网络",
+      "后端",
+      "api"
+    ],
+    "level": "基础",
+    "source": "https://developer.mozilla.org/en-US/docs/Web/HTTP",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K032",
+    "category": "网络",
+    "question": "GET 和 POST 应如何选择？",
+    "answer": "GET 用于获取资源，POST 用于提交处理；不要依赖 GET 请求体传递重要业务参数。",
+    "explanation": "敏感参数不应放在容易被日志记录的 URL 中。",
+    "tags": [
+      "http",
+      "网络",
+      "后端",
+      "api"
+    ],
+    "level": "基础",
+    "source": "https://developer.mozilla.org/en-US/docs/Web/HTTP",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K033",
+    "category": "网络",
+    "question": "连接超时与读取超时有什么差别？",
+    "answer": "连接超时约束建立连接，读取超时约束等待响应数据；完整任务还需要总体截止时间。",
+    "explanation": "流式响应可能不断有数据而永不结束，因此只设置读取超时不够。",
+    "tags": [
+      "http",
+      "网络",
+      "后端",
+      "api"
+    ],
+    "level": "基础",
+    "source": "https://developer.mozilla.org/en-US/docs/Web/HTTP",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K034",
+    "category": "网络",
+    "question": "状态码 401、403、429 分别意味着什么？",
+    "answer": "401 通常表示认证失败，403 表示拒绝访问，429 表示请求过多。",
+    "explanation": "重试策略必须区分错误类别，不能对权限错误无限重试。",
+    "tags": [
+      "http",
+      "网络",
+      "后端",
+      "api"
+    ],
+    "level": "基础",
+    "source": "https://developer.mozilla.org/en-US/docs/Web/HTTP",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K035",
+    "category": "网络",
+    "question": "HTTPS 主要提供哪些保障？",
+    "answer": "TLS 提供传输加密、完整性和对端身份验证，依赖正确验证证书及主机名。",
+    "explanation": "关闭证书验证会削弱身份保证；HTTPS 不保证响应内容业务上可信。",
+    "tags": [
+      "http",
+      "网络",
+      "后端",
+      "api"
+    ],
+    "level": "基础",
+    "source": "https://developer.mozilla.org/en-US/docs/Web/HTTP",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K036",
+    "category": "网络",
+    "question": "SSE 与 WebSocket 如何选择？",
+    "answer": "SSE 适合服务器向客户端单向推送文本事件；WebSocket 支持持续双向消息交换。",
+    "explanation": "聊天 token 流常适合 SSE，语音等双向实时交互可选择 WebSocket。",
+    "tags": [
+      "http",
+      "网络",
+      "后端",
+      "api"
+    ],
+    "level": "基础",
+    "source": "https://developer.mozilla.org/en-US/docs/Web/HTTP",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K037",
+    "category": "网络",
+    "question": "流式 HTTP 响应为什么要处理半包？",
+    "answer": "网络分块不等于应用消息边界，一条事件可能跨多个块，也可能一个块包含多条事件。",
+    "explanation": "应使用增量解码和协议分隔符解析，不能每收到一个块就 JSON.parse。",
+    "tags": [
+      "http",
+      "网络",
+      "后端",
+      "api"
+    ],
+    "level": "基础",
+    "source": "https://developer.mozilla.org/en-US/docs/Web/HTTP",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K038",
+    "category": "网络",
+    "question": "DNS 与连接复用对延迟有什么影响？",
+    "answer": "DNS、TCP 和 TLS 建连都可能增加首请求延迟；连接池复用可减少重复开销。",
+    "explanation": "需要兼顾连接数上限、空闲失效和服务端负载均衡变化。",
+    "tags": [
+      "http",
+      "网络",
+      "后端",
+      "api"
+    ],
+    "level": "基础",
+    "source": "https://developer.mozilla.org/en-US/docs/Web/HTTP",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K039",
+    "category": "网络",
+    "question": "CORS 是权限控制机制吗？",
+    "answer": "CORS 是浏览器对跨源响应读取的限制机制，不能替代服务端认证授权。",
+    "explanation": "命令行和服务端客户端不受浏览器 CORS 约束，后端仍需校验调用者。",
+    "tags": [
+      "http",
+      "网络",
+      "后端",
+      "api"
+    ],
+    "level": "基础",
+    "source": "https://developer.mozilla.org/en-US/docs/Web/HTTP",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K040",
+    "category": "网络",
+    "question": "如何安全处理用户提供的 URL？",
+    "answer": "校验协议、目标地址和重定向，限制请求大小与时长，防止访问内部网络资源。",
+    "explanation": "只检查初始域名不够，DNS 解析及每次重定向也可能改变实际目标。",
+    "tags": [
+      "http",
+      "网络",
+      "后端",
+      "api"
+    ],
+    "level": "基础",
+    "source": "https://developer.mozilla.org/en-US/docs/Web/HTTP",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K041",
+    "category": "数据库",
+    "question": "事务 ACID 分别是什么？",
+    "answer": "原子性、一致性、隔离性和持久性。它们描述事务执行和失败恢复应满足的性质。",
+    "explanation": "一致性还依赖业务约束，数据库无法自动理解所有业务规则。",
+    "tags": [
+      "sql",
+      "数据库",
+      "事务",
+      "后端"
+    ],
+    "level": "基础",
+    "source": "https://www.postgresql.org/docs/current/transaction-iso.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K042",
+    "category": "数据库",
+    "question": "脏读、不可重复读和幻读有什么区别？",
+    "answer": "分别是读取未提交值、同一行重复读取变化、同一条件重复查询的结果集合变化。",
+    "explanation": "具体隔离级别的保证取决于数据库实现，不能仅凭名称判断。",
+    "tags": [
+      "sql",
+      "数据库",
+      "事务",
+      "后端"
+    ],
+    "level": "基础",
+    "source": "https://www.postgresql.org/docs/current/transaction-iso.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K043",
+    "category": "数据库",
+    "question": "MVCC 如何支持读写并发？",
+    "answer": "维护数据版本并依据事务快照选择可见版本，减少读操作阻塞写操作的需要。",
+    "explanation": "旧版本清理、长事务和存储增长需要一起考虑。",
+    "tags": [
+      "sql",
+      "数据库",
+      "事务",
+      "后端"
+    ],
+    "level": "基础",
+    "source": "https://www.postgresql.org/docs/current/transaction-iso.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K044",
+    "category": "数据库",
+    "question": "乐观锁通常如何实现？",
+    "answer": "读取版本号，更新时带上旧版本条件；仅成功更新一行才算写入成功。",
+    "explanation": "冲突后需要重新读取并决定重试或报错，不能盲目覆盖。",
+    "tags": [
+      "sql",
+      "数据库",
+      "事务",
+      "后端"
+    ],
+    "level": "基础",
+    "source": "https://www.postgresql.org/docs/current/transaction-iso.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K045",
+    "category": "数据库",
+    "question": "悲观锁适合什么场景？",
+    "answer": "对高冲突且需要序列化访问的数据，先获得锁再修改可简化一致性控制。",
+    "explanation": "锁会带来等待、死锁及吞吐损失，应缩短事务时间。",
+    "tags": [
+      "sql",
+      "数据库",
+      "事务",
+      "后端"
+    ],
+    "level": "基础",
+    "source": "https://www.postgresql.org/docs/current/transaction-iso.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K046",
+    "category": "数据库",
+    "question": "数据库死锁如何处理？",
+    "answer": "数据库一般检测并中止一个事务；应用需回滚并对可安全重试的事务进行有界重试。",
+    "explanation": "统一加锁顺序和减少锁持有时间可降低死锁概率。",
+    "tags": [
+      "sql",
+      "数据库",
+      "事务",
+      "后端"
+    ],
+    "level": "基础",
+    "source": "https://www.postgresql.org/docs/current/transaction-iso.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K047",
+    "category": "数据库",
+    "question": "唯一约束与先查询再插入有何区别？",
+    "answer": "唯一约束能在并发写入时由数据库保证唯一性；先查后插存在竞态窗口。",
+    "explanation": "幂等键和业务唯一标识应使用数据库约束兜底。",
+    "tags": [
+      "sql",
+      "数据库",
+      "事务",
+      "后端"
+    ],
+    "level": "基础",
+    "source": "https://www.postgresql.org/docs/current/transaction-iso.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K048",
+    "category": "数据库",
+    "question": "为什么分页不能总是使用很大的 OFFSET？",
+    "answer": "深度偏移可能仍需扫描或跳过大量记录，延迟随页数增加。",
+    "explanation": "对稳定排序键使用游标分页，并明确数据更新时的可见性规则。",
+    "tags": [
+      "sql",
+      "数据库",
+      "事务",
+      "后端"
+    ],
+    "level": "基础",
+    "source": "https://www.postgresql.org/docs/current/transaction-iso.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K049",
+    "category": "数据库",
+    "question": "索引为什么会拖慢写入？",
+    "answer": "插入更新删除不仅修改数据，还要维护索引结构并增加日志和存储开销。",
+    "explanation": "索引应服务真实查询，低收益重复索引应经过观测后治理。",
+    "tags": [
+      "sql",
+      "数据库",
+      "事务",
+      "后端"
+    ],
+    "level": "基础",
+    "source": "https://www.postgresql.org/docs/current/transaction-iso.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K050",
+    "category": "数据库",
+    "question": "如何判断慢查询的瓶颈？",
+    "answer": "查看执行计划、实际行数、过滤选择率、I/O、锁等待和统计信息是否准确。",
+    "explanation": "不要仅看到全表扫描就认定错误，小表或低选择率查询可能适合顺序扫描。",
+    "tags": [
+      "sql",
+      "数据库",
+      "事务",
+      "后端"
+    ],
+    "level": "基础",
+    "source": "https://www.postgresql.org/docs/current/transaction-iso.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K051",
+    "category": "数据库",
+    "question": "缓存穿透如何缓解？",
+    "answer": "对不存在的数据频繁查询可使用短期空值缓存、输入校验或布隆过滤器减少回源。",
+    "explanation": "空值缓存也要考虑数据新建后的失效与敏感信息暴露。",
+    "tags": [
+      "redis",
+      "缓存",
+      "数据库",
+      "系统设计"
+    ],
+    "level": "进阶",
+    "source": "https://redis.io/docs/latest/develop/use/",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K052",
+    "category": "数据库",
+    "question": "缓存击穿与雪崩有什么区别？",
+    "answer": "击穿通常是热点键失效引起集中回源；雪崩是大量键或缓存服务同时失效。",
+    "explanation": "热点互斥重建、随机过期、限流和降级分别针对不同成因。",
+    "tags": [
+      "redis",
+      "缓存",
+      "数据库",
+      "系统设计"
+    ],
+    "level": "进阶",
+    "source": "https://redis.io/docs/latest/develop/use/",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K053",
+    "category": "数据库",
+    "question": "缓存与数据库如何保持一致？",
+    "answer": "常见方案先更新数据库再失效缓存，并结合重试或变更订阅处理失效失败。",
+    "explanation": "这通常是最终一致性方案，必须明确允许的不一致窗口。",
+    "tags": [
+      "redis",
+      "缓存",
+      "数据库",
+      "系统设计"
+    ],
+    "level": "进阶",
+    "source": "https://redis.io/docs/latest/develop/use/",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K054",
+    "category": "数据库",
+    "question": "为什么分布式锁需要唯一持有者标识？",
+    "answer": "释放时要确认自己仍是锁持有者，避免超时后误删其他客户端的新锁。",
+    "explanation": "检查与删除需要原子执行；租约过期后的旧持有者还可能继续工作。",
+    "tags": [
+      "redis",
+      "缓存",
+      "数据库",
+      "系统设计"
+    ],
+    "level": "进阶",
+    "source": "https://redis.io/docs/latest/develop/use/",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K055",
+    "category": "数据库",
+    "question": "什么是 fencing token？",
+    "answer": "为每次锁授权分配递增令牌，资源端拒绝旧令牌写入，阻止过期持有者继续修改。",
+    "explanation": "只有被保护资源真正检查令牌，才能发挥保护作用。",
+    "tags": [
+      "redis",
+      "缓存",
+      "数据库",
+      "系统设计"
+    ],
+    "level": "进阶",
+    "source": "https://redis.io/docs/latest/develop/use/",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K056",
+    "category": "数据库",
+    "question": "布隆过滤器的误差特点？",
+    "answer": "在符合实现前提时，可能误判元素存在，但不会把已插入元素误判为不存在。",
+    "explanation": "标准布隆过滤器不直接支持任意删除，否则可能破坏其他元素的位。",
+    "tags": [
+      "redis",
+      "缓存",
+      "数据库",
+      "系统设计"
+    ],
+    "level": "进阶",
+    "source": "https://redis.io/docs/latest/develop/use/",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K057",
+    "category": "数据库",
+    "question": "Redis 持久化和复制是否等同？",
+    "answer": "持久化用于本地恢复，复制用于冗余与分担读取；复制不是备份的完整替代。",
+    "explanation": "误删除可能同步到副本，仍需独立备份与恢复演练。",
+    "tags": [
+      "redis",
+      "缓存",
+      "数据库",
+      "系统设计"
+    ],
+    "level": "进阶",
+    "source": "https://redis.io/docs/latest/develop/use/",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K058",
+    "category": "数据库",
+    "question": "缓存淘汰策略如何选择？",
+    "answer": "结合访问分布、对象大小、更新频率与业务优先级选择 LRU、LFU 或其他策略。",
+    "explanation": "命中率不是唯一指标，昂贵对象的命中收益可能远高于小对象。",
+    "tags": [
+      "redis",
+      "缓存",
+      "数据库",
+      "系统设计"
+    ],
+    "level": "进阶",
+    "source": "https://redis.io/docs/latest/develop/use/",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K059",
+    "category": "数据库",
+    "question": "幂等键应保存哪些信息？",
+    "answer": "保存请求唯一标识、请求摘要、执行状态和最终结果，并设置符合业务时限的保留期。",
+    "explanation": "同键不同参数应拒绝，不能返回第一次请求的错误对应结果。",
+    "tags": [
+      "redis",
+      "缓存",
+      "数据库",
+      "系统设计"
+    ],
+    "level": "进阶",
+    "source": "https://redis.io/docs/latest/develop/use/",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K060",
+    "category": "数据库",
+    "question": "热键为什么会成为瓶颈？",
+    "answer": "大量请求集中到单一键或分片，单节点 CPU、网络或串行执行可能饱和。",
+    "explanation": "本地缓存、请求合并和只读副本可缓解，但需评估一致性与失效成本。",
+    "tags": [
+      "redis",
+      "缓存",
+      "数据库",
+      "系统设计"
+    ],
+    "level": "进阶",
+    "source": "https://redis.io/docs/latest/develop/use/",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K061",
+    "category": "LLM",
+    "question": "Transformer 注意力的基本计算是什么？",
+    "answer": "对查询与键的相似度进行缩放和归一化，用所得权重对值向量加权求和。",
+    "explanation": "缩放项帮助控制分数幅度；掩码用于限制可见位置。",
+    "tags": [
+      "llm",
+      "大模型",
+      "transformer",
+      "注意力"
+    ],
+    "level": "基础",
+    "source": "https://arxiv.org/abs/1706.03762",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K062",
+    "category": "LLM",
+    "question": "自注意力与交叉注意力有什么区别？",
+    "answer": "自注意力的查询键值来自同一序列；交叉注意力的查询与键值来自不同表示源。",
+    "explanation": "编码器解码器模型可通过交叉注意力读取源序列信息。",
+    "tags": [
+      "llm",
+      "大模型",
+      "transformer",
+      "注意力"
+    ],
+    "level": "基础",
+    "source": "https://arxiv.org/abs/1706.03762",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K063",
+    "category": "LLM",
+    "question": "为什么需要位置表示？",
+    "answer": "注意力本身不直接编码序列位置，位置表示帮助区分顺序和相对距离。",
+    "explanation": "不同方案对长上下文外推能力和缓存组织有不同影响。",
+    "tags": [
+      "llm",
+      "大模型",
+      "transformer",
+      "注意力"
+    ],
+    "level": "基础",
+    "source": "https://arxiv.org/abs/1706.03762",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K064",
+    "category": "LLM",
+    "question": "多头注意力有什么作用？",
+    "answer": "在多个表示子空间并行学习关系，再组合结果，增加建模表达能力。",
+    "explanation": "头数更多不必然更好，还受维度、训练和推理成本约束。",
+    "tags": [
+      "llm",
+      "大模型",
+      "transformer",
+      "注意力"
+    ],
+    "level": "基础",
+    "source": "https://arxiv.org/abs/1706.03762",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K065",
+    "category": "LLM",
+    "question": "因果掩码为何必要？",
+    "answer": "自回归预测时禁止当前位置看到未来 token，保持训练与生成的信息条件一致。",
+    "explanation": "训练可并行计算多个位置，但每个位置的注意力可见范围仍受限制。",
+    "tags": [
+      "llm",
+      "大模型",
+      "transformer",
+      "注意力"
+    ],
+    "level": "基础",
+    "source": "https://arxiv.org/abs/1706.03762",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K066",
+    "category": "LLM",
+    "question": "残差连接解决什么问题？",
+    "answer": "为信息和梯度提供直接路径，帮助训练深层网络，并允许子层学习增量变换。",
+    "explanation": "残差不代替归一化或合理初始化，深网络稳定性来自多种设计。",
+    "tags": [
+      "llm",
+      "大模型",
+      "transformer",
+      "注意力"
+    ],
+    "level": "基础",
+    "source": "https://arxiv.org/abs/1706.03762",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K067",
+    "category": "LLM",
+    "question": "LayerNorm 与 BatchNorm 的差异？",
+    "answer": "LayerNorm 通常在单样本的特征维归一化，BatchNorm 依赖批统计。",
+    "explanation": "序列长度和批大小变化时，归一化轴与推理统计处理会影响适用性。",
+    "tags": [
+      "llm",
+      "大模型",
+      "transformer",
+      "注意力"
+    ],
+    "level": "基础",
+    "source": "https://arxiv.org/abs/1706.03762",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K068",
+    "category": "LLM",
+    "question": "分词器为什么影响成本和中文表现？",
+    "answer": "模型按 token 处理，文本到 token 的映射影响序列长度、计费和可容纳上下文。",
+    "explanation": "相同字数在不同语言和分词器下 token 数可能明显不同。",
+    "tags": [
+      "llm",
+      "大模型",
+      "transformer",
+      "注意力"
+    ],
+    "level": "基础",
+    "source": "https://arxiv.org/abs/1706.03762",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K069",
+    "category": "LLM",
+    "question": "参数量与上下文长度是什么关系？",
+    "answer": "参数量描述模型权重规模，上下文长度描述单次处理的序列容量，两者不是同一个指标。",
+    "explanation": "长上下文还增加注意力及缓存成本，不能仅依据参数量推断速度。",
+    "tags": [
+      "llm",
+      "大模型",
+      "transformer",
+      "注意力"
+    ],
+    "level": "基础",
+    "source": "https://arxiv.org/abs/1706.03762",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K070",
+    "category": "LLM",
+    "question": "预训练目标如何影响模型能力？",
+    "answer": "训练目标决定预测任务和可利用信息，例如自回归建模侧重根据前文生成后续 token。",
+    "explanation": "真实下游表现还取决于数据、规模、优化和后训练，而不是目标名称本身。",
+    "tags": [
+      "llm",
+      "大模型",
+      "transformer",
+      "注意力"
+    ],
+    "level": "基础",
+    "source": "https://arxiv.org/abs/1706.03762",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K071",
+    "category": "LLM",
+    "question": "KV Cache 为什么能加速生成？",
+    "answer": "缓存已有 token 的键和值，后续解码复用，避免重复计算全部历史表示。",
+    "explanation": "缓存随上下文和并发增长，会成为显存压力来源。",
+    "tags": [
+      "llm",
+      "大模型",
+      "推理",
+      "性能"
+    ],
+    "level": "基础",
+    "source": "https://huggingface.co/docs/transformers/main/en/kv_cache",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K072",
+    "category": "LLM",
+    "question": "Prefill 与 Decode 分别是什么？",
+    "answer": "Prefill 处理输入上下文并构建缓存，Decode 逐步生成后续 token。",
+    "explanation": "两阶段资源瓶颈不同，需要分别观察首 token 延迟和生成速度。",
+    "tags": [
+      "llm",
+      "大模型",
+      "推理",
+      "性能"
+    ],
+    "level": "基础",
+    "source": "https://huggingface.co/docs/transformers/main/en/kv_cache",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K073",
+    "category": "LLM",
+    "question": "TTFT 与 TPOT 如何解释？",
+    "answer": "TTFT 是请求到首 token 的时间，TPOT 描述后续 token 的平均生成间隔。",
+    "explanation": "用户感觉慢可能来自排队或长输入，不能只看每秒生成 token 数。",
+    "tags": [
+      "llm",
+      "大模型",
+      "推理",
+      "性能"
+    ],
+    "level": "基础",
+    "source": "https://huggingface.co/docs/transformers/main/en/kv_cache",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K074",
+    "category": "LLM",
+    "question": "量化的主要取舍是什么？",
+    "answer": "用更低精度表示权重或激活以降低存储与带宽成本，但可能影响准确性和数值稳定性。",
+    "explanation": "应在目标任务上评测，不能只凭位数推断收益。",
+    "tags": [
+      "llm",
+      "大模型",
+      "推理",
+      "性能"
+    ],
+    "level": "基础",
+    "source": "https://huggingface.co/docs/transformers/main/en/kv_cache",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K075",
+    "category": "LLM",
+    "question": "为什么长上下文不等于可靠记忆？",
+    "answer": "模型能接收更多文本，并不保证准确利用每个事实，位置、干扰和检索噪声仍会影响答案。",
+    "explanation": "关键事实应结构化保存，必要时检索，不能依赖无限追加聊天记录。",
+    "tags": [
+      "llm",
+      "大模型",
+      "推理",
+      "性能"
+    ],
+    "level": "基础",
+    "source": "https://huggingface.co/docs/transformers/main/en/kv_cache",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K076",
+    "category": "LLM",
+    "question": "temperature 与 top-p 各控制什么？",
+    "answer": "temperature 调整采样分布尖锐程度；top-p 在累积概率范围内保留候选 token。",
+    "explanation": "不同供应商实现与支持参数可能不同，低温也不构成业务确定性保证。",
+    "tags": [
+      "llm",
+      "大模型",
+      "推理",
+      "性能"
+    ],
+    "level": "基础",
+    "source": "https://huggingface.co/docs/transformers/main/en/kv_cache",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K077",
+    "category": "LLM",
+    "question": "上下文压缩有哪些风险？",
+    "answer": "压缩可能丢失约束、数字、来源或工具执行状态，影响后续决策。",
+    "explanation": "程序进度与权限不能仅放在摘要里，应独立保存并恢复。",
+    "tags": [
+      "llm",
+      "大模型",
+      "推理",
+      "性能"
+    ],
+    "level": "基础",
+    "source": "https://huggingface.co/docs/transformers/main/en/kv_cache",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K078",
+    "category": "LLM",
+    "question": "批处理为何提升吞吐却可能增加延迟？",
+    "answer": "共享设备计算可提高利用率，但等待凑批和批内资源竞争会延长单请求完成时间。",
+    "explanation": "需结合交互请求与离线任务分别设置批策略。",
+    "tags": [
+      "llm",
+      "大模型",
+      "推理",
+      "性能"
+    ],
+    "level": "基础",
+    "source": "https://huggingface.co/docs/transformers/main/en/kv_cache",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K079",
+    "category": "LLM",
+    "question": "模型路由应该依据什么？",
+    "answer": "根据任务难度、质量门槛、成本、延迟和可用性选择模型，并用真实评测验证。",
+    "explanation": "路由失败要有回退策略，但不能把不支持工具调用的模型当作等价替代。",
+    "tags": [
+      "llm",
+      "大模型",
+      "推理",
+      "性能"
+    ],
+    "level": "基础",
+    "source": "https://huggingface.co/docs/transformers/main/en/kv_cache",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K080",
+    "category": "LLM",
+    "question": "如何估算大模型调用成本？",
+    "answer": "分别统计输入、输出、缓存命中及不同模型的单价，考虑重试和多轮工具调用。",
+    "explanation": "不能只估算最后一条回答，检索上下文和中间调用可能占主要成本。",
+    "tags": [
+      "llm",
+      "大模型",
+      "推理",
+      "性能"
+    ],
+    "level": "基础",
+    "source": "https://huggingface.co/docs/transformers/main/en/kv_cache",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K081",
+    "category": "LLM",
+    "question": "好的任务提示通常包含什么？",
+    "answer": "明确目标、输入范围、输出格式、约束与成功标准，并提供必要上下文。",
+    "explanation": "模糊地要求“专业”不如给可核查的字段和边界。",
+    "tags": [
+      "prompt",
+      "提示词",
+      "大模型",
+      "llm"
+    ],
+    "level": "基础",
+    "source": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K082",
+    "category": "LLM",
+    "question": "Few-shot 示例如何选择？",
+    "answer": "选择覆盖典型情形和容易混淆边界的代表性示例，使输入输出规则清晰。",
+    "explanation": "大量相似示例会占用上下文却不一定增加泛化能力。",
+    "tags": [
+      "prompt",
+      "提示词",
+      "大模型",
+      "llm"
+    ],
+    "level": "基础",
+    "source": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K083",
+    "category": "LLM",
+    "question": "为什么要求 JSON 不等于结构化输出可靠？",
+    "answer": "模型仍可能返回非法 JSON、漏字段或语义错误，需要解析、校验和失败处理。",
+    "explanation": "即使供应商约束了语法，也仍需业务规则验证。",
+    "tags": [
+      "prompt",
+      "提示词",
+      "大模型",
+      "llm"
+    ],
+    "level": "基础",
+    "source": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K084",
+    "category": "LLM",
+    "question": "如何减少模型编造来源？",
+    "answer": "要求依据检索证据回答，引用由程序提供的来源标识，并验证引用确实存在。",
+    "explanation": "让模型自由生成 URL 再展示，会产生看起来可信但不存在的链接。",
+    "tags": [
+      "prompt",
+      "提示词",
+      "大模型",
+      "llm"
+    ],
+    "level": "基础",
+    "source": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K085",
+    "category": "LLM",
+    "question": "系统提示与工具权限是什么关系？",
+    "answer": "提示用于表达行为要求，权限必须由程序和运行环境执行。",
+    "explanation": "“不要删除文件”不能替代真正的工具许可、路径检查和隔离。",
+    "tags": [
+      "prompt",
+      "提示词",
+      "大模型",
+      "llm"
+    ],
+    "level": "基础",
+    "source": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K086",
+    "category": "LLM",
+    "question": "提示词版本为什么需要管理？",
+    "answer": "提示变化会改变输出与工具行为，需要版本、变更说明、回归评测和回滚。",
+    "explanation": "同一模型版本下也应固定评测集，否则难以区分提示改善与数据波动。",
+    "tags": [
+      "prompt",
+      "提示词",
+      "大模型",
+      "llm"
+    ],
+    "level": "基础",
+    "source": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K087",
+    "category": "LLM",
+    "question": "如何处理缺失关键信息的任务？",
+    "answer": "判断缺失信息是否影响决策；影响时询问，不影响时明确假设并继续。",
+    "explanation": "不可默默补造企业、薪资或个人经历。",
+    "tags": [
+      "prompt",
+      "提示词",
+      "大模型",
+      "llm"
+    ],
+    "level": "基础",
+    "source": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K088",
+    "category": "LLM",
+    "question": "为什么把外部文档放进分隔符仍不够？",
+    "answer": "分隔符帮助模型识别数据，但不是可信边界，恶意内容仍可能诱导行为。",
+    "explanation": "需要限制工具权限、输出验证和程序层策略共同防护。",
+    "tags": [
+      "prompt",
+      "提示词",
+      "大模型",
+      "llm"
+    ],
+    "level": "基础",
+    "source": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K089",
+    "category": "LLM",
+    "question": "如何让输出适合自动处理？",
+    "answer": "提供明确 schema、字段类型和允许值，解析后逐字段校验，拒绝未知或无效状态转换。",
+    "explanation": "错误重试应有次数上限，并保留原始失败用于排查。",
+    "tags": [
+      "prompt",
+      "提示词",
+      "大模型",
+      "llm"
+    ],
+    "level": "基础",
+    "source": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K090",
+    "category": "LLM",
+    "question": "提示评估为什么不能只凭主观读感？",
+    "answer": "流畅回答可能事实错误，需要任务正确率、证据一致性及失败案例作为依据。",
+    "explanation": "对比实验应控制模型、输入集、采样配置和评分规则。",
+    "tags": [
+      "prompt",
+      "提示词",
+      "大模型",
+      "llm"
+    ],
+    "level": "基础",
+    "source": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K091",
+    "category": "RAG",
+    "question": "RAG 的基本流程是什么？",
+    "answer": "将资料处理成可检索片段，召回相关内容，再让模型结合证据生成回答。",
+    "explanation": "检索和生成是两个可独立评测的环节，应分别定位错误。",
+    "tags": [
+      "rag",
+      "检索",
+      "知识库",
+      "向量"
+    ],
+    "level": "基础",
+    "source": "https://arxiv.org/abs/2005.11401",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K092",
+    "category": "RAG",
+    "question": "RAG 与微调如何选择？",
+    "answer": "RAG 适合需要更新和引用的外部知识；微调更适合改变任务行为、格式或领域模式。",
+    "explanation": "两者可组合，微调也不能保证记住所有事实或及时更新。",
+    "tags": [
+      "rag",
+      "检索",
+      "知识库",
+      "向量"
+    ],
+    "level": "基础",
+    "source": "https://arxiv.org/abs/2005.11401",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K093",
+    "category": "RAG",
+    "question": "文档切块大小如何影响结果？",
+    "answer": "小块检索精确但上下文可能不足，大块信息完整却容易混入噪声并增加成本。",
+    "explanation": "依据文档结构、问题类型和评测结果选择，不能机械使用固定字符数。",
+    "tags": [
+      "rag",
+      "检索",
+      "知识库",
+      "向量"
+    ],
+    "level": "基础",
+    "source": "https://arxiv.org/abs/2005.11401",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K094",
+    "category": "RAG",
+    "question": "为什么切块要保存原文位置信息？",
+    "answer": "位置和文档标识用于引用、去重、展开上下文和更新删除。",
+    "explanation": "只有片段文本没有出处，会使回答难以审计和修正。",
+    "tags": [
+      "rag",
+      "检索",
+      "知识库",
+      "向量"
+    ],
+    "level": "基础",
+    "source": "https://arxiv.org/abs/2005.11401",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K095",
+    "category": "RAG",
+    "question": "重叠切块有什么利弊？",
+    "answer": "重叠缓解边界信息断裂，但增加索引体积、重复召回及上下文占用。",
+    "explanation": "可在召回后按文档位置合并邻近片段以减少重复。",
+    "tags": [
+      "rag",
+      "检索",
+      "知识库",
+      "向量"
+    ],
+    "level": "基础",
+    "source": "https://arxiv.org/abs/2005.11401",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K096",
+    "category": "RAG",
+    "question": "Embedding 表示什么？",
+    "answer": "把输入映射到向量空间，使语义相关性可用距离或相似度近似衡量。",
+    "explanation": "相似度不是事实正确率，也不是天然校准的概率。",
+    "tags": [
+      "rag",
+      "检索",
+      "知识库",
+      "向量"
+    ],
+    "level": "基础",
+    "source": "https://arxiv.org/abs/2005.11401",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K097",
+    "category": "RAG",
+    "question": "为什么检索和入库应使用匹配的向量模型？",
+    "answer": "不同模型的向量坐标空间通常不兼容，即使维度相同也不能直接比较。",
+    "explanation": "更换向量模型一般需要重建索引并版本化，避免混用。",
+    "tags": [
+      "rag",
+      "检索",
+      "知识库",
+      "向量"
+    ],
+    "level": "基础",
+    "source": "https://arxiv.org/abs/2005.11401",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K098",
+    "category": "RAG",
+    "question": "余弦相似度与点积是什么关系？",
+    "answer": "余弦相似度按向量长度归一化；向量已归一化时，点积等于余弦相似度。",
+    "explanation": "是否归一化需要遵循模型与索引的约定。",
+    "tags": [
+      "rag",
+      "检索",
+      "知识库",
+      "向量"
+    ],
+    "level": "基础",
+    "source": "https://arxiv.org/abs/2005.11401",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K099",
+    "category": "RAG",
+    "question": "关键词检索为何仍有价值？",
+    "answer": "精确术语、编号、人名和错误码常需要字面匹配，向量召回可能忽略这些细节。",
+    "explanation": "混合检索可兼顾精确匹配与语义表达变化。",
+    "tags": [
+      "rag",
+      "检索",
+      "知识库",
+      "向量"
+    ],
+    "level": "基础",
+    "source": "https://arxiv.org/abs/2005.11401",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K100",
+    "category": "RAG",
+    "question": "为什么召回 Top-K 不宜盲目增大？",
+    "answer": "更多片段可能提高覆盖，但也增加噪声、成本和错误引用机会。",
+    "explanation": "应该测量召回质量及最终回答表现，而不只看片段数量。",
+    "tags": [
+      "rag",
+      "检索",
+      "知识库",
+      "向量"
+    ],
+    "level": "基础",
+    "source": "https://arxiv.org/abs/2005.11401",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K101",
+    "category": "RAG",
+    "question": "混合检索的分数如何融合？",
+    "answer": "可使用排序融合等方法组合关键词和向量结果，避免直接相加不同尺度的原始分数。",
+    "explanation": "RRF 根据名次融合，参数仍应在任务数据上验证。",
+    "tags": [
+      "rag",
+      "rerank",
+      "检索",
+      "搜索",
+      "知识库"
+    ],
+    "level": "进阶",
+    "source": "https://www.elastic.co/guide/en/elasticsearch/reference/current/rrf.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K102",
+    "category": "RAG",
+    "question": "召回与重排有何分工？",
+    "answer": "召回从大库快速取候选，重排用更昂贵的相关性模型精排小集合。",
+    "explanation": "重排不能补回未召回的证据，因此需要先检查召回覆盖。",
+    "tags": [
+      "rag",
+      "rerank",
+      "检索",
+      "搜索",
+      "知识库"
+    ],
+    "level": "进阶",
+    "source": "https://www.elastic.co/guide/en/elasticsearch/reference/current/rrf.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K103",
+    "category": "RAG",
+    "question": "Cross-encoder 重排为什么更昂贵？",
+    "answer": "它联合处理查询和每个候选，进行更细粒度交互，无法像独立向量那样完全预计算。",
+    "explanation": "应控制候选数量和长度，并监控增加的尾延迟。",
+    "tags": [
+      "rag",
+      "rerank",
+      "检索",
+      "搜索",
+      "知识库"
+    ],
+    "level": "进阶",
+    "source": "https://www.elastic.co/guide/en/elasticsearch/reference/current/rrf.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K104",
+    "category": "RAG",
+    "question": "元数据过滤应在哪个阶段做？",
+    "answer": "权限等硬约束应在检索时强制执行，其他过滤可根据索引能力采用前置或后置策略。",
+    "explanation": "仅生成后过滤可能已经把未授权文档发送给模型。",
+    "tags": [
+      "rag",
+      "rerank",
+      "检索",
+      "搜索",
+      "知识库"
+    ],
+    "level": "进阶",
+    "source": "https://www.elastic.co/guide/en/elasticsearch/reference/current/rrf.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K105",
+    "category": "RAG",
+    "question": "查询改写有什么风险？",
+    "answer": "改写可补全上下文和同义表达，也可能改变用户原意或丢失精确约束。",
+    "explanation": "保留原始查询，并对城市、企业、年份等硬条件单独处理。",
+    "tags": [
+      "rag",
+      "rerank",
+      "检索",
+      "搜索",
+      "知识库"
+    ],
+    "level": "进阶",
+    "source": "https://www.elastic.co/guide/en/elasticsearch/reference/current/rrf.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K106",
+    "category": "RAG",
+    "question": "多路查询为什么需要去重？",
+    "answer": "不同查询可能召回同一文档的重叠片段，不去重会浪费上下文并虚增证据数量。",
+    "explanation": "去重应结合稳定文档 ID、版本和片段位置。",
+    "tags": [
+      "rag",
+      "rerank",
+      "检索",
+      "搜索",
+      "知识库"
+    ],
+    "level": "进阶",
+    "source": "https://www.elastic.co/guide/en/elasticsearch/reference/current/rrf.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K107",
+    "category": "RAG",
+    "question": "检索没有结果时应该怎样回答？",
+    "answer": "明确证据不足，可建议补充信息或扩大搜索；不能假装已检索到支持材料。",
+    "explanation": "通用知识回答与基于来源的结论应清楚区分。",
+    "tags": [
+      "rag",
+      "rerank",
+      "检索",
+      "搜索",
+      "知识库"
+    ],
+    "level": "进阶",
+    "source": "https://www.elastic.co/guide/en/elasticsearch/reference/current/rrf.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K108",
+    "category": "RAG",
+    "question": "如何处理过期知识？",
+    "answer": "保存发布时间、抓取时间和版本，设定更新策略，对时效性任务提高新近来源权重。",
+    "explanation": "抓取时间新不代表内容新，历史招聘公告尤其需要区分。",
+    "tags": [
+      "rag",
+      "rerank",
+      "检索",
+      "搜索",
+      "知识库"
+    ],
+    "level": "进阶",
+    "source": "https://www.elastic.co/guide/en/elasticsearch/reference/current/rrf.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K109",
+    "category": "RAG",
+    "question": "RAG 中如何处理来源冲突？",
+    "answer": "比较来源权威性、时间、适用范围和上下文，展示关键分歧及不确定性。",
+    "explanation": "不能仅按检索排序第一就认定绝对正确。",
+    "tags": [
+      "rag",
+      "rerank",
+      "检索",
+      "搜索",
+      "知识库"
+    ],
+    "level": "进阶",
+    "source": "https://www.elastic.co/guide/en/elasticsearch/reference/current/rrf.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K110",
+    "category": "RAG",
+    "question": "引用粒度应如何设计？",
+    "answer": "让具体事实对应可追溯的段落或片段，而非整份文档笼统背书。",
+    "explanation": "链接可访问也不意味着支持该结论，需要检查文本关联。",
+    "tags": [
+      "rag",
+      "rerank",
+      "检索",
+      "搜索",
+      "知识库"
+    ],
+    "level": "进阶",
+    "source": "https://www.elastic.co/guide/en/elasticsearch/reference/current/rrf.html",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K111",
+    "category": "RAG",
+    "question": "精确向量搜索与近似搜索如何取舍？",
+    "answer": "精确搜索保证按指定度量找到最近邻，近似搜索用部分召回损失换取速度或内存效率。",
+    "explanation": "应在代表性查询上测量 recall 和延迟，避免仅用索引默认值。",
+    "tags": [
+      "rag",
+      "向量数据库",
+      "索引",
+      "系统设计"
+    ],
+    "level": "进阶",
+    "source": "https://github.com/facebookresearch/faiss/wiki",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K112",
+    "category": "RAG",
+    "question": "HNSW 的基本思想是什么？",
+    "answer": "构建多层近邻图，从稀疏高层快速导航到低层，再局部搜索候选。",
+    "explanation": "构建和搜索参数影响内存、写入成本、召回与延迟。",
+    "tags": [
+      "rag",
+      "向量数据库",
+      "索引",
+      "系统设计"
+    ],
+    "level": "进阶",
+    "source": "https://github.com/facebookresearch/faiss/wiki",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K113",
+    "category": "RAG",
+    "question": "向量索引更新为什么要有版本？",
+    "answer": "文档、切块器、向量模型和索引配置变化都会影响检索结果，需要可追溯与回滚。",
+    "explanation": "查询时混用新旧版本可能产生难解释的相关性变化。",
+    "tags": [
+      "rag",
+      "向量数据库",
+      "索引",
+      "系统设计"
+    ],
+    "level": "进阶",
+    "source": "https://github.com/facebookresearch/faiss/wiki",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K114",
+    "category": "RAG",
+    "question": "删除文档为什么必须同步删除索引？",
+    "answer": "只删原文仍可能从向量或缓存中召回旧内容，导致隐私和一致性问题。",
+    "explanation": "应维护文档到所有派生片段、向量和缓存的映射。",
+    "tags": [
+      "rag",
+      "向量数据库",
+      "索引",
+      "系统设计"
+    ],
+    "level": "进阶",
+    "source": "https://github.com/facebookresearch/faiss/wiki",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K115",
+    "category": "RAG",
+    "question": "如何设计增量入库？",
+    "answer": "用稳定文档 ID 和内容摘要识别新增、修改和删除，只重算受影响的数据。",
+    "explanation": "需要处理任务重试和部分失败，使重复执行不生成重复片段。",
+    "tags": [
+      "rag",
+      "向量数据库",
+      "索引",
+      "系统设计"
+    ],
+    "level": "进阶",
+    "source": "https://github.com/facebookresearch/faiss/wiki",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K116",
+    "category": "RAG",
+    "question": "知识库如何做租户隔离？",
+    "answer": "所有数据、索引、缓存和查询都带租户范围，由服务端认证信息确定。",
+    "explanation": "不能信任用户或模型提交的 tenant_id 来扩大权限。",
+    "tags": [
+      "rag",
+      "向量数据库",
+      "索引",
+      "系统设计"
+    ],
+    "level": "进阶",
+    "source": "https://github.com/facebookresearch/faiss/wiki",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K117",
+    "category": "RAG",
+    "question": "为什么需要区分文档权限与页面权限？",
+    "answer": "用户能访问某页面，不意味着有权读取页面引用的每份底层文件。",
+    "explanation": "检索前应按实际资源权限过滤，并避免通过摘要泄露内容。",
+    "tags": [
+      "rag",
+      "向量数据库",
+      "索引",
+      "系统设计"
+    ],
+    "level": "进阶",
+    "source": "https://github.com/facebookresearch/faiss/wiki",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K118",
+    "category": "RAG",
+    "question": "离线评测集怎样覆盖检索问题？",
+    "answer": "包括不同主题、精确术语、多跳问题、无答案问题和容易混淆的相近文档。",
+    "explanation": "只用入库文档标题作为查询会高估真实召回能力。",
+    "tags": [
+      "rag",
+      "向量数据库",
+      "索引",
+      "系统设计"
+    ],
+    "level": "进阶",
+    "source": "https://github.com/facebookresearch/faiss/wiki",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K119",
+    "category": "RAG",
+    "question": "RAG 服务变慢如何分段定位？",
+    "answer": "分别测量改写、向量化、检索、重排、上下文组装和模型生成的耗时。",
+    "explanation": "关联同一 trace 的各阶段才能确定瓶颈，避免只优化模型。",
+    "tags": [
+      "rag",
+      "向量数据库",
+      "索引",
+      "系统设计"
+    ],
+    "level": "进阶",
+    "source": "https://github.com/facebookresearch/faiss/wiki",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K120",
+    "category": "RAG",
+    "question": "知识入库如何防止低质量内容污染？",
+    "answer": "验证来源、解析质量、重复度和时间，保留审核状态与版本，逐步发布。",
+    "explanation": "自动生成的问答需核对答案与来源，条目数不是质量指标。",
+    "tags": [
+      "rag",
+      "向量数据库",
+      "索引",
+      "系统设计"
+    ],
+    "level": "进阶",
+    "source": "https://github.com/facebookresearch/faiss/wiki",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K121",
+    "category": "Agent",
+    "question": "Agent 与固定工作流的区别？",
+    "answer": "Agent 可依据当前观察动态选择动作，固定工作流主要由预设规则决定步骤。",
+    "explanation": "工程系统常把两者组合，把计数和权限等确定性逻辑留给程序。",
+    "tags": [
+      "agent",
+      "智能体",
+      "工具调用",
+      "react"
+    ],
+    "level": "基础",
+    "source": "https://arxiv.org/abs/2210.03629",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K122",
+    "category": "Agent",
+    "question": "ReAct 的核心循环是什么？",
+    "answer": "交替进行推理、动作调用和观察，再根据结果决定后续步骤。",
+    "explanation": "实际产品不必展示内部推理，但应展示可理解的操作和结果。",
+    "tags": [
+      "agent",
+      "智能体",
+      "工具调用",
+      "react"
+    ],
+    "level": "基础",
+    "source": "https://arxiv.org/abs/2210.03629",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K123",
+    "category": "Agent",
+    "question": "工具调用与直接生成文本有什么不同？",
+    "answer": "工具调用产生结构化操作请求，程序验证后执行外部能力，再把结果返回模型。",
+    "explanation": "模型请求不等于已经成功执行，必须等待真实工具结果。",
+    "tags": [
+      "agent",
+      "智能体",
+      "工具调用",
+      "react"
+    ],
+    "level": "基础",
+    "source": "https://arxiv.org/abs/2210.03629",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K124",
+    "category": "Agent",
+    "question": "工具参数为什么必须验证？",
+    "answer": "模型生成的参数可能类型错误、越界或不符合业务约束，不能直接交给数据库或系统命令。",
+    "explanation": "校验应覆盖类型、权限、资源存在性和副作用条件。",
+    "tags": [
+      "agent",
+      "智能体",
+      "工具调用",
+      "react"
+    ],
+    "level": "基础",
+    "source": "https://arxiv.org/abs/2210.03629",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K125",
+    "category": "Agent",
+    "question": "工具描述怎样影响调用质量？",
+    "answer": "清楚说明用途、输入约束、返回内容和适用边界，帮助模型选择正确工具。",
+    "explanation": "含糊或互相重叠的工具描述会增加错误选择。",
+    "tags": [
+      "agent",
+      "智能体",
+      "工具调用",
+      "react"
+    ],
+    "level": "基础",
+    "source": "https://arxiv.org/abs/2210.03629",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K126",
+    "category": "Agent",
+    "question": "如何防止 Agent 无限循环？",
+    "answer": "设置步骤、时间、token 和费用预算，检测重复动作或无进展状态，提供终止与人工接管。",
+    "explanation": "仅依靠提示“不要循环”不能保证终止。",
+    "tags": [
+      "agent",
+      "智能体",
+      "工具调用",
+      "react"
+    ],
+    "level": "基础",
+    "source": "https://arxiv.org/abs/2210.03629",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K127",
+    "category": "Agent",
+    "question": "Agent 的停止操作需要做什么？",
+    "answer": "取消模型请求、停止可取消的工具、清理资源并记录已经发生的副作用。",
+    "explanation": "已发送邮件或已提交交易不能因停止按钮而自动撤销。",
+    "tags": [
+      "agent",
+      "智能体",
+      "工具调用",
+      "react"
+    ],
+    "level": "基础",
+    "source": "https://arxiv.org/abs/2210.03629",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K128",
+    "category": "Agent",
+    "question": "为什么工具返回要区分成功与失败？",
+    "answer": "结构化状态让模型和程序知道操作是否完成、是否可重试以及错误原因。",
+    "explanation": "把错误堆栈当作普通成功文本可能使模型继续基于错误前提行动。",
+    "tags": [
+      "agent",
+      "智能体",
+      "工具调用",
+      "react"
+    ],
+    "level": "基础",
+    "source": "https://arxiv.org/abs/2210.03629",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K129",
+    "category": "Agent",
+    "question": "如何避免工具结果中的提示注入？",
+    "answer": "把工具输出当作不可信数据，保持原有任务与权限策略，禁止其改变授权范围。",
+    "explanation": "网页中的“忽略之前指令”不应成为执行本机命令的依据。",
+    "tags": [
+      "agent",
+      "智能体",
+      "工具调用",
+      "react"
+    ],
+    "level": "基础",
+    "source": "https://arxiv.org/abs/2210.03629",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K130",
+    "category": "Agent",
+    "question": "什么时候需要人工确认？",
+    "answer": "根据操作副作用、可逆性、金额或权限变化决定确认点，向用户展示具体动作。",
+    "explanation": "只问“是否继续”而不展示收件人、路径或变更内容无法构成有效确认。",
+    "tags": [
+      "agent",
+      "智能体",
+      "工具调用",
+      "react"
+    ],
+    "level": "基础",
+    "source": "https://arxiv.org/abs/2210.03629",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K131",
+    "category": "Agent",
+    "question": "短期记忆与长期记忆如何区分？",
+    "answer": "短期记忆服务当前会话上下文，长期记忆跨会话保存稳定事实或偏好。",
+    "explanation": "长期保存前需考虑用户同意、过期、纠错与删除。",
+    "tags": [
+      "agent",
+      "记忆",
+      "状态",
+      "工作流",
+      "系统设计"
+    ],
+    "level": "进阶",
+    "source": "https://docs.langchain.com/oss/python/langgraph/persistence",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K132",
+    "category": "Agent",
+    "question": "为什么学习进度不能只写在聊天记录里？",
+    "answer": "长对话压缩或模型失误可能丢失计数，进度应作为程序状态持久化。",
+    "explanation": "批次编号和测验触发条件需由确定性逻辑计算。",
+    "tags": [
+      "agent",
+      "记忆",
+      "状态",
+      "工作流",
+      "系统设计"
+    ],
+    "level": "进阶",
+    "source": "https://docs.langchain.com/oss/python/langgraph/persistence",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K133",
+    "category": "Agent",
+    "question": "Checkpoint 应保存什么？",
+    "answer": "保存足够恢复执行的状态、当前位置、必要输入及已完成操作标识。",
+    "explanation": "密钥和不可序列化的运行时连接不应随意写入检查点。",
+    "tags": [
+      "agent",
+      "记忆",
+      "状态",
+      "工作流",
+      "系统设计"
+    ],
+    "level": "进阶",
+    "source": "https://docs.langchain.com/oss/python/langgraph/persistence",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K134",
+    "category": "Agent",
+    "question": "恢复任务为何可能重复副作用？",
+    "answer": "程序可能在外部操作成功但本地检查点落盘前崩溃，恢复时无法判断是否已执行。",
+    "explanation": "需要幂等键、操作状态查询或事务消息等设计。",
+    "tags": [
+      "agent",
+      "记忆",
+      "状态",
+      "工作流",
+      "系统设计"
+    ],
+    "level": "进阶",
+    "source": "https://docs.langchain.com/oss/python/langgraph/persistence",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K135",
+    "category": "Agent",
+    "question": "事件日志与状态快照有何区别？",
+    "answer": "事件日志记录发生了什么，快照记录某时刻的完整状态，两者可配合加速恢复。",
+    "explanation": "只保存快照不利于审计，只有事件则可能恢复成本高。",
+    "tags": [
+      "agent",
+      "记忆",
+      "状态",
+      "工作流",
+      "系统设计"
+    ],
+    "level": "进阶",
+    "source": "https://docs.langchain.com/oss/python/langgraph/persistence",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K136",
+    "category": "Agent",
+    "question": "状态机怎样约束模型行为？",
+    "answer": "程序定义合法状态和转换，模型只能提出候选动作，不能绕过转换规则。",
+    "explanation": "例如每50条必须测验，任何模型输出都不能直接跳过未提交的测验。",
+    "tags": [
+      "agent",
+      "记忆",
+      "状态",
+      "工作流",
+      "系统设计"
+    ],
+    "level": "进阶",
+    "source": "https://docs.langchain.com/oss/python/langgraph/persistence",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K137",
+    "category": "Agent",
+    "question": "多 Agent 系统什么时候值得采用？",
+    "answer": "当任务可明确拆分、角色资源不同且并行收益超过协调成本时可能有价值。",
+    "explanation": "分工不清会增加重复调用、冲突及总成本，单 Agent 应作为基线比较。",
+    "tags": [
+      "agent",
+      "记忆",
+      "状态",
+      "工作流",
+      "系统设计"
+    ],
+    "level": "进阶",
+    "source": "https://docs.langchain.com/oss/python/langgraph/persistence",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K138",
+    "category": "Agent",
+    "question": "并行 Agent 写同一资源如何避免冲突？",
+    "answer": "明确所有权，采用独立工作区或版本控制，并在合并时验证冲突。",
+    "explanation": "让多个 Agent 无约束修改同一文件容易覆盖彼此结果。",
+    "tags": [
+      "agent",
+      "记忆",
+      "状态",
+      "工作流",
+      "系统设计"
+    ],
+    "level": "进阶",
+    "source": "https://docs.langchain.com/oss/python/langgraph/persistence",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K139",
+    "category": "Agent",
+    "question": "Planner 与 Executor 如何分工？",
+    "answer": "规划器生成可执行步骤和完成标准，执行器运行工具并返回证据与失败原因。",
+    "explanation": "计划应随实际结果修订，不能把文字计划当作已完成工作。",
+    "tags": [
+      "agent",
+      "记忆",
+      "状态",
+      "工作流",
+      "系统设计"
+    ],
+    "level": "进阶",
+    "source": "https://docs.langchain.com/oss/python/langgraph/persistence",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K140",
+    "category": "Agent",
+    "question": "记忆检索如何避免错误偏好长期固化？",
+    "answer": "保留来源、置信度和更新时间，支持用户纠正，并区分明确陈述与模型推断。",
+    "explanation": "一次临时请求不应自动升级为永久偏好。",
+    "tags": [
+      "agent",
+      "记忆",
+      "状态",
+      "工作流",
+      "系统设计"
+    ],
+    "level": "进阶",
+    "source": "https://docs.langchain.com/oss/python/langgraph/persistence",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K141",
+    "category": "框架",
+    "question": "LangGraph 的节点和边各表示什么？",
+    "answer": "节点执行计算或副作用，边决定后续节点；状态在图执行中传递和更新。",
+    "explanation": "节点输出应遵循状态定义，避免隐式修改共享对象造成难以追踪的变化。",
+    "tags": [
+      "langgraph",
+      "langchain",
+      "agent",
+      "框架"
+    ],
+    "level": "基础",
+    "source": "https://docs.langchain.com/oss/python/langgraph/overview",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K142",
+    "category": "框架",
+    "question": "条件边适合处理什么？",
+    "answer": "根据状态或节点结果选择下一步，如调用工具、继续追问或结束。",
+    "explanation": "业务硬规则应用程序条件表达，模型只提供经过校验的输入。",
+    "tags": [
+      "langgraph",
+      "langchain",
+      "agent",
+      "框架"
+    ],
+    "level": "基础",
+    "source": "https://docs.langchain.com/oss/python/langgraph/overview",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K143",
+    "category": "框架",
+    "question": "Reducer 为什么必要？",
+    "answer": "当多个更新作用于同一状态字段时，Reducer 明确如何合并而非简单覆盖。",
+    "explanation": "消息累积与数值替换需要不同合并语义，错误 Reducer 会导致重复或丢失。",
+    "tags": [
+      "langgraph",
+      "langchain",
+      "agent",
+      "框架"
+    ],
+    "level": "基础",
+    "source": "https://docs.langchain.com/oss/python/langgraph/overview",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K144",
+    "category": "框架",
+    "question": "线程标识在持久化工作流中有什么作用？",
+    "answer": "关联同一会话或执行序列的检查点，支持继续与查询。",
+    "explanation": "不同用户不能共享同一线程标识而不做权限隔离。",
+    "tags": [
+      "langgraph",
+      "langchain",
+      "agent",
+      "框架"
+    ],
+    "level": "基础",
+    "source": "https://docs.langchain.com/oss/python/langgraph/overview",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K145",
+    "category": "框架",
+    "question": "人工中断后恢复应注意什么？",
+    "answer": "保存恢复所需状态，验证回复属于当前中断，并处理过期或重复响应。",
+    "explanation": "节点可能重新执行，因此中断前的副作用要具备幂等性。",
+    "tags": [
+      "langgraph",
+      "langchain",
+      "agent",
+      "框架"
+    ],
+    "level": "基础",
+    "source": "https://docs.langchain.com/oss/python/langgraph/overview",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K146",
+    "category": "框架",
+    "question": "LangChain 与 LangGraph 是否必须一起使用？",
+    "answer": "LangGraph 提供底层有状态编排，可独立使用；LangChain 提供更高层模型与工具组件。",
+    "explanation": "应根据任务选择最少必要依赖，避免为了框架而增加层次。",
+    "tags": [
+      "langgraph",
+      "langchain",
+      "agent",
+      "框架"
+    ],
+    "level": "基础",
+    "source": "https://docs.langchain.com/oss/python/langgraph/overview",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K147",
+    "category": "框架",
+    "question": "为什么框架不能替代领域状态设计？",
+    "answer": "框架提供执行机制，但订单、面试、学习计划等业务约束仍需应用定义。",
+    "explanation": "需要明确合法状态、恢复点和失败补偿，而非只连接几个节点。",
+    "tags": [
+      "langgraph",
+      "langchain",
+      "agent",
+      "框架"
+    ],
+    "level": "基础",
+    "source": "https://docs.langchain.com/oss/python/langgraph/overview",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K148",
+    "category": "框架",
+    "question": "工具节点的异常应如何进入状态？",
+    "answer": "将可恢复失败结构化记录，决定重试、替代路径或交给用户，而不是无条件结束整个系统。",
+    "explanation": "配置错误与临时网络故障应走不同处理策略。",
+    "tags": [
+      "langgraph",
+      "langchain",
+      "agent",
+      "框架"
+    ],
+    "level": "基础",
+    "source": "https://docs.langchain.com/oss/python/langgraph/overview",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K149",
+    "category": "框架",
+    "question": "如何测试包含模型节点的图？",
+    "answer": "用确定性模型替身验证状态转换，再对真实模型运行单独评测和集成验证。",
+    "explanation": "单元测试不应依赖付费接口或随机生成，否则难以稳定复现。",
+    "tags": [
+      "langgraph",
+      "langchain",
+      "agent",
+      "框架"
+    ],
+    "level": "基础",
+    "source": "https://docs.langchain.com/oss/python/langgraph/overview",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K150",
+    "category": "框架",
+    "question": "为什么升级框架需要回归持久化数据？",
+    "answer": "接口和序列化格式变化可能使旧检查点无法恢复或行为不同。",
+    "explanation": "保存迁移测试样本，升级前备份，验证旧会话和中断点可继续。",
+    "tags": [
+      "langgraph",
+      "langchain",
+      "agent",
+      "框架"
+    ],
+    "level": "基础",
+    "source": "https://docs.langchain.com/oss/python/langgraph/overview",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K151",
+    "category": "Agent",
+    "question": "MCP 解决哪类集成问题？",
+    "answer": "以统一协议连接模型应用与工具、资源等外部能力，减少每个集成都自定义接口的工作。",
+    "explanation": "协议统一不意味着权限统一，认证与授权仍需正确实现。",
+    "tags": [
+      "mcp",
+      "工具",
+      "agent",
+      "集成"
+    ],
+    "level": "基础",
+    "source": "https://modelcontextprotocol.io/specification/2025-06-18",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K152",
+    "category": "Agent",
+    "question": "MCP 的工具与资源如何区分？",
+    "answer": "工具通常代表可调用操作，资源通常代表可读取的上下文或数据。",
+    "explanation": "读取资源也可能涉及敏感内容，不能认为只有工具需要权限。",
+    "tags": [
+      "mcp",
+      "工具",
+      "agent",
+      "集成"
+    ],
+    "level": "基础",
+    "source": "https://modelcontextprotocol.io/specification/2025-06-18",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K153",
+    "category": "Agent",
+    "question": "协议发现结果能否直接当作可信指令？",
+    "answer": "不能。工具描述、资源和远端元数据都需要按信任边界处理。",
+    "explanation": "恶意服务器可能通过描述诱导超出用户意图的调用。",
+    "tags": [
+      "mcp",
+      "工具",
+      "agent",
+      "集成"
+    ],
+    "level": "基础",
+    "source": "https://modelcontextprotocol.io/specification/2025-06-18",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K154",
+    "category": "Agent",
+    "question": "本地 stdio 传输要注意什么？",
+    "answer": "子进程生命周期、输入输出协议和 stderr 日志应分开处理。",
+    "explanation": "普通日志混入 stdout 可能破坏协议帧解析。",
+    "tags": [
+      "mcp",
+      "工具",
+      "agent",
+      "集成"
+    ],
+    "level": "基础",
+    "source": "https://modelcontextprotocol.io/specification/2025-06-18",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K155",
+    "category": "Agent",
+    "question": "远端工具认证与业务授权的区别？",
+    "answer": "认证确定调用者身份，授权决定其能访问哪些资源和操作。",
+    "explanation": "已登录不等于拥有全部租户数据或所有写权限。",
+    "tags": [
+      "mcp",
+      "工具",
+      "agent",
+      "集成"
+    ],
+    "level": "基础",
+    "source": "https://modelcontextprotocol.io/specification/2025-06-18",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K156",
+    "category": "Agent",
+    "question": "工具协议如何支持取消？",
+    "answer": "传播请求取消信号，并由实现停止可取消工作；记录不可撤销的已完成部分。",
+    "explanation": "取消请求被接受与外部副作用已回滚不是同一件事。",
+    "tags": [
+      "mcp",
+      "工具",
+      "agent",
+      "集成"
+    ],
+    "level": "基础",
+    "source": "https://modelcontextprotocol.io/specification/2025-06-18",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K157",
+    "category": "Agent",
+    "question": "为什么工具返回应限制大小？",
+    "answer": "巨大结果会占用内存、上下文和费用，也可能使界面不可响应。",
+    "explanation": "返回摘要、分页游标或文件引用，并提供按需展开。",
+    "tags": [
+      "mcp",
+      "工具",
+      "agent",
+      "集成"
+    ],
+    "level": "基础",
+    "source": "https://modelcontextprotocol.io/specification/2025-06-18",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K158",
+    "category": "Agent",
+    "question": "工具接口如何设计版本兼容？",
+    "answer": "固定 schema 和语义，明确版本与能力发现，变更前验证调用方兼容。",
+    "explanation": "字段名不变但单位或含义变化同样是破坏性变更。",
+    "tags": [
+      "mcp",
+      "工具",
+      "agent",
+      "集成"
+    ],
+    "level": "基础",
+    "source": "https://modelcontextprotocol.io/specification/2025-06-18",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K159",
+    "category": "Agent",
+    "question": "如何评估接入一个外部工具的风险？",
+    "answer": "检查数据流、凭据范围、副作用、日志、可用性和来源可信度。",
+    "explanation": "不能因为工具名字像只读，就忽略真实实现可能写入外部系统。",
+    "tags": [
+      "mcp",
+      "工具",
+      "agent",
+      "集成"
+    ],
+    "level": "基础",
+    "source": "https://modelcontextprotocol.io/specification/2025-06-18",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K160",
+    "category": "Agent",
+    "question": "为什么不能把服务端密钥下发给前端？",
+    "answer": "前端环境可被用户或注入脚本读取，长期服务密钥会扩大泄露影响。",
+    "explanation": "使用后台代理、短期令牌和最小权限，必要凭据由安全存储管理。",
+    "tags": [
+      "mcp",
+      "工具",
+      "agent",
+      "集成"
+    ],
+    "level": "基础",
+    "source": "https://modelcontextprotocol.io/specification/2025-06-18",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K161",
+    "category": "评测",
+    "question": "Agent 评测应看哪些维度？",
+    "answer": "任务成功、事实与证据一致性、工具正确性、安全、成本和延迟。",
+    "explanation": "单一综合分会掩盖关键失败，应保留分项与代表性失败轨迹。",
+    "tags": [
+      "评测",
+      "eval",
+      "agent",
+      "llm",
+      "质量"
+    ],
+    "level": "基础",
+    "source": "https://arxiv.org/abs/2309.15217",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K162",
+    "category": "评测",
+    "question": "为什么需要无答案评测样本？",
+    "answer": "验证系统能否识别证据不足并合理拒答，避免总是生成貌似完整的答案。",
+    "explanation": "只测试有答案问题会低估幻觉风险。",
+    "tags": [
+      "评测",
+      "eval",
+      "agent",
+      "llm",
+      "质量"
+    ],
+    "level": "基础",
+    "source": "https://arxiv.org/abs/2309.15217",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K163",
+    "category": "评测",
+    "question": "检索 Recall@K 测量什么？",
+    "answer": "在前 K 个结果中找回相关资料的覆盖程度，计算方法需明确相关资料集合。",
+    "explanation": "高召回不意味着排序质量好，也不代表生成回答正确。",
+    "tags": [
+      "评测",
+      "eval",
+      "agent",
+      "llm",
+      "质量"
+    ],
+    "level": "基础",
+    "source": "https://arxiv.org/abs/2309.15217",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K164",
+    "category": "评测",
+    "question": "Precision@K 与 Recall@K 如何取舍？",
+    "answer": "Precision 关注前 K 中相关比例，Recall 关注相关内容覆盖，二者应结合任务衡量。",
+    "explanation": "长上下文成本高时，精确率和去重尤其重要。",
+    "tags": [
+      "评测",
+      "eval",
+      "agent",
+      "llm",
+      "质量"
+    ],
+    "level": "基础",
+    "source": "https://arxiv.org/abs/2309.15217",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K165",
+    "category": "评测",
+    "question": "LLM-as-judge 有哪些偏差？",
+    "answer": "可能受措辞、长度、答案顺序和模型偏好影响，也可能事实判断错误。",
+    "explanation": "用人工标注样本校准，并进行顺序随机化和一致性检查。",
+    "tags": [
+      "评测",
+      "eval",
+      "agent",
+      "llm",
+      "质量"
+    ],
+    "level": "基础",
+    "source": "https://arxiv.org/abs/2309.15217",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K166",
+    "category": "评测",
+    "question": "为什么测试集要与开发示例隔离？",
+    "answer": "反复针对已知样本修改提示可能过拟合，无法代表真实新请求。",
+    "explanation": "保留冻结测试集及时间切分样本，追踪数据污染。",
+    "tags": [
+      "评测",
+      "eval",
+      "agent",
+      "llm",
+      "质量"
+    ],
+    "level": "基础",
+    "source": "https://arxiv.org/abs/2309.15217",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K167",
+    "category": "评测",
+    "question": "如何做提示词 A/B 对比？",
+    "answer": "在相同样本和尽量可比配置下运行候选版本，按预先定义指标比较。",
+    "explanation": "关注置信区间和失败类型，不能只挑几个漂亮案例。",
+    "tags": [
+      "评测",
+      "eval",
+      "agent",
+      "llm",
+      "质量"
+    ],
+    "level": "基础",
+    "source": "https://arxiv.org/abs/2309.15217",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K168",
+    "category": "评测",
+    "question": "回归评测如何覆盖工具副作用？",
+    "answer": "在隔离环境验证调用参数、调用次数和最终状态，而非只检查文字回答。",
+    "explanation": "“已经保存”必须对应真实保存结果。",
+    "tags": [
+      "评测",
+      "eval",
+      "agent",
+      "llm",
+      "质量"
+    ],
+    "level": "基础",
+    "source": "https://arxiv.org/abs/2309.15217",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K169",
+    "category": "评测",
+    "question": "为什么需要评估多轮任务？",
+    "answer": "单轮测试难以覆盖状态遗忘、重复操作、取消恢复和跨轮约束。",
+    "explanation": "应设计长会话、纠错、插入新要求和中断后继续的场景。",
+    "tags": [
+      "评测",
+      "eval",
+      "agent",
+      "llm",
+      "质量"
+    ],
+    "level": "基础",
+    "source": "https://arxiv.org/abs/2309.15217",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K170",
+    "category": "评测",
+    "question": "如何判断线上质量下降？",
+    "answer": "结合任务指标、用户反馈、错误率和分布漂移，按模型、提示版本和供应商分组分析。",
+    "explanation": "整体平均值可能掩盖某个岗位或语言子集的显著退化。",
+    "tags": [
+      "评测",
+      "eval",
+      "agent",
+      "llm",
+      "质量"
+    ],
+    "level": "基础",
+    "source": "https://arxiv.org/abs/2309.15217",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K171",
+    "category": "系统设计",
+    "question": "如何给 Agent 服务做容量估算？",
+    "answer": "估算用户到达率、每任务模型与工具调用次数、平均时长及峰值并发。",
+    "explanation": "再考虑供应商配额和最长任务尾部，而不只看 HTTP 请求数。",
+    "tags": [
+      "系统设计",
+      "高并发",
+      "分布式",
+      "后端"
+    ],
+    "level": "进阶",
+    "source": "https://sre.google/sre-book/handling-overload/",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K172",
+    "category": "系统设计",
+    "question": "排队与拒绝请求如何取舍？",
+    "answer": "短时排队吸收波动，但无限队列会放大延迟和内存；超出容量时应明确拒绝或降级。",
+    "explanation": "有界队列需配合超时、优先级和用户可见状态。",
+    "tags": [
+      "系统设计",
+      "高并发",
+      "分布式",
+      "后端"
+    ],
+    "level": "进阶",
+    "source": "https://sre.google/sre-book/handling-overload/",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K173",
+    "category": "系统设计",
+    "question": "背压是什么？",
+    "answer": "下游处理不足时向上游传递压力，减缓生产速度，防止无限积压。",
+    "explanation": "流式输出、日志和工具事件都可能需要背压。",
+    "tags": [
+      "系统设计",
+      "高并发",
+      "分布式",
+      "后端"
+    ],
+    "level": "进阶",
+    "source": "https://sre.google/sre-book/handling-overload/",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K174",
+    "category": "系统设计",
+    "question": "指数退避为什么常配合抖动？",
+    "answer": "退避减缓重试压力，随机抖动避免大量客户端同时重试形成周期峰值。",
+    "explanation": "总重试预算仍需有上限，并遵循服务端限流提示。",
+    "tags": [
+      "系统设计",
+      "高并发",
+      "分布式",
+      "后端"
+    ],
+    "level": "进阶",
+    "source": "https://sre.google/sre-book/handling-overload/",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K175",
+    "category": "系统设计",
+    "question": "熔断与限流有什么不同？",
+    "answer": "限流控制请求速率或并发，熔断在持续失败时暂时停止调用以保护系统。",
+    "explanation": "恢复时用少量探测请求，而非同时放开所有流量。",
+    "tags": [
+      "系统设计",
+      "高并发",
+      "分布式",
+      "后端"
+    ],
+    "level": "进阶",
+    "source": "https://sre.google/sre-book/handling-overload/",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K176",
+    "category": "系统设计",
+    "question": "超时预算如何在多阶段任务中分配？",
+    "answer": "为整体设置截止时间，再把剩余预算传递给搜索、模型和工具阶段。",
+    "explanation": "每个阶段独立设置长超时可能使总耗时远超用户预期。",
+    "tags": [
+      "系统设计",
+      "高并发",
+      "分布式",
+      "后端"
+    ],
+    "level": "进阶",
+    "source": "https://sre.google/sre-book/handling-overload/",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K177",
+    "category": "系统设计",
+    "question": "至少一次投递为何需要幂等消费？",
+    "answer": "消息可能重复到达，消费者必须识别重复并避免重复副作用。",
+    "explanation": "ACK 丢失或进程崩溃都可能触发重发。",
+    "tags": [
+      "系统设计",
+      "高并发",
+      "分布式",
+      "后端"
+    ],
+    "level": "进阶",
+    "source": "https://sre.google/sre-book/handling-overload/",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K178",
+    "category": "系统设计",
+    "question": "最终一致性应如何向用户呈现？",
+    "answer": "明确任务已接受、处理中或已完成，避免在结果尚未落地时显示成功。",
+    "explanation": "查询界面可展示更新时间和可重试状态。",
+    "tags": [
+      "系统设计",
+      "高并发",
+      "分布式",
+      "后端"
+    ],
+    "level": "进阶",
+    "source": "https://sre.google/sre-book/handling-overload/",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K179",
+    "category": "系统设计",
+    "question": "分布式事务何时考虑补偿？",
+    "answer": "跨服务原子提交不现实或成本过高时，可用业务补偿撤销已完成步骤。",
+    "explanation": "补偿也可能失败，需要可重试、可审计和人工处理路径。",
+    "tags": [
+      "系统设计",
+      "高并发",
+      "分布式",
+      "后端"
+    ],
+    "level": "进阶",
+    "source": "https://sre.google/sre-book/handling-overload/",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K180",
+    "category": "系统设计",
+    "question": "为什么平均延迟不足以描述体验？",
+    "answer": "少数慢请求可能主导用户感受和资源占用，需要关注 P95、P99 等尾延迟。",
+    "explanation": "统计口径要区分排队、首 token、完整完成及不同任务类别。",
+    "tags": [
+      "系统设计",
+      "高并发",
+      "分布式",
+      "后端"
+    ],
+    "level": "进阶",
+    "source": "https://sre.google/sre-book/handling-overload/",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K181",
+    "category": "部署",
+    "question": "容器与虚拟机的隔离有何不同？",
+    "answer": "容器通常共享宿主内核，虚拟机拥有独立内核，隔离边界与资源成本不同。",
+    "explanation": "执行不可信代码时应依据威胁模型选择，不能把普通子进程叫安全沙箱。",
+    "tags": [
+      "docker",
+      "部署",
+      "容器",
+      "kubernetes",
+      "工程"
+    ],
+    "level": "基础",
+    "source": "https://docs.docker.com/build/building/best-practices/",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K182",
+    "category": "部署",
+    "question": "为什么容器应使用非 root 用户？",
+    "answer": "降低应用被攻破后可用权限，减少对宿主挂载和系统资源的影响。",
+    "explanation": "还需控制 capabilities、挂载路径和网络，非 root 不是完整防护。",
+    "tags": [
+      "docker",
+      "部署",
+      "容器",
+      "kubernetes",
+      "工程"
+    ],
+    "level": "基础",
+    "source": "https://docs.docker.com/build/building/best-practices/",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K183",
+    "category": "部署",
+    "question": "多阶段构建有什么价值？",
+    "answer": "在构建阶段使用编译工具，仅把运行所需产物复制到最终镜像。",
+    "explanation": "可减小体积和攻击面，也避免携带开发凭据。",
+    "tags": [
+      "docker",
+      "部署",
+      "容器",
+      "kubernetes",
+      "工程"
+    ],
+    "level": "基础",
+    "source": "https://docs.docker.com/build/building/best-practices/",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K184",
+    "category": "部署",
+    "question": "环境配置与密钥应如何区分？",
+    "answer": "普通配置可版本化，密钥应通过安全渠道注入并支持轮换，不进入代码仓库。",
+    "explanation": "日志、错误页面和诊断包也需要避免泄露密钥。",
+    "tags": [
+      "docker",
+      "部署",
+      "容器",
+      "kubernetes",
+      "工程"
+    ],
+    "level": "基础",
+    "source": "https://docs.docker.com/build/building/best-practices/",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K185",
+    "category": "部署",
+    "question": "健康检查与就绪检查有什么区别？",
+    "answer": "存活检查判断进程是否需重启，就绪检查判断是否可以接收流量。",
+    "explanation": "依赖暂时不可用时不一定应重启进程，否则可能造成重启风暴。",
+    "tags": [
+      "docker",
+      "部署",
+      "容器",
+      "kubernetes",
+      "工程"
+    ],
+    "level": "基础",
+    "source": "https://docs.docker.com/build/building/best-practices/",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K186",
+    "category": "部署",
+    "question": "优雅关闭需要哪些步骤？",
+    "answer": "停止接收新任务，等待或取消在途工作，持久化必要状态，释放资源后退出。",
+    "explanation": "必须有最大等待时间，并明确剩余任务如何恢复。",
+    "tags": [
+      "docker",
+      "部署",
+      "容器",
+      "kubernetes",
+      "工程"
+    ],
+    "level": "基础",
+    "source": "https://docs.docker.com/build/building/best-practices/",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K187",
+    "category": "部署",
+    "question": "滚动升级为什么需要数据兼容？",
+    "answer": "新旧实例可能同时运行并读写同一数据，schema 与协议需支持过渡期。",
+    "explanation": "常见做法先扩展字段再迁移使用，最后移除旧字段。",
+    "tags": [
+      "docker",
+      "部署",
+      "容器",
+      "kubernetes",
+      "工程"
+    ],
+    "level": "基础",
+    "source": "https://docs.docker.com/build/building/best-practices/",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K188",
+    "category": "部署",
+    "question": "桌面应用打包为什么要测试干净环境？",
+    "answer": "开发机已有的 Node、Python、DLL 或环境变量可能掩盖缺失依赖。",
+    "explanation": "需要验证离线资源、中文路径、普通权限和首次启动。",
+    "tags": [
+      "docker",
+      "部署",
+      "容器",
+      "kubernetes",
+      "工程"
+    ],
+    "level": "基础",
+    "source": "https://docs.docker.com/build/building/best-practices/",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K189",
+    "category": "部署",
+    "question": "如何验证备份真正可用？",
+    "answer": "定期在独立环境执行恢复并校验数据与功能，而不只检查备份文件存在。",
+    "explanation": "需要记录恢复时间和数据丢失窗口，满足业务恢复目标。",
+    "tags": [
+      "docker",
+      "部署",
+      "容器",
+      "kubernetes",
+      "工程"
+    ],
+    "level": "基础",
+    "source": "https://docs.docker.com/build/building/best-practices/",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K190",
+    "category": "部署",
+    "question": "依赖锁文件的意义是什么？",
+    "answer": "固定依赖解析结果，提高可复现性，并使供应链变更可审查。",
+    "explanation": "锁文件并不能消除漏洞，仍需更新策略和来源验证。",
+    "tags": [
+      "docker",
+      "部署",
+      "容器",
+      "kubernetes",
+      "工程"
+    ],
+    "level": "基础",
+    "source": "https://docs.docker.com/build/building/best-practices/",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K191",
+    "category": "安全",
+    "question": "直接与间接提示注入如何区分？",
+    "answer": "直接注入来自用户输入，间接注入隐藏在网页、文件或工具结果等外部资料中。",
+    "explanation": "防护重点是数据与指令边界及真实权限执行。",
+    "tags": [
+      "安全",
+      "权限",
+      "prompt injection",
+      "agent",
+      "后端"
+    ],
+    "level": "基础",
+    "source": "https://owasp.org/projects/top-10-for-large-language-model-applications",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K192",
+    "category": "安全",
+    "question": "最小权限原则如何应用到 Agent？",
+    "answer": "仅提供当前任务必要的工具、目录和凭据范围，敏感操作单独授权。",
+    "explanation": "求职资料检索不应自动拥有本地项目写入权限。",
+    "tags": [
+      "安全",
+      "权限",
+      "prompt injection",
+      "agent",
+      "后端"
+    ],
+    "level": "基础",
+    "source": "https://owasp.org/projects/top-10-for-large-language-model-applications",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K193",
+    "category": "安全",
+    "question": "路径遍历为什么只检查字符串前缀不够？",
+    "answer": "相对路径、相似目录名、符号链接及大小写规则都可能绕过简单前缀匹配。",
+    "explanation": "应规范化并解析真实路径，再基于目录边界判断。",
+    "tags": [
+      "安全",
+      "权限",
+      "prompt injection",
+      "agent",
+      "后端"
+    ],
+    "level": "基础",
+    "source": "https://owasp.org/projects/top-10-for-large-language-model-applications",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K194",
+    "category": "安全",
+    "question": "执行用户代码为什么需要独立运行环境？",
+    "answer": "用户程序可能死循环、消耗内存或尝试访问文件和网络，不能共享应用权限。",
+    "explanation": "设置时间资源限制，并确保终止不会影响主界面和凭据。",
+    "tags": [
+      "安全",
+      "权限",
+      "prompt injection",
+      "agent",
+      "后端"
+    ],
+    "level": "基础",
+    "source": "https://owasp.org/projects/top-10-for-large-language-model-applications",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K195",
+    "category": "安全",
+    "question": "SQL 注入如何防止？",
+    "answer": "使用参数化查询绑定数据，不把用户输入拼接成 SQL 语法。",
+    "explanation": "表名等不能参数化的标识符应使用明确白名单。",
+    "tags": [
+      "安全",
+      "权限",
+      "prompt injection",
+      "agent",
+      "后端"
+    ],
+    "level": "基础",
+    "source": "https://owasp.org/projects/top-10-for-large-language-model-applications",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K196",
+    "category": "安全",
+    "question": "XSS 对桌面 Web 界面为什么危险？",
+    "answer": "脚本注入可能访问应用暴露的桥接能力，桌面权限会放大影响。",
+    "explanation": "避免渲染不可信 HTML，隔离上下文并严格限制 IPC 接口。",
+    "tags": [
+      "安全",
+      "权限",
+      "prompt injection",
+      "agent",
+      "后端"
+    ],
+    "level": "基础",
+    "source": "https://owasp.org/projects/top-10-for-large-language-model-applications",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K197",
+    "category": "安全",
+    "question": "OAuth 的 state 与 PKCE 分别解决什么？",
+    "answer": "state 关联授权请求并防跨站请求伪造；PKCE 绑定授权码与发起客户端的随机校验值。",
+    "explanation": "回调地址、代码交换和令牌存储也需正确实现。",
+    "tags": [
+      "安全",
+      "权限",
+      "prompt injection",
+      "agent",
+      "后端"
+    ],
+    "level": "基础",
+    "source": "https://owasp.org/projects/top-10-for-large-language-model-applications",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K198",
+    "category": "安全",
+    "question": "访问令牌与刷新令牌如何保护？",
+    "answer": "访问令牌用于请求资源，刷新令牌用于获取新令牌；都应限制暴露并安全保存。",
+    "explanation": "刷新令牌通常存活更久，泄露影响可能更大，需支持撤销和轮换。",
+    "tags": [
+      "安全",
+      "权限",
+      "prompt injection",
+      "agent",
+      "后端"
+    ],
+    "level": "基础",
+    "source": "https://owasp.org/projects/top-10-for-large-language-model-applications",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K199",
+    "category": "安全",
+    "question": "日志脱敏应覆盖哪些内容？",
+    "answer": "密钥、令牌、个人信息、完整请求体和工具输出中的敏感字段都需评估。",
+    "explanation": "不能只在一层脱敏，异常追踪和第三方监控也可能收集原文。",
+    "tags": [
+      "安全",
+      "权限",
+      "prompt injection",
+      "agent",
+      "后端"
+    ],
+    "level": "基础",
+    "source": "https://owasp.org/projects/top-10-for-large-language-model-applications",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K200",
+    "category": "安全",
+    "question": "为什么外部内容不能授予操作权限？",
+    "answer": "权限必须来自可信用户意图或应用策略，网页和模型输出仅是任务数据。",
+    "explanation": "恶意招聘页面要求执行命令时，仍应保持招聘检索的只读能力范围。",
+    "tags": [
+      "安全",
+      "权限",
+      "prompt injection",
+      "agent",
+      "后端"
+    ],
+    "level": "基础",
+    "source": "https://owasp.org/projects/top-10-for-large-language-model-applications",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K201",
+    "category": "项目面试",
+    "question": "如何介绍一个 Agent 项目的价值？",
+    "answer": "说明目标用户、原有流程成本、你负责的部分、设计选择和可验证结果。",
+    "explanation": "避免只列框架名称，应给具体任务和效果衡量方式。",
+    "tags": [
+      "项目",
+      "面试",
+      "agent",
+      "工程",
+      "系统设计"
+    ],
+    "level": "进阶",
+    "source": "https://sre.google/sre-book/monitoring-distributed-systems/",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K202",
+    "category": "项目面试",
+    "question": "面试官问为什么不用简单工作流怎么答？",
+    "answer": "展示哪些步骤需要动态判断、哪些应固定控制，并用基线对比证明 Agent 的增益。",
+    "explanation": "若固定工作流已满足需求，应坦诚承认更简单方案更合适。",
+    "tags": [
+      "项目",
+      "面试",
+      "agent",
+      "工程",
+      "系统设计"
+    ],
+    "level": "进阶",
+    "source": "https://sre.google/sre-book/monitoring-distributed-systems/",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K203",
+    "category": "项目面试",
+    "question": "如何解释项目中的失败案例？",
+    "answer": "描述触发条件、影响范围、根因证据、修复方式和防止复发的测试。",
+    "explanation": "不要只说模型不稳定，需要拆解检索、提示、工具或状态问题。",
+    "tags": [
+      "项目",
+      "面试",
+      "agent",
+      "工程",
+      "系统设计"
+    ],
+    "level": "进阶",
+    "source": "https://sre.google/sre-book/monitoring-distributed-systems/",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K204",
+    "category": "项目面试",
+    "question": "如何说明自己的技术贡献？",
+    "answer": "区分团队成果与你具体设计、实现和验证的部分，并用代码或指标支撑。",
+    "explanation": "避免把使用某框架等同于自己实现了该框架底层能力。",
+    "tags": [
+      "项目",
+      "面试",
+      "agent",
+      "工程",
+      "系统设计"
+    ],
+    "level": "进阶",
+    "source": "https://sre.google/sre-book/monitoring-distributed-systems/",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K205",
+    "category": "项目面试",
+    "question": "如何回答成本降低了多少？",
+    "answer": "提供对比基线、统计窗口、样本量和计费口径，说明质量是否保持。",
+    "explanation": "减少 token 可能损害成功率，应同时报告质量与成本。",
+    "tags": [
+      "项目",
+      "面试",
+      "agent",
+      "工程",
+      "系统设计"
+    ],
+    "level": "进阶",
+    "source": "https://sre.google/sre-book/monitoring-distributed-systems/",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K206",
+    "category": "项目面试",
+    "question": "如何描述系统上线后的监控？",
+    "answer": "展示请求量、错误率、延迟、预算消耗与任务成功等指标，以及对应告警和处理流程。",
+    "explanation": "只记录日志而没有告警条件与责任人，不等于可运维。",
+    "tags": [
+      "项目",
+      "面试",
+      "agent",
+      "工程",
+      "系统设计"
+    ],
+    "level": "进阶",
+    "source": "https://sre.google/sre-book/monitoring-distributed-systems/",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K207",
+    "category": "项目面试",
+    "question": "如何解释技术选型取舍？",
+    "answer": "比较可行方案的成本、性能、维护复杂度和团队约束，说明选择依据及退出策略。",
+    "explanation": "不要把流行程度作为唯一理由，应结合实测结果与维护成本。",
+    "tags": [
+      "项目",
+      "面试",
+      "agent",
+      "工程",
+      "系统设计"
+    ],
+    "level": "进阶",
+    "source": "https://sre.google/sre-book/monitoring-distributed-systems/",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K208",
+    "category": "项目面试",
+    "question": "企业面经应该如何使用？",
+    "answer": "按企业、岗位、年份和来源理解其适用范围，用于发现主题而非保证题目会重现。",
+    "explanation": "网友整理不等于官方题库，不应伪称真实内部面试材料。",
+    "tags": [
+      "项目",
+      "面试",
+      "agent",
+      "工程",
+      "系统设计"
+    ],
+    "level": "进阶",
+    "source": "https://sre.google/sre-book/monitoring-distributed-systems/",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K209",
+    "category": "项目面试",
+    "question": "如何准备中高级岗位的系统设计回答？",
+    "answer": "先澄清规模与约束，再给数据流、接口、存储、失败恢复和观测方案。",
+    "explanation": "应主动讨论瓶颈与替代方案，避免只画组件框图。",
+    "tags": [
+      "项目",
+      "面试",
+      "agent",
+      "工程",
+      "系统设计"
+    ],
+    "level": "进阶",
+    "source": "https://sre.google/sre-book/monitoring-distributed-systems/",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  },
+  {
+    "id": "K210",
+    "category": "项目面试",
+    "question": "遇到不会的问题如何作答？",
+    "answer": "明确已知范围，说明可验证的推理路径和需要查证的部分，不编造实现细节。",
+    "explanation": "可以用熟悉的相关案例建立联系，但要清楚区分类比与事实。",
+    "tags": [
+      "项目",
+      "面试",
+      "agent",
+      "工程",
+      "系统设计"
+    ],
+    "level": "进阶",
+    "source": "https://sre.google/sre-book/monitoring-distributed-systems/",
+    "updatedAt": "2026-10-10",
+    "version": 1
+  }
+]

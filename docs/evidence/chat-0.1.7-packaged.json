@@ -1,0 +1,87 @@
+{
+  "version": "0.1.7",
+  "scale": "1.25",
+  "endMarkerAndModelPosition": true,
+  "compactHeaderAndDirectory": true,
+  "defaultTools": true,
+  "markdown": true,
+  "projectAndSkills": true,
+  "threeLineProgressAndReducedMotion": true,
+  "realRecycleBinAndOwnership": true,
+  "toolBoundaries": true,
+  "keylessSearchExtractionAndFallback": true,
+  "proxyTools": true,
+  "readingPosition": true,
+  "streamingNavigationRenameStop": true,
+  "ime": true,
+  "geometry": {
+    "viewport": {
+      "width": 1060,
+      "height": 760
+    },
+    "user": {
+      "x": 609.8250122070312,
+      "y": 116.80000305175781,
+      "right": 987.2000122070312,
+      "bottom": 170.8000030517578,
+      "width": 377.375,
+      "height": 54,
+      "font": "16px"
+    },
+    "assistant": {
+      "x": 259.20001220703125,
+      "y": 233.8000030517578,
+      "right": 921.675048828125,
+      "bottom": 383.8000030517578,
+      "width": 662.4750366210938,
+      "height": 150,
+      "font": "16px"
+    },
+    "composer": {
+      "x": 240.8000030517578,
+      "y": 557.7999877929688,
+      "right": 1005.5999908447266,
+      "bottom": 717.1999969482422,
+      "width": 764.7999877929688,
+      "height": 159.40000915527344,
+      "font": "16px"
+    },
+    "input": {
+      "x": 257.6000061035156,
+      "y": 572.6000366210938,
+      "right": 988.8000183105469,
+      "bottom": 652.6000366210938,
+      "width": 731.2000122070312,
+      "height": 80,
+      "font": "16px"
+    },
+    "workspace": {
+      "x": 216,
+      "y": 52,
+      "right": 1030.4000244140625,
+      "bottom": 738,
+      "width": 814.4000244140625,
+      "height": 686,
+      "font": "16px"
+    },
+    "prose": {
+      "x": 628.8250122070312,
+      "y": 129.8000030517578,
+      "right": 968.2000122070312,
+      "bottom": 157.8000030517578,
+      "width": 339.375,
+      "height": 28,
+      "font": "16px"
+    },
+    "horizontalOverflow": false
+  },
+  "deleteDuringGenerationAndLateEvent": true,
+  "longModel": true,
+  "cancelDelete": true,
+  "restart": true,
+  "crashRecovery": true,
+  "deleteLastKeepsProject": true,
+  "passed": true,
+  "requests": 51,
+  "errors": []
+}

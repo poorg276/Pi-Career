@@ -1,0 +1,11 @@
+{
+  "version": "0.1.7",
+  "passed": true,
+  "existingOAuthRestored": true,
+  "model": "gpt-6-astra",
+  "chatCount": 1,
+  "contextRestored": true,
+  "allRecordsUnchanged": true,
+  "errors": [],
+  "at": "2026-10-10T14:28:46.498Z"
+}

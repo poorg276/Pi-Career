@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "restartCache": true,
+  "dailyStable": true,
+  "proxyFailurePreservesCache": true,
+  "doesNotBypassProxy": true,
+  "retryAfterCleanup": true,
+  "knowledgeId": "K142",
+  "at": "2026-10-11T05:05:32.676Z"
+}

@@ -1,0 +1,27 @@
+{
+  "version": "0.1.4",
+  "at": "2026-10-10T10:09:39.069Z",
+  "provider": "openai-codex",
+  "model": "gpt-6-astra",
+  "chatId": "58c689ae-4ece-4d95-a67c-39b97da61d6e",
+  "status": "complete",
+  "timeTool": true,
+  "weatherTool": true,
+  "tools": [
+    {
+      "name": "get_current_time",
+      "status": "complete",
+      "result": "参数：\n{}\n\n结果：\n{\n  \"date\": \"2026-10-10\",\n  \"time\": \"18:09:30\",\n  \"weekday\": \"星期六\",\n  \"timeZone\": \"Asia/Shanghai\",\n  \"utc\": \"2026-10-10T10:09:30.871Z\",\n  \"source\": \"本机系统时钟\"\n}"
+    },
+    {
+      "name": "get_weather",
+      "status": "complete",
+      "result": "参数：\n{\n  \"city\": \"长沙\",\n  \"countryCode\": \"CN\"\n}\n\n结果：\n{\n  \"location\": {\n    \"id\": 1815577,\n    \"name\": \"长沙市\",\n    \"latitude\": 28.19874,\n    \"longitude\": 112.97087,\n    \"elevation\": 67,\n    \"feature_code\": \"PPLA\",\n    \"country_code\": \"CN\",\n    \"admin1_id\": 1806691,\n    \"admin2_id\": 1815551,\n    \"timezone\": \"Asia/Shanghai\",\n    \"population\": 3093980,\n    \"country_id\": 1814991,\n    \"country\": \"中国\",\n    \"admin1\": \"湖南\",\n    \"admin2\": \"长沙市\"\n  },\n  \"latitude\": 28.224955,\n  \"longitude\": 112.93318,\n  \"generationtime_ms\": 0.25475025177001953,\n  \"utc_offset_seconds\": 28800,\n  \"timezone\": \"Asia/Shanghai\",\n  \"timezone_abbreviation\": \"GMT+8\",\n  \"elevation\": 42,\n  \"current_units\": {\n    \"time\": \"iso8601\",\n    \"interval\": \"seconds\",\n    \"temperature_2m\": \"°C\",\n    \"relative_humidity_2m\": \"%\",\n    \"apparent_temperature\": \"°C\",\n    \"precipitation\": \"mm\",\n    \"weather_code\": \"wmo code\",\n    \"wind_speed_10m\": \"m/s\"\n  },\n  \"current\": {\n    \"time\": \"2026-10-10T18:00\",\n    \"interval\": 900,\n    \"temperature_2m\": 24.1,\n    \"relative_humidity_2m\": 67,\n    \"apparent_temperature\": 25.4,\n    \"precipitation\": 0,\n    \"weather_code\": 0,\n    \"wind_speed_10m\": 2.58\n  },\n  \"daily_units\": {\n    \"time\": \"iso8601\",\n    \"weather_code\": \"wmo code\",\n    \"temperature_2m_max\": \"°C\",\n    \"temperature_2m_min\": \"°C\",\n    \"precipitation_probability_max\": \"%\"\n  },\n  \"daily\": {\n    \"time\": [\n      \"2026-10-10\",\n      \"2026-10-11\",\n      \"2026-10-12\"\n    ],\n    \"weather_code\": [\n      0,\n      0,\n      0\n    ],\n    \"temperature_2m_max\": [\n      27.4,\n      28.9,\n      29.9\n    ],\n    \"temperature_2m_min\": [\n      17.7,\n      18.1,\n      19.5\n    ],\n    \"precipitation_probability_max\": [\n      0,\n      0,\n      0\n    ]\n  },\n  \"retrievedAt\": \"2026-10-10T10:09:34.353Z\",\n  \"source\": \"Open-Meteo（当前天气基于气象模型数据，非本站实测）\",\n  \"url\": \"https://api.open-meteo.com/v1/forecast?latitude=28.19874&longitude=112.97087&timezone=auto&forecast_days=3&wind_speed_unit=ms&current=temperature_2m%2Crelative_humidity_2m%2Capparent_temperature%2Cprecipitation%2Cweather_code%2Cwind_speed_10m&daily=weather_code%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_probability_max\",\n  \"weatherCodes\": \"0晴；1大致晴朗；2多云；3阴；45/48雾；51/53/55毛毛雨；56/57冻毛毛雨；61/63/65小/中/大雨；66/67冻雨；71/73/75小/中/大雪；77雪粒；80/81/82阵雨；85/86阵雪；95雷暴；96/99雷暴伴冰雹\"\n}"
+    }
+  ],
+  "response": "今天是2026年10月10日，星期六。来源：本机系统时钟，查询时间18:09:30。\n\n湖南长沙市：晴，24.1℃，体感25.4℃，湿度67%，风速2.58米/秒。当地数据时间：10月10日18:00（北京时间）。来源：Open-Meteo，基于气象模型，非实测。",
+  "realAccount": true,
+  "hasSearchKey": false,
+  "localFileAndCommandAccess": false,
+  "passed": true
+}

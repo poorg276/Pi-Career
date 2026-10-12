@@ -1,0 +1,34 @@
+{
+  "at": "2026-10-11T17:15:03.2827479+08:00",
+  "databaseAfter": "E20058055963F4ED6F92DFE879A2135811AD9B80D657751FC1ECBD1276642FDC",
+  "databasePreserved": true,
+  "version": "0.1.12",
+  "shortcutTarget": "C:\\Users\\HP\\AppData\\Local\\Programs\\PiCareer\\PiCareer.exe",
+  "realAccountLogin": "existing_credentials_preserved",
+  "passed": true,
+  "databaseBefore": "E20058055963F4ED6F92DFE879A2135811AD9B80D657751FC1ECBD1276642FDC",
+  "installedExe": "C:\\Users\\HP\\AppData\\Local\\Programs\\PiCareer\\PiCareer.exe",
+  "installerExitCode": 0,
+  "files": [
+    {
+      "sha256": "C542B46BE70634261919614A1AEAD0285DBCD9DC54C31BA8D363FAEFEDC1EE7F",
+      "file": "PiCareer.exe"
+    },
+    {
+      "sha256": "8D64DED0AA2CE7F0A27E4026D3570803D4C0413F0BF3EF9D54922AF2C42F216E",
+      "file": "resources\\app.asar"
+    },
+    {
+      "sha256": "1F805AD1D859C26502BBE1333BC320DB7EF1FBF28AD65E53675B56DA6098A0C2",
+      "file": "resources\\resources\\pi\\worker.mjs"
+    },
+    {
+      "sha256": "3BB739A3650E302847A1BC2E42E27FE8D45EC54E19F98E4B2729D13FED4E1E5D",
+      "file": "resources\\resources\\pi\\resume-material-worker.mjs"
+    },
+    {
+      "sha256": "1B3B766722940528820AFB2674C8F3A3BE8B704E00DDC4C203203BD35DAE3736",
+      "file": "resources\\resources\\pi\\node_modules\\@earendil-works\\pi-ai\\dist\\picareer-compat.json"
+    }
+  ]
+}

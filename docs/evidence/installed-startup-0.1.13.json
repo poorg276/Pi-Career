@@ -1,0 +1,42 @@
+{
+  "version": "0.1.13",
+  "passed": true,
+  "existingOAuthRestored": true,
+  "model": "gpt-6-luna",
+  "chatCount": 1,
+  "contextRestored": true,
+  "officialHot100Loaded": true,
+  "allRecordsUnchanged": true,
+  "dashboardDailyPolicy": true,
+  "sameDayStartupSkipped": true,
+  "secondInstanceDidNotRefresh": true,
+  "dashboardWarnings": [
+    "blog.langchain.com：网页连接失败，请检查网络和系统代理；未绕过代理。",
+    "www.langchain.com：不是相关技术更新",
+    "github.com：技术正文不足",
+    "github.com：不是相关技术更新",
+    "中文整理暂不可用，已保留官方摘录。"
+  ],
+  "threeVerifiedNews": [
+    {
+      "title": "Deep Agents：技能机制更新",
+      "url": "https://www.langchain.com/blog/revamping-skills-in-deep-agents",
+      "publishedAt": "2026-10-07T19:00:00.000Z",
+      "summary": "官方发布涉及Agent 框架。原文摘录：We've revamped skills support in Deep Agents to address some common requests:Binding tools to skills: tools bound to a skill load only when the agent reads that skill.Pinned skills: when a user explicitly requests a skill, like /meeting-pre"
+    },
+    {
+      "title": "Managed Deep Agents：任务调度与配置更新",
+      "url": "https://www.langchain.com/blog/managed-deep-agents-schedules-per-run-configuration-slack",
+      "publishedAt": "2026-10-07T18:30:00.000Z",
+      "summary": "官方发布涉及Agent 框架。原文摘录：Today we're releasing Managed Deep Agents v0.9, with new capabilities that let agents schedule their own follow-ups, reconfigure themselves on every run, and react to Slack messages.These updates make it easier to build internal agents that"
+    },
+    {
+      "title": "langgraph-cli 0.4.33：版本更新",
+      "url": "https://github.com/langchain-ai/langgraph/releases/tag/cli%3D%3D0.4.33",
+      "publishedAt": "2026-10-07T13:38:46.000Z",
+      "summary": "官方发布涉及Agent 框架。原文摘录：feat(cli): add --image-uri to deploy an already-pushed image (#9222) feat(cli): add 'langgraph deploy listeners list' (#9221) fix: reject credential-bearing Git dependencies (#8542)"
+    }
+  ],
+  "errors": [],
+  "at": "2026-10-11T14:09:08.494Z"
+}

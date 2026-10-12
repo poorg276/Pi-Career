@@ -1,0 +1,69 @@
+{
+  "version": "0.1.5",
+  "at": "2026-10-10T12:06:56.959Z",
+  "realAccount": true,
+  "realNetwork": true,
+  "packaged": true,
+  "cases": [
+    {
+      "name": "packaged_search_read",
+      "status": "complete",
+      "search": true,
+      "read": true,
+      "tools": [
+        {
+          "name": "web_search",
+          "status": "complete",
+          "request": "参数：\n{\n  \"query\": \"Electron net.fetch official documentation\"\n}",
+          "resultCharacters": 3512,
+          "resultSha256": "00294ecc149dd32236527dd9ee08523eb98ac715ce6b4b62c92db9b4aec16980",
+          "sourceUrls": [
+            "https://www.electronjs.org/zh/docs/latest/",
+            "https://www.electronjs.org/",
+            "https://www.runoob.com/electron/electron-intro.html",
+            "https://blog.csdn.net/qq_33650655/article/details/140364298",
+            "https://www.runoob.com/electron/electron-install.html",
+            "https://github.com/electron/electron",
+            "https://electron.js.cn/",
+            "https://zh.wikipedia.org/wiki/Electron",
+            "https://www.zhihu.com/question/509656170",
+            "https://electron.nodejs.cn/"
+          ],
+          "engines": [
+            "Bing"
+          ]
+        },
+        {
+          "name": "web_fetch",
+          "status": "complete",
+          "request": "参数：\n{\n  \"url\": \"https://www.electronjs.org/docs/latest/api/net\"\n}",
+          "resultCharacters": 7010,
+          "resultSha256": "7da49822f53ac2d63722d8e1ba2ef3ef814ee9adafe8b9dc50e298be2b85a28e",
+          "sourceUrls": [
+            "https://www.electronjs.org/docs/latest/api/net"
+          ],
+          "engines": [
+            "直接读取"
+          ]
+        }
+      ],
+      "response": "Electron的net模块自动管理系统代理配置，支持WPAD、PAC文件及多种代理认证；net.fetch使用Chromium网络栈。[官方文档](https://www.electronjs.org/docs/latest/api/net)",
+      "turn": {
+        "turnId": "76a19850-6f3a-4be3-b5f9-6c8a0e34c0ce",
+        "status": "complete",
+        "endedAt": "2026-10-10T12:07:12.699Z",
+        "model": "gpt-6-astra",
+        "context": {
+          "tokens": 26509,
+          "contextWindow": 272000,
+          "percent": 9.745955882352941
+        }
+      }
+    }
+  ],
+  "provider": "openai-codex",
+  "model": "gpt-6-astra",
+  "chatId": "abd15b27-11c5-42a5-b7e2-ad91db6bbe0e",
+  "learningAndSettingsPreserved": true,
+  "passed": true
+}

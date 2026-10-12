@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "version": "0.1.7",
+  "scale": "1.25",
+  "stages": [
+    "preparing",
+    "browser",
+    "exchanging",
+    "validating",
+    "saving",
+    "refreshing",
+    "complete"
+  ],
+  "actualElectron": true,
+  "contextFromSDK": {
+    "tokens": 20,
+    "contextWindow": 128000,
+    "percent": 0.015625
+  },
+  "windowsEncryptedLongCredential": true,
+  "restartRestoresCredential": true,
+  "proxyTokenExchange": true,
+  "proxyRefreshToken": true,
+  "proxySSE": true,
+  "cancellationRetry": true,
+  "httpAndTokenAndStorageFailures": true,
+  "refreshOnlyAction": true,
+  "realAccountLogin": "not_verified",
+  "productionCertificateValidation": "enabled; test CA trusted only in isolated test process",
+  "errors": []
+}

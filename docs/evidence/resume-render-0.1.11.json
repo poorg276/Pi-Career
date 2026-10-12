@@ -1,0 +1,40 @@
+{
+  "version": "0.1.11",
+  "passed": true,
+  "renderer": "bundled render_docx.py rasterizer with Windows Word conversion adapter (LibreOffice absent)",
+  "samples": [
+    {
+      "sample": "experience",
+      "pagesElectronAndWord": [
+        1,
+        1
+      ],
+      "allParagraphsPresent": true,
+      "editableWordParagraphs": 6,
+      "photo": false
+    },
+    {
+      "sample": "full-research",
+      "pagesElectronAndWord": [
+        1,
+        1
+      ],
+      "allParagraphsPresent": true,
+      "editableWordParagraphs": 17,
+      "photo": true
+    },
+    {
+      "sample": "full-two-pages",
+      "pagesElectronAndWord": [
+        2,
+        2
+      ],
+      "allParagraphsPresent": true,
+      "editableWordParagraphs": 52,
+      "photo": true
+    }
+  ],
+  "allPagesVisuallyInspected": true,
+  "upstreamSourceDigest": "b4f2d31cc38be3a3fa181235d85d1395eacb17ef79a4463115ad6d4217d67abc",
+  "upstreamFilesUnchanged": 1839
+}

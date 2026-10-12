@@ -1,0 +1,30 @@
+{
+  "databaseBefore": "F878D69B61C1DDD491C075559244C2D95E58D57BA568AA094EE0DA49CBBB3C08",
+  "passed": true,
+  "databaseAfter": "F878D69B61C1DDD491C075559244C2D95E58D57BA568AA094EE0DA49CBBB3C08",
+  "shortcutTarget": "C:\\Users\\HP\\AppData\\Local\\Programs\\PiCareer\\PiCareer.exe",
+  "realAccountLogin": "not_verified",
+  "version": "0.1.3",
+  "installerExitCode": 0,
+  "at": "2026-10-10T17:17:16.5390769+08:00",
+  "installedExe": "C:\\Users\\HP\\AppData\\Local\\Programs\\PiCareer\\PiCareer.exe",
+  "databasePreserved": true,
+  "files": [
+    {
+      "sha256": "3E7B986170F328BB92626769177E92C2FF05DFD5E0609C539F1CBF422011A90C",
+      "file": "PiCareer.exe"
+    },
+    {
+      "sha256": "BAC15C0605CD8D786670E313D59CF24733019249DEFAA04B5225AD118FA90A1F",
+      "file": "resources\\app.asar"
+    },
+    {
+      "sha256": "21B296BD44C7FEF2BB8B6EB2E641BD8E653BC766A40D4C66FC63E248ED4FC274",
+      "file": "resources\\resources\\pi\\worker.mjs"
+    },
+    {
+      "sha256": "1B3B766722940528820AFB2674C8F3A3BE8B704E00DDC4C203203BD35DAE3736",
+      "file": "resources\\resources\\pi\\node_modules\\@earendil-works\\pi-ai\\dist\\picareer-compat.json"
+    }
+  ]
+}

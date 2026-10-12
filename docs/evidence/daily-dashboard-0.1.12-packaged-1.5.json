@@ -1,0 +1,22 @@
+{
+  "version": "0.1.12",
+  "packaged": true,
+  "scale": "1.5",
+  "passed": true,
+  "title": "PiCareer·辅助求职Agent",
+  "distinctResumeIcon": true,
+  "cardOrder": true,
+  "dailyReturnAndFocus": true,
+  "sameDayNoRepeat": true,
+  "manualRefresh": true,
+  "restartNoRefresh": true,
+  "knowledgePreserved": true,
+  "layout": {
+    "scale": 1.5,
+    "overflow": false,
+    "sidebarBottom": 683.3333587646484,
+    "height": 701
+  },
+  "network": "simulated public-page responses in actual Electron",
+  "errors": []
+}

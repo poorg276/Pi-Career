@@ -1,0 +1,19 @@
+{
+  "version": "0.1.11",
+  "scale": "1.5",
+  "passed": true,
+  "dialogGeometry": {
+    "top": 48,
+    "bottom": 744,
+    "viewport": 760,
+    "footerBottom": 743.3333587646484,
+    "scrollable": true,
+    "horizontalOverflow": false
+  },
+  "failedSaveRetainsDraft": true,
+  "offlineCreateEditJD": true,
+  "restartRestored": true,
+  "legacyPreserved": true,
+  "optionalSourceAndDeletion": true,
+  "errors": []
+}

@@ -1,0 +1,308 @@
+{
+  "version": "0.1.13",
+  "passed": true,
+  "stages": [
+    "pure_text_without_JD",
+    "mixed_project_research_with_JD",
+    "unpublished_paper_research_category",
+    "missing_contribution_identity_gate"
+  ],
+  "model": "gpt-6-luna",
+  "vision": true,
+  "packaged": true,
+  "cases": [
+    {
+      "name": "text",
+      "overview": "这是合成测试项目。本人独立编写 Python 资料检索函数，实现按关键词筛选文档和空结果状态处理，编写单元测试检查 found/not_found 分支。没有团队其他贡献；项目时间未知，性能和准确率未测量，没有获奖或商业部署。",
+      "experiences": [
+        {
+          "id": "d8eb9f92-c5c7-47b4-aa56-2cada32fb3e3",
+          "kind": "project",
+          "name": "Python资料检索项目",
+          "time": "",
+          "role": "独立开发",
+          "bullets": [
+            {
+              "text": "编写 Python 资料检索函数，实现按关键词筛选文档。",
+              "factIds": [
+                "overview"
+              ]
+            },
+            {
+              "text": "处理检索结果为空的状态，并编写单元测试检查 found/not_found 分支。",
+              "factIds": [
+                "overview"
+              ]
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "overview",
+          "text": "这是合成测试项目。本人独立编写 Python 资料检索函数，实现按关键词筛选文档和空结果状态处理，编写单元测试检查 found/not_found 分支。没有团队其他贡献；项目时间未知，性能和准确率未测量，没有获奖或商业部署。",
+          "origin": "overview",
+          "evidence": []
+        }
+      ],
+      "locations": []
+    },
+    {
+      "name": "mixed",
+      "overview": "这都是合成测试材料。中文 Agent 项目对应源码；本人独立编写 retrieve 和 agent 函数及 test_agent.py，负责关键词检索、found/not_found 状态包装与无结果测试，时间2026年6月至2026年8月。README 的工具路由指设计思路，当前代码没有外部工具执行，不宣称已有复杂 Agent 功能。研究记录.pdf及扫描材料.pdf是同一内部设计记录的两种版本；本人为记录撰写者/测试作者，负责检索与测试方法整理，该记录未投稿、未录用、未发表，不是专利，无专利申请或授权；不填写论文作者排序。全部没有实测性能增益和获奖。",
+      "experiences": [
+        {
+          "id": "f471a6fd-4a2a-4932-a6b0-8f34e5d17691",
+          "kind": "project",
+          "name": "文档检索 Agent",
+          "time": "2026年6月—2026年8月",
+          "role": "独立开发",
+          "bullets": [
+            {
+              "text": "编写关键词检索函数，从文档中筛选包含查询词的内容。",
+              "factIds": [
+                "overview",
+                "5bb57fd0-bfba-432c-9449-6394782a65d0"
+              ]
+            },
+            {
+              "text": "实现 Agent 结果包装，返回检索证据并以 found/not_found 标记检索状态。",
+              "factIds": [
+                "overview",
+                "b55e16f3-a843-430d-815a-5c6679732a24"
+              ]
+            },
+            {
+              "text": "编写单元测试，覆盖检索命中与无结果两种状态。",
+              "factIds": [
+                "overview",
+                "59aa1cb7-5353-435d-bd7c-04510cb2685d"
+              ]
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "overview",
+          "text": "这都是合成测试材料。中文 Agent 项目对应源码；本人独立编写 retrieve 和 agent 函数及 test_agent.py，负责关键词检索、found/not_found 状态包装与无结果测试，时间2026年6月至2026年8月。README 的工具路由指设计思路，当前代码没有外部工具执行，不宣称已有复杂 Agent 功能。研究记录.pdf及扫描材料.pdf是同一内部设计记录的两种版本；本人为记录撰写者/测试作者，负责检索与测试方法整理，该记录未投稿、未录用、未发表，不是专利，无专利申请或授权；不填写论文作者排序。全部没有实测性能增益和获奖。",
+          "origin": "overview",
+          "evidence": []
+        },
+        {
+          "id": "5bb57fd0-bfba-432c-9449-6394782a65d0",
+          "text": "项目实现关键词检索：从文档中筛选包含查询词的内容。",
+          "origin": "material",
+          "evidence": [
+            {
+              "unitId": "55dae22c-ba41-4b71-8877-fe969ff145d4",
+              "quote": "return [doc for doc in documents if query in doc]"
+            }
+          ]
+        },
+        {
+          "id": "b55e16f3-a843-430d-815a-5c6679732a24",
+          "text": "Agent 函数返回检索证据，并以 found 或 not_found 表示检索状态。",
+          "origin": "material",
+          "evidence": [
+            {
+              "unitId": "55dae22c-ba41-4b71-8877-fe969ff145d4",
+              "quote": "return {\"evidence\": evidence, \"status\": \"found\" if evidence else \"not_found\"}"
+            }
+          ]
+        },
+        {
+          "id": "59aa1cb7-5353-435d-bd7c-04510cb2685d",
+          "text": "测试覆盖有结果和无结果两种状态。",
+          "origin": "material",
+          "evidence": [
+            {
+              "unitId": "800a6ad9-5e37-4928-83cd-37cc3643b214",
+              "quote": "assert agent(\"检索\", [\"检索系统\"]) [\"status\"] == \"found\"\r\nassert agent(\"不存在\", [\"检索系统\"]) [\"status\"] == \"not_found\""
+            }
+          ]
+        },
+        {
+          "id": "2b6041e6-f9c8-429b-8de1-206de7c4273c",
+          "text": "项目材料说明本人负责检索函数、结果包装与单元测试，工具调用编排仅为设计思路，未测量准确率或性能增益。",
+          "origin": "material",
+          "evidence": [
+            {
+              "unitId": "ab53b89e-ee65-47ff-8a1d-ca2a65402d5f",
+              "quote": "本人负责检索函数、结果包装与单元测试。工具调用编排仅为设计思路，未测量准确率或性能增益。"
+            }
+          ]
+        },
+        {
+          "id": "ad1b8316-b8e4-41fb-857e-0c494ab4acf1",
+          "text": "项目时间为2026年6月至2026年8月。",
+          "origin": "material",
+          "evidence": [
+            {
+              "unitId": "ab53b89e-ee65-47ff-8a1d-ca2a65402d5f",
+              "quote": "项目时间：2026年6月至2026年8月。"
+            }
+          ]
+        },
+        {
+          "id": "4cdcbb50-e4c5-4576-8ea7-491bf3f78745",
+          "text": "研究记录说明其未投稿、未录用、未发表，且未开展性能评测。",
+          "origin": "material",
+          "evidence": [
+            {
+              "unitId": "08d1b65b-8097-4124-a861-f3958671371f",
+              "quote": "测试论文材料：未投稿、未录用、未发表。"
+            }
+          ]
+        }
+      ],
+      "locations": [
+        {
+          "id": "55dae22c-ba41-4b71-8877-fe969ff145d4",
+          "material": "中文 Agent 项目",
+          "location": "agent.py:L1-L7"
+        },
+        {
+          "id": "ab53b89e-ee65-47ff-8a1d-ca2a65402d5f",
+          "material": "中文 Agent 项目",
+          "location": "README.md:L1-L5"
+        },
+        {
+          "id": "800a6ad9-5e37-4928-83cd-37cc3643b214",
+          "material": "中文 Agent 项目",
+          "location": "test_agent.py:L1-L4"
+        },
+        {
+          "id": "08d1b65b-8097-4124-a861-f3958671371f",
+          "material": "研究记录.pdf",
+          "location": "研究记录.pdf 第1页"
+        },
+        {
+          "id": "ceb65e2c-41b9-4d25-9801-c89517f6ce38",
+          "material": "扫描材料.pdf",
+          "location": "扫描材料.pdf 第1页（扫描页）"
+        }
+      ]
+    },
+    {
+      "name": "paper",
+      "overview": "上传的未投稿研究论文.txt为合成测试论文草稿。本人为测试作者、第一作者，合作作者仅参与讨论。我提出检索证据约束的回答流程，设计无证据时拒答策略，完成方法和边界分析撰写；目前是理论设计，不宣称代码已实现该策略。论文未投稿、未录用、未发表，无专利申请或授权；项目时间未知，尚未进行实验，没有实测增益。",
+      "experiences": [
+        {
+          "id": "e7542994-5108-4620-b915-de4bdc8c45db",
+          "kind": "research",
+          "name": "检索证据约束的回答流程研究（论文草稿，未投稿）",
+          "time": "",
+          "role": "第一作者",
+          "bullets": [
+            {
+              "text": "提出检索证据约束的回答流程，将检索、证据校验与回答阶段分离，并分析关键词检索的语义匹配局限。",
+              "factIds": [
+                "overview",
+                "cbf477e4-461e-46cf-86b7-97fccd4d2e14",
+                "9ebb89f9-1159-4447-a9ad-995b6ed27b70"
+              ]
+            },
+            {
+              "text": "设计缺少证据时拒答的策略，完成方法与适用边界分析撰写；目前为流程设计与理论分析，尚无性能实验。",
+              "factIds": [
+                "overview",
+                "cbf477e4-461e-46cf-86b7-97fccd4d2e14",
+                "0fb01a7c-db65-441f-a91e-63f42b67bc83"
+              ]
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "overview",
+          "text": "上传的未投稿研究论文.txt为合成测试论文草稿。本人为测试作者、第一作者，合作作者仅参与讨论。我提出检索证据约束的回答流程，设计无证据时拒答策略，完成方法和边界分析撰写；目前是理论设计，不宣称代码已实现该策略。论文未投稿、未录用、未发表，无专利申请或授权；项目时间未知，尚未进行实验，没有实测增益。",
+          "origin": "overview",
+          "evidence": []
+        },
+        {
+          "id": "d04c338c-5eda-42f9-8196-7b2bf157c161",
+          "text": "论文为草稿，未投稿、未录用、未发表，且无专利。",
+          "origin": "material",
+          "evidence": [
+            {
+              "unitId": "b7716524-c27f-414f-b230-d04ba12dd40c",
+              "quote": "成果状态：论文草稿，未投稿、未录用、未发表；无专利"
+            }
+          ]
+        },
+        {
+          "id": "d6c585ec-43f4-46b8-9809-4c6f850bc282",
+          "text": "材料标注测试作者为第一作者，并称合作作者仅参与讨论。",
+          "origin": "material",
+          "evidence": [
+            {
+              "unitId": "b7716524-c27f-414f-b230-d04ba12dd40c",
+              "quote": "作者：测试作者（第一作者）、合作作者"
+            }
+          ]
+        },
+        {
+          "id": "cbf477e4-461e-46cf-86b7-97fccd4d2e14",
+          "text": "第一作者提出检索证据约束的回答流程，设计无证据时拒绝回答的策略，并撰写方法与边界分析。",
+          "origin": "material",
+          "evidence": [
+            {
+              "unitId": "b7716524-c27f-414f-b230-d04ba12dd40c",
+              "quote": "第一作者工作：提出检索证据约束的回答流程，设计无证据时拒绝回答的策略，撰写方法与边界分析。"
+            }
+          ]
+        },
+        {
+          "id": "9ebb89f9-1159-4447-a9ad-995b6ed27b70",
+          "text": "方法将检索、证据校验和回答阶段分开，并分析了关键词检索缺少语义匹配的问题。",
+          "origin": "material",
+          "evidence": [
+            {
+              "unitId": "b7716524-c27f-414f-b230-d04ba12dd40c",
+              "quote": "方法：将检索、证据校验和回答阶段分开，分析关键词检索缺少语义匹配的问题。"
+            }
+          ]
+        },
+        {
+          "id": "0fb01a7c-db65-441f-a91e-63f42b67bc83",
+          "text": "目前仅完成流程设计和理论分析，尚未开展性能实验，也无已测量效果。",
+          "origin": "material",
+          "evidence": [
+            {
+              "unitId": "b7716524-c27f-414f-b230-d04ba12dd40c",
+              "quote": "目前仅完成流程设计和理论分析，尚未开展性能实验，无已测量效果。"
+            }
+          ]
+        }
+      ],
+      "locations": [
+        {
+          "id": "b7716524-c27f-414f-b230-d04ba12dd40c",
+          "material": "未投稿研究论文.txt",
+          "location": "未投稿研究论文.txt L1"
+        }
+      ]
+    }
+  ],
+  "gate": {
+    "overview": "上述源码和论文是团队材料，我个人参与情况、作者身份和成果状态还不明确。",
+    "issues": [
+      "请明确“测试作者”是否为你的真实作者身份，以及你是否为第一作者、是否完成了所述流程设计和撰写工作；目前概述称个人参与情况、作者身份和成果状态尚不明确，与材料中的具体归属存在未解决差异。"
+    ],
+    "run": {
+      "requestId": "933476ef-03d4-4272-b406-cb22697878a2",
+      "status": "failed",
+      "stage": "请根据概述旁的提示补充信息后重新生成"
+    }
+  },
+  "manualReview": {
+    "checkedAgainstSyntheticMaterials": true,
+    "eachItemTwoToFourBullets": true,
+    "unknownMetricsOmitted": true,
+    "theoreticalDesignNotClaimedImplemented": true,
+    "researchDraftStatusExplicit": true,
+    "personalContributionGatePreservesPrevious": true
+  }
+}

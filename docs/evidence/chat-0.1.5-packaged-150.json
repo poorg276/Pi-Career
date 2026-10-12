@@ -1,0 +1,84 @@
+{
+  "version": "0.1.5",
+  "scale": "1.5",
+  "endMarkerAndModelPosition": true,
+  "defaultTools": true,
+  "markdown": true,
+  "projectAndSkills": true,
+  "toolBoundaries": true,
+  "keylessSearchExtractionAndFallback": true,
+  "proxyTools": true,
+  "readingPosition": true,
+  "streamingNavigationRenameStop": true,
+  "ime": true,
+  "geometry": {
+    "viewport": {
+      "width": 1060,
+      "height": 760
+    },
+    "user": {
+      "x": 609.5625,
+      "y": 186.125,
+      "right": 986.9375,
+      "bottom": 240.125,
+      "width": 377.375,
+      "height": 54,
+      "font": "16px"
+    },
+    "assistant": {
+      "x": 259.0625,
+      "y": 265.125,
+      "right": 921.4271240234375,
+      "bottom": 415.125,
+      "width": 662.3646240234375,
+      "height": 150,
+      "font": "16px"
+    },
+    "composer": {
+      "x": 240.6666717529297,
+      "y": 561,
+      "right": 1005.3333587646484,
+      "bottom": 717.3333435058594,
+      "width": 764.6666870117188,
+      "height": 156.33334350585938,
+      "font": "16px"
+    },
+    "input": {
+      "x": 257.3333435058594,
+      "y": 575.6666870117188,
+      "right": 988.6667175292969,
+      "bottom": 655.6666870117188,
+      "width": 731.3333740234375,
+      "height": 80,
+      "font": "16px"
+    },
+    "workspace": {
+      "x": 216,
+      "y": 52,
+      "right": 1030,
+      "bottom": 738,
+      "width": 814,
+      "height": 686,
+      "font": "16px"
+    },
+    "prose": {
+      "x": 628.5625,
+      "y": 199.125,
+      "right": 967.9375,
+      "bottom": 227.125,
+      "width": 339.375,
+      "height": 28,
+      "font": "16px"
+    },
+    "horizontalOverflow": false
+  },
+  "deleteDuringGenerationAndLateEvent": true,
+  "longModel": true,
+  "cancelDelete": true,
+  "restart": true,
+  "crashRecovery": true,
+  "deleteLastKeepsProject": true,
+  "passed": true,
+  "requests": 31,
+  "errors": []
+}

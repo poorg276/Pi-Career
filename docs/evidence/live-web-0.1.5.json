@@ -1,0 +1,171 @@
+{
+  "version": "0.1.5",
+  "at": "2026-10-10T12:01:32.732Z",
+  "realAccount": true,
+  "realNetwork": true,
+  "packaged": false,
+  "cases": [
+    {
+      "name": "chinese_current_edg",
+      "status": "complete",
+      "search": true,
+      "read": true,
+      "tools": [
+        {
+          "name": "web_search",
+          "status": "complete",
+          "request": "参数：\n{\n  \"query\": \"EDward Gaming Valorant roster October 2026 stew invy\"\n}",
+          "resultCharacters": 5481,
+          "resultSha256": "1f703bf7665c733f591d62dfde540c2a1c88442a939ffc27736694713f41923a",
+          "sourceUrls": [
+            "https://www.vlr.gg/team/1120/edward-gaming",
+            "https://valolive.gg/en/team/edward-gaming-1/",
+            "https://bo3.gg/valorant/news/edward-gaming-to-sign-stew-to-replace-jieni7-ahead-of-valorant-champions-2026",
+            "https://proscene.gg/valorant/teams/128976/edward-gaming-valorant",
+            "https://esportnow.gg/valorant/news/stew-joins-edward-gaming-ahead-of-champions-2026",
+            "https://esportnow.gg/valorant/news/whos-qualified-for-valorant-champions-2026-team-list",
+            "https://esportsettings.com/blog/valorant-champions-2026-shanghai-gear/",
+            "https://www.talkesport.com/wiki/teams/edward-gaming/",
+            "https://esportsresults.com/team/edward-gaming-128976-valorant",
+            "https://esportstransfer.com/en/valorant/team/edward-gaming"
+          ],
+          "engines": [
+            "DuckDuckGo"
+          ]
+        },
+        {
+          "name": "web_fetch",
+          "status": "error",
+          "request": "参数：\n{\n  \"url\": \"https://bo3.gg/valorant/news/edward-gaming-to-sign-stew-to-replace-jieni7-ahead-of-valorant-champions-2026\"\n}",
+          "resultCharacters": 158,
+          "resultSha256": "c113561cfa8243307d0ab2176a4b61840e33e57ba2c0c126df9dcf06e3a639ba",
+          "sourceUrls": [
+            "https://bo3.gg/valorant/news/edward-gaming-to-sign-stew-to-replace-jieni7-ahead-of-valorant-champions-2026"
+          ],
+          "engines": [],
+          "error": "网页拒绝访问（HTTP 403），可能需要登录或验证。"
+        },
+        {
+          "name": "web_search",
+          "status": "complete",
+          "request": "参数：\n{\n  \"query\": \"EDG 康康 郑永康 万顺治 张钊 王森旭 籍贯 家乡\"\n}",
+          "resultCharacters": 4506,
+          "resultSha256": "00111bd58055d5d6090748fdec37f362b6e7dfe2769704383cc6763fb8b57888",
+          "sourceUrls": [
+            "https://baike.baidu.com/item/%E9%83%91%E6%B0%B8%E5%BA%B7/63113260",
+            "https://baike.baidu.com/item/%E7%8E%8B%E6%A3%AE%E6%97%AD/63116911",
+            "https://wiki.biligame.com/valorant/Zmjjkk",
+            "https://agents.baidu.com/content/question/a246284a6aeafd08ef04fef3",
+            "https://yubam.douyu.com/post/690933691691229751",
+            "https://m.baike.com/wikiid/7244528517839574327",
+            "https://liquipedia.net/valorant/ZmjjKK",
+            "https://zhidao.baidu.com/question/1250047212493568259.html",
+            "https://www.jierimeishi.com/zh/douyin/zmjjKK0303/catalog.html",
+            "https://www.f71.com/article/51430.html"
+          ],
+          "engines": [
+            "DuckDuckGo"
+          ]
+        },
+        {
+          "name": "web_fetch",
+          "status": "complete",
+          "request": "参数：\n{\n  \"url\": \"https://esportstransfer.com/en/valorant/team/edward-gaming\"\n}",
+          "resultCharacters": 834,
+          "resultSha256": "45d6423fa3eb1d6927ca14068b6370eb221d233b3b2c4b071bac56dcb922a22f",
+          "sourceUrls": [
+            "https://esportstransfer.com/en/valorant/team/edward-gaming"
+          ],
+          "engines": [
+            "直接读取"
+          ]
+        },
+        {
+          "name": "web_fetch",
+          "status": "complete",
+          "request": "参数：\n{\n  \"url\": \"https://esportnow.gg/valorant/news/stew-joins-edward-gaming-ahead-of-champions-2026\"\n}",
+          "resultCharacters": 4609,
+          "resultSha256": "4f6d5cc7c5158e025636065f6ee69ad6e367fc237eb3dbfeceb48a301f4cd41e",
+          "sourceUrls": [
+            "https://esportnow.gg/valorant/news/stew-joins-edward-gaming-ahead-of-champions-2026"
+          ],
+          "engines": [
+            "直接读取"
+          ]
+        }
+      ],
+      "response": "**截至2026-10-10，当前完整阵容仍无法可靠确认。**已先搜索，再读取原文，未沿用2024年阵容。\n\n[Esportnow原文](https://esportnow.gg/valorant/news/stew-joins-edward-gaming-ahead-of-champions-2026)称：2026-08-21 stew加盟，当时五人为CHICHOO、nobody、Smoggy、ZmjjKK、invy，但替换对象不明。此为文中事件日期，正文未显示发布日期。\n\n另有[Bo3报道](https://bo3.gg/valorant/news/edward-gaming-to-sign-stew-to-replace-jieni7-ahead-of-valorant-champions-2026)搜索结果指向stew替换Jieni7，但原文403，且与前述名单存在出入，不能据此定论。\n\n**家乡／籍贯：上述七人均未核实。**检索所得百科、问答不足以可靠确认，ZmjjKK的出生地说法也相互矛盾；不将国籍或出生地直接当作籍贯。",
+      "turn": {
+        "turnId": "527d4d28-e09d-48e7-97e6-a36cdb42820f",
+        "status": "complete",
+        "endedAt": "2026-10-10T12:02:08.777Z",
+        "model": "gpt-6-astra",
+        "context": {
+          "tokens": 19101,
+          "contextWindow": 272000,
+          "percent": 7.022426470588234
+        }
+      }
+    },
+    {
+      "name": "english_search_read",
+      "status": "complete",
+      "search": true,
+      "read": true,
+      "tools": [
+        {
+          "name": "web_search",
+          "status": "complete",
+          "request": "参数：\n{\n  \"query\": \"Electron net.fetch official documentation\"\n}",
+          "resultCharacters": 6161,
+          "resultSha256": "bac3e8ea241f44da5dea91a607b2d43dafbd711801d77ae6c9843ce674e2b6b2",
+          "sourceUrls": [
+            "https://www.electronjs.org/docs/latest/api/net",
+            "https://github.com/electron/electron/blob/master/docs/api/net.md",
+            "http://electronproject.org/net-6.html",
+            "https://www.electronjs.org/docs/latest",
+            "https://zeke.github.io/electron.atom.io/docs/api/net/",
+            "http://electronproject.org/electron-doumentation.html",
+            "https://blog.csdn.net/gitblog_01093/article/details/151851928",
+            "https://www.runoob.com/electron/electron-network.html",
+            "https://freesoftwaredevlopment.github.io/electron/docs/api/net.html",
+            "https://www.npmjs.com/package/electron-fetch"
+          ],
+          "engines": [
+            "DuckDuckGo"
+          ]
+        },
+        {
+          "name": "web_fetch",
+          "status": "complete",
+          "request": "参数：\n{\n  \"url\": \"https://www.electronjs.org/docs/latest/api/net\"\n}",
+          "resultCharacters": 7010,
+          "resultSha256": "910e12f32df14aad6931d231e7e316b3871451ae87238357b99a79b3215e11d6",
+          "sourceUrls": [
+            "https://www.electronjs.org/docs/latest/api/net"
+          ],
+          "engines": [
+            "直接读取"
+          ]
+        }
+      ],
+      "response": "支持。[官方文档](https://www.electronjs.org/docs/latest/api/net)明确：net模块自动管理系统代理配置，支持WPAD协议和PAC配置文件；net.fetch使用Chromium网络栈，而非Node.js的HTTP栈。",
+      "turn": {
+        "turnId": "ffe3f081-2429-4404-8d82-10110e8b3296",
+        "status": "complete",
+        "endedAt": "2026-10-10T12:02:21.752Z",
+        "model": "gpt-6-astra",
+        "context": {
+          "tokens": 22887,
+          "contextWindow": 272000,
+          "percent": 8.414338235294117
+        }
+      }
+    }
+  ],
+  "provider": "openai-codex",
+  "model": "gpt-6-astra",
+  "chatId": "abd15b27-11c5-42a5-b7e2-ad91db6bbe0e",
+  "learningAndSettingsPreserved": true,
+  "passed": true
+}

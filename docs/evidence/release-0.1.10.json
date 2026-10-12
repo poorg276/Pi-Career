@@ -1,0 +1,19 @@
+{
+  "version": "0.1.10",
+  "passed": true,
+  "portableCRCValid": true,
+  "portableFilesMatchInstalledRelease": true,
+  "noPythonRunner": true,
+  "artifacts": [
+    {
+      "file": "PiCareer-0.1.10-x64.exe",
+      "bytes": 142011918,
+      "sha256": "b234edc9fbaa883ee088fa44df035e9cf6b928880b0ef3e46a08569c82f5d862"
+    },
+    {
+      "file": "PiCareer-0.1.10-x64.zip",
+      "bytes": 190846760,
+      "sha256": "9d509b586a207628bae0b8001b95a6b361f0752ff674eca739b55cd517892037"
+    }
+  ]
+}

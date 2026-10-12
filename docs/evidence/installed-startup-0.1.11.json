@@ -1,0 +1,39 @@
+{
+  "version": "0.1.11",
+  "passed": true,
+  "existingOAuthRestored": true,
+  "model": "gpt-6-luna",
+  "chatCount": 1,
+  "contextRestored": true,
+  "officialHot100Loaded": true,
+  "allRecordsUnchanged": true,
+  "dashboardAutomaticRefresh": true,
+  "secondInstanceDidNotRefresh": true,
+  "dashboardWarnings": [
+    "blog.langchain.com：网页连接失败，请检查网络和系统代理；未绕过代理。",
+    "github.com：The operation was aborted due to timeout",
+    "www.langchain.com：不是相关技术更新"
+  ],
+  "threeVerifiedNews": [
+    {
+      "title": "改进 Deep Agents 中的技能支持",
+      "url": "https://www.langchain.com/blog/revamping-skills-in-deep-agents",
+      "publishedAt": "2026-10-07T19:00:00.000Z",
+      "summary": "Deep Agents 更新了技能支持：绑定到技能的工具仅在智能体读取该技能时加载；用户明确请求技能时，应用可在下一次模型调用前加载；长期运行的对话也能加载新增或变更的技能。"
+    },
+    {
+      "title": "Managed Deep Agents v0.9：计划安排、逐次运行配置与 Slack 表情回应",
+      "url": "https://www.langchain.com/blog/managed-deep-agents-schedules-per-run-configuration-slack",
+      "publishedAt": "2026-10-07T18:30:00.000Z",
+      "summary": "Managed Deep Agents v0.9 新增了让智能体安排后续任务、在每次运行时重新配置自身，以及回应 Slack 消息的能力。新的 Schedules SDK 可让智能体在对话中创建提醒、后续跟进和定期任务。"
+    },
+    {
+      "title": "GPT‑6 与面向所有人的 Intelligent UI",
+      "url": "https://openai.com/index/gpt-6-for-everyone/",
+      "publishedAt": "2026-10-06T16:00:00.000Z",
+      "summary": "GPT‑6 在 ChatGPT 中引入 Intelligent UI，可通过交互式界面作答，让日常答案更直观、帮助用户学习复杂主题，并能即时创建工具来完成任务。"
+    }
+  ],
+  "errors": [],
+  "at": "2026-10-11T08:17:24.717Z"
+}

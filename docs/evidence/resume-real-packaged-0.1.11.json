@@ -1,0 +1,14 @@
+{
+  "version": "0.1.11",
+  "passed": true,
+  "stages": [
+    "real_material_analysis",
+    "real_experience_generation",
+    "real_full_resume_generation",
+    "real_template_image_analysis",
+    "one_two_page_exports"
+  ],
+  "provider": "openai-codex",
+  "model": "gpt-6-luna",
+  "vision": true
+}

@@ -1,0 +1,23 @@
+{
+  "version": "0.1.13",
+  "scale": "1.25",
+  "passed": true,
+  "requests": 8,
+  "landingOnly": true,
+  "fullPlaceholderNoDraft": true,
+  "offlineDraft": true,
+  "settingsReturn": true,
+  "selectedSourceImport": true,
+  "actualPiMockModel": true,
+  "threeStageGeneration": true,
+  "missingContributionGate": true,
+  "copyWithoutEvidence": true,
+  "editing": true,
+  "versions": true,
+  "cancellation": true,
+  "sidebarReset": true,
+  "draftSwitch": true,
+  "restart": true,
+  "deleteOriginalPreserved": true,
+  "errors": []
+}

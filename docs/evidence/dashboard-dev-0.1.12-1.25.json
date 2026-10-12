@@ -1,0 +1,73 @@
+{
+  "version": "0.1.12",
+  "packaged": false,
+  "scale": "1.25",
+  "passed": true,
+  "news": [
+    {
+      "id": "d89ca29fbd41ee94ea5cfbf4",
+      "title": "Deep Agents：技能机制更新",
+      "originalTitle": "Revamping Skills in Deep Agents",
+      "summary": "官方发布涉及Agent 框架。原文摘录：We've revamped skills support in Deep Agents to address some common requests:Binding tools to skills: tools bound to a skill load only when the agent reads that skill.Pinned skills: when a user explicitly requests a skill, like /meeting-pre",
+      "url": "https://www.langchain.com/blog/revamping-skills-in-deep-agents",
+      "source": "www.langchain.com",
+      "publishedAt": "2026-10-07T19:00:00.000Z",
+      "retrievedAt": "2026-10-11T09:04:52.668Z",
+      "evidence": "We've revamped skills support in Deep Agents to address some common requests:Binding tools to skills: tools bound to a skill load only when the agent reads that skill.Pinned skills: when a user explicitly requests a skill, like /meeting-prep, your app can load it before the next model call.Skill reloading: a long-running thread can pick up new or changed skills without starting over.How skills workA skill is a directory with a SKILL.md file: YAML frontmatter with a name and description, followed by the instructions the agent follows. A skill can also bundle supporting files under scripts/, references/, and assets/ (spec).Only a skill's name a",
+      "dateEvidence": "2026-10-07T19:00:00.000Z"
+    },
+    {
+      "id": "553466e25356a7bd6911f53a",
+      "title": "Managed Deep Agents：任务调度与配置更新",
+      "originalTitle": "Managed Deep Agents v0.9: schedules, per-run configuration, and Slack reactions",
+      "summary": "官方发布涉及Agent 框架。原文摘录：Today we're releasing Managed Deep Agents v0.9, with new capabilities that let agents schedule their own follow-ups, reconfigure themselves on every run, and react to Slack messages.These updates make it easier to build internal agents that",
+      "url": "https://www.langchain.com/blog/managed-deep-agents-schedules-per-run-configuration-slack",
+      "source": "www.langchain.com",
+      "publishedAt": "2026-10-07T18:30:00.000Z",
+      "retrievedAt": "2026-10-11T09:04:53.074Z",
+      "evidence": "Today we're releasing Managed Deep Agents v0.9, with new capabilities that let agents schedule their own follow-ups, reconfigure themselves on every run, and react to Slack messages.These updates make it easier to build internal agents that live in Slack or your own channels and work more like teammates.Let agents schedule their own workThe new Schedules SDK lets agents create reminders, follow-ups, and recurring tasks mid-conversation, so they can handle requests like \"Remind me about this tomorrow.\"The agent creates the schedule itself during a conversation, the schedule runs as the person who asked using their set of permissions and connec",
+      "dateEvidence": "2026-10-07T18:30:00.000Z"
+    },
+    {
+      "id": "52a534c70d6da8fc6bb0ec61",
+      "title": "langgraph-cli 0.4.33：版本更新",
+      "originalTitle": "langgraph-cli==0.4.33",
+      "summary": "官方发布涉及Agent 框架。原文摘录：feat(cli): add --image-uri to deploy an already-pushed image (#9222) feat(cli): add 'langgraph deploy listeners list' (#9221) fix: reject credential-bearing Git dependencies (#8542)",
+      "url": "https://github.com/langchain-ai/langgraph/releases/tag/cli%3D%3D0.4.33",
+      "source": "github.com",
+      "publishedAt": "2026-10-07T13:38:46.000Z",
+      "retrievedAt": "2026-10-11T09:04:53.102Z",
+      "evidence": "feat(cli): add --image-uri to deploy an already-pushed image (#9222) feat(cli): add 'langgraph deploy listeners list' (#9221) fix: reject credential-bearing Git dependencies (#8542)",
+      "dateEvidence": "2026-10-07T13:38:46Z"
+    }
+  ],
+  "requestId": "dec2c9b6-0fe3-45e7-9513-493a1324075f",
+  "knowledgeChanged": true,
+  "knowledgeId": "K138",
+  "layout": {
+    "overflow": false,
+    "columns": 1,
+    "minSize": 13,
+    "small": []
+  },
+  "links": [
+    "https://careers.tencent.com/",
+    "https://talent.alibaba.com/en/home",
+    "https://career.huawei.com/cn",
+    "https://jobs.bytedance.com/experienced",
+    "https://careers.pinduoduo.com/",
+    "https://career.meituan.com/web/home",
+    "https://talent.baidu.com/",
+    "https://zhaopin.jd.com/",
+    "https://hr.163.com/",
+    "https://hr.xiaomi.com/",
+    "https://zhaopin.kuaishou.cn/",
+    "https://job.xiaohongshu.com/",
+    "https://jobs.bilibili.com/",
+    "https://careers.trip.com/",
+    "https://iflytek.zhiye.com/",
+    "https://hr.sangfor.com/"
+  ],
+  "errors": [],
+  "at": "2026-10-11T09:04:57.022Z"
+}

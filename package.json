@@ -1,0 +1,91 @@
+{
+  "name": "picareer",
+  "version": "0.1.13",
+  "private": true,
+  "type": "module",
+  "description": "基于本地 Pi SDK 的个人 Agent 与求职工作台",
+  "author": "PiCareer",
+  "license": "MIT",
+  "main": "dist/main.cjs",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "npm run build && electron .",
+    "check": "tsc --noEmit",
+    "test": "node --test --test-isolation=none tests/*.test.ts",
+    "test:content": "python scripts/verify_problems.py",
+    "test:desktop": "node scripts/smoke.mjs",
+    "package": "npm run build && electron-builder --win nsis zip --publish never",
+    "pretest": "node scripts/prepare-sdk.mjs"
+  },
+  "dependencies": {
+    "@mozilla/readability": "0.6.0",
+    "@napi-rs/canvas": "1.0.11",
+    "docx": "9.10.0",
+    "linkedom": "0.18.13",
+    "mammoth": "1.13.0",
+    "monaco-editor": "0.57.0",
+    "pdfjs-dist": "6.4.299",
+    "pyodide": "314.0.7",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "react-markdown": "10.1.0",
+    "remark-gfm": "4.0.1",
+    "undici": "7.30.0",
+    "yauzl": "3.4.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.0",
+    "@types/node": "22.19.19",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@types/yauzl": "3.4.0",
+    "@vscode/ripgrep-win32-x64": "1.18.0",
+    "electron": "44.7.0",
+    "electron-builder": "26.15.3",
+    "esbuild": "0.28.2",
+    "typescript": "7.0.2",
+    "vite": "8.3.4"
+  },
+  "build": {
+    "appId": "local.picareer.desktop",
+    "productName": "PiCareer",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "package.json",
+      "!node_modules{,/**/*}"
+    ],
+    "asar": true,
+    "extraResources": [
+      {
+        "from": "resources",
+        "to": "resources",
+        "filter": [
+          "**/*",
+          "!runner{,/**/*}"
+        ]
+      }
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "zip"
+      ],
+      "icon": "resources/icon.ico",
+      "signExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "deleteAppDataOnUninstall": false
+    },
+    "artifactName": "PiCareer-${version}-${arch}.${ext}",
+    "npmRebuild": false,
+    "electronDist": "node_modules/electron/dist"
+  }
+}
+

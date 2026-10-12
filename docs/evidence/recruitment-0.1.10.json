@@ -1,0 +1,152 @@
+{
+  "passed": true,
+  "at": "2026-10-11T04:59:11.397Z",
+  "portals": [
+    {
+      "company": "腾讯",
+      "url": "https://careers.tencent.com/",
+      "verifiedAt": "2026-10-11",
+      "verificationSource": "https://careers.tencent.com/",
+      "httpStatus": 200,
+      "title": "首页 | 腾讯招聘",
+      "htmlSha256": "ebf89d7e97795d14ab857865261ef2ca3b486174b62e29c7281be25e382993dd"
+    },
+    {
+      "company": "阿里巴巴",
+      "url": "https://talent.alibaba.com/en/home",
+      "verifiedAt": "2026-10-11",
+      "verificationSource": "https://home.alibabagroup.com/en-US/careers",
+      "httpStatus": 200,
+      "title": "Alibaba Group Careers",
+      "htmlSha256": "5383597c52b69901d7ad905d586057a61ac3b8dbcc0e2eafa1448cd1a24a773a"
+    },
+    {
+      "company": "华为",
+      "url": "https://career.huawei.com/cn",
+      "verifiedAt": "2026-10-11",
+      "verificationSource": "https://career.huawei.com/cn",
+      "httpStatus": 200,
+      "title": "华为招聘官网首页",
+      "htmlSha256": "5316baf4f7a8edeb4be6da3c38fc60dec70ef59b6a88977fa07fd621ecde6c91"
+    },
+    {
+      "company": "字节跳动",
+      "url": "https://jobs.bytedance.com/experienced",
+      "verifiedAt": "2026-10-11",
+      "verificationSource": "https://joinbytedance.com/",
+      "httpStatus": 200,
+      "title": "字节跳动",
+      "htmlSha256": "06f453de89a266cae4f2f36aac21c4a87b60d13e8f5b10d8fc030850372632cd"
+    },
+    {
+      "company": "拼多多",
+      "url": "https://careers.pinduoduo.com/",
+      "verifiedAt": "2026-10-11",
+      "verificationSource": "https://www.pinduoduo.com/",
+      "httpStatus": 200,
+      "title": "拼多多集团-PDD校园招聘官网",
+      "htmlSha256": "738cf1c860bad7750833fc41b59d9a8fcf317d2ea50d58c73733de8d13ef2a5f"
+    },
+    {
+      "company": "美团",
+      "url": "https://career.meituan.com/web/home",
+      "verifiedAt": "2026-10-11",
+      "verificationSource": "https://career.meituan.com/web/home",
+      "httpStatus": 200,
+      "title": "美团招聘",
+      "htmlSha256": "4c4d3bf0216f9e0afc6587e8dcae42ac0d947ca0d5b0f2d26421ac90123e43bc"
+    },
+    {
+      "company": "百度",
+      "url": "https://talent.baidu.com/",
+      "verifiedAt": "2026-10-11",
+      "verificationSource": "https://talent.baidu.com/",
+      "httpStatus": 200,
+      "title": "百度校园招聘",
+      "htmlSha256": "82f147b0b9cc401aa92ce081e8f6a6b83ac6595c8ce12f9d67ab45e0ffadba39"
+    },
+    {
+      "company": "京东",
+      "url": "https://zhaopin.jd.com/",
+      "verifiedAt": "2026-10-11",
+      "verificationSource": "https://zhaopin.jd.com/",
+      "httpStatus": 200,
+      "title": "京东招聘-首页",
+      "htmlSha256": "706063c3740c62fd752cb3dfc299863f5d8752f6159e2073319e7333e715ebc5"
+    },
+    {
+      "company": "网易",
+      "url": "https://hr.163.com/",
+      "verifiedAt": "2026-10-11",
+      "verificationSource": "https://www.163.com/",
+      "httpStatus": 200,
+      "title": "网易社会招聘",
+      "htmlSha256": "2f28c65403aa6ee0e505f663d9d9b2591005aeec84130e6413b1756a3235cfdb"
+    },
+    {
+      "company": "小米",
+      "url": "https://hr.xiaomi.com/",
+      "verifiedAt": "2026-10-11",
+      "verificationSource": "https://www.mi.com/about/join",
+      "httpStatus": 200,
+      "title": "小米",
+      "htmlSha256": "ea4805d5039bf2b8fd269ab2a9e64bb568eb702ca85cd3256a5ad565502fde4a"
+    },
+    {
+      "company": "快手",
+      "url": "https://zhaopin.kuaishou.cn/",
+      "verifiedAt": "2026-10-11",
+      "verificationSource": "https://www.kuaishou.com/",
+      "httpStatus": 200,
+      "title": "快手招聘",
+      "htmlSha256": "bd8bc2f323c1eb8103035a2dbf8906e86300599ff0425b6d4ec9ae788c6b6210"
+    },
+    {
+      "company": "小红书",
+      "url": "https://job.xiaohongshu.com/",
+      "verifiedAt": "2026-10-11",
+      "verificationSource": "https://job.xiaohongshu.com/",
+      "httpStatus": 200,
+      "title": "小红书",
+      "htmlSha256": "f1f30b11ea073ee8875ae16f51235a6e7c0acb9849f809eeb607a4047c5c1980"
+    },
+    {
+      "company": "哔哩哔哩",
+      "url": "https://jobs.bilibili.com/",
+      "verifiedAt": "2026-10-11",
+      "verificationSource": "https://www.bilibili.com/",
+      "httpStatus": 200,
+      "title": "哔哩哔哩-招聘",
+      "htmlSha256": "a11e886ebbd8898cc771a1f6da47f4a8eae45537fee1c3598e04bad630cd78f7"
+    },
+    {
+      "company": "携程",
+      "url": "https://careers.trip.com/",
+      "verifiedAt": "2026-10-11",
+      "verificationSource": "https://group.trip.com/",
+      "httpStatus": 200,
+      "title": "Trip.com Group Careers",
+      "htmlSha256": "82ae8f83e4580d48fb2e14097b58ee6d3e4a623f29852986d6ecddbd817db3b6"
+    },
+    {
+      "company": "科大讯飞",
+      "url": "https://iflytek.zhiye.com/",
+      "verifiedAt": "2026-10-11",
+      "verificationSource": "https://www.iflytek.com/",
+      "httpStatus": 200,
+      "title": "官网 | 科大讯飞招聘",
+      "htmlSha256": "c7b6ac26f4cb5ffbf6baaa9c9a3ed1cdd5733af6ec8863ffdd004c28307c8bb6"
+    },
+    {
+      "company": "深信服",
+      "url": "https://hr.sangfor.com/",
+      "verifiedAt": "2026-10-11",
+      "verificationSource": "https://hr.sangfor.com/",
+      "httpStatus": 200,
+      "title": "深信服招聘官网-深信服招聘",
+      "htmlSha256": "42487fd075635c440aebe072cc7c1350953fe1144ee44932ddb67faa2cf38147"
+    }
+  ],
+  "network": "Electron session via system proxy",
+  "limitations": "HTTP and corporate identity verified; site-specific login and application submission not tested"
+}

@@ -1,0 +1,449 @@
+{
+  "passed": true,
+  "initial": {
+    "width": 1024,
+    "height": 701,
+    "scale": 1.5,
+    "mainWidth": 826,
+    "mainScrollWidth": 826,
+    "mainScrollTop": 0,
+    "sidebarScrollTop": 0,
+    "sidebarHeight": 665,
+    "sidebarScrollHeight": 650,
+    "sidebarViewport": 434,
+    "bottomTop": 566.6666870117188,
+    "bottomBottom": 683.3333587646484,
+    "titleHeight": 36,
+    "titleColor": "rgb(247, 248, 245)",
+    "scrollbarWidth": "6px",
+    "scrollbarThumb": "rgba(32, 32, 32, 0.22)",
+    "font": "\"Microsoft YaHei UI\", \"Microsoft YaHei\", \"Segoe UI\", sans-serif",
+    "coloredText": [
+      {
+        "text": "腾讯↗",
+        "color": "rgb(49, 92, 73)"
+      },
+      {
+        "text": "↗",
+        "color": "rgb(49, 92, 73)"
+      },
+      {
+        "text": "阿里巴巴↗",
+        "color": "rgb(49, 92, 73)"
+      },
+      {
+        "text": "↗",
+        "color": "rgb(49, 92, 73)"
+      },
+      {
+        "text": "华为↗",
+        "color": "rgb(49, 92, 73)"
+      },
+      {
+        "text": "↗",
+        "color": "rgb(49, 92, 73)"
+      },
+      {
+        "text": "字节跳动↗",
+        "color": "rgb(49, 92, 73)"
+      },
+      {
+        "text": "↗",
+        "color": "rgb(49, 92, 73)"
+      },
+      {
+        "text": "拼多多↗",
+        "color": "rgb(49, 92, 73)"
+      },
+      {
+        "text": "↗",
+        "color": "rgb(49, 92, 73)"
+      },
+      {
+        "text": "美团↗",
+        "color": "rgb(49, 92, 73)"
+      },
+      {
+        "text": "↗",
+        "color": "rgb(49, 92, 73)"
+      },
+      {
+        "text": "百度↗",
+        "color": "rgb(49, 92, 73)"
+      },
+      {
+        "text": "↗",
+        "color": "rgb(49, 92, 73)"
+      },
+      {
+        "text": "京东↗",
+        "color": "rgb(49, 92, 73)"
+      },
+      {
+        "text": "↗",
+        "color": "rgb(49, 92, 73)"
+      },
+      {
+        "text": "网易↗",
+        "color": "rgb(49, 92, 73)"
+      },
+      {
+        "text": "↗",
+        "color": "rgb(49, 92, 73)"
+      },
+      {
+        "text": "小米↗",
+        "color": "rgb(49, 92, 73)"
+      },
+      {
+        "text": "↗",
+        "color": "rgb(49, 92, 73)"
+      },
+      {
+        "text": "快手↗",
+        "color": "rgb(49, 92, 73)"
+      },
+      {
+        "text": "↗",
+        "color": "rgb(49, 92, 73)"
+      },
+      {
+        "text": "小红书↗",
+        "color": "rgb(49, 92, 73)"
+      },
+      {
+        "text": "↗",
+        "color": "rgb(49, 92, 73)"
+      },
+      {
+        "text": "哔哩哔哩↗",
+        "color": "rgb(49, 92, 73)"
+      },
+      {
+        "text": "↗",
+        "color": "rgb(49, 92, 73)"
+      },
+      {
+        "text": "携程↗",
+        "color": "rgb(49, 92, 73)"
+      },
+      {
+        "text": "↗",
+        "color": "rgb(49, 92, 73)"
+      },
+      {
+        "text": "科大讯飞↗",
+        "color": "rgb(49, 92, 73)"
+      },
+      {
+        "text": "↗",
+        "color": "rgb(49, 92, 73)"
+      },
+      {
+        "text": "深信服↗",
+        "color": "rgb(49, 92, 73)"
+      },
+      {
+        "text": "↗",
+        "color": "rgb(49, 92, 73)"
+      },
+      {
+        "text": "查看知识来源 ↗",
+        "color": "rgb(49, 92, 73)"
+      }
+    ]
+  },
+  "pages": [
+    {
+      "name": "home",
+      "width": 1024,
+      "height": 701,
+      "scale": 1.5,
+      "mainWidth": 826,
+      "mainScrollWidth": 826,
+      "mainScrollTop": 0,
+      "sidebarScrollTop": 0,
+      "sidebarHeight": 665,
+      "sidebarScrollHeight": 650,
+      "sidebarViewport": 434,
+      "bottomTop": 566.6666870117188,
+      "bottomBottom": 683.3333587646484,
+      "titleHeight": 36,
+      "titleColor": "rgb(247, 248, 245)",
+      "scrollbarWidth": "6px",
+      "scrollbarThumb": "rgba(32, 32, 32, 0.22)",
+      "font": "\"Microsoft YaHei UI\", \"Microsoft YaHei\", \"Segoe UI\", sans-serif",
+      "coloredText": [
+        {
+          "text": "腾讯↗",
+          "color": "rgb(49, 92, 73)"
+        },
+        {
+          "text": "↗",
+          "color": "rgb(49, 92, 73)"
+        },
+        {
+          "text": "阿里巴巴↗",
+          "color": "rgb(49, 92, 73)"
+        },
+        {
+          "text": "↗",
+          "color": "rgb(49, 92, 73)"
+        },
+        {
+          "text": "华为↗",
+          "color": "rgb(49, 92, 73)"
+        },
+        {
+          "text": "↗",
+          "color": "rgb(49, 92, 73)"
+        },
+        {
+          "text": "字节跳动↗",
+          "color": "rgb(49, 92, 73)"
+        },
+        {
+          "text": "↗",
+          "color": "rgb(49, 92, 73)"
+        },
+        {
+          "text": "拼多多↗",
+          "color": "rgb(49, 92, 73)"
+        },
+        {
+          "text": "↗",
+          "color": "rgb(49, 92, 73)"
+        },
+        {
+          "text": "美团↗",
+          "color": "rgb(49, 92, 73)"
+        },
+        {
+          "text": "↗",
+          "color": "rgb(49, 92, 73)"
+        },
+        {
+          "text": "百度↗",
+          "color": "rgb(49, 92, 73)"
+        },
+        {
+          "text": "↗",
+          "color": "rgb(49, 92, 73)"
+        },
+        {
+          "text": "京东↗",
+          "color": "rgb(49, 92, 73)"
+        },
+        {
+          "text": "↗",
+          "color": "rgb(49, 92, 73)"
+        },
+        {
+          "text": "网易↗",
+          "color": "rgb(49, 92, 73)"
+        },
+        {
+          "text": "↗",
+          "color": "rgb(49, 92, 73)"
+        },
+        {
+          "text": "小米↗",
+          "color": "rgb(49, 92, 73)"
+        },
+        {
+          "text": "↗",
+          "color": "rgb(49, 92, 73)"
+        },
+        {
+          "text": "快手↗",
+          "color": "rgb(49, 92, 73)"
+        },
+        {
+          "text": "↗",
+          "color": "rgb(49, 92, 73)"
+        },
+        {
+          "text": "小红书↗",
+          "color": "rgb(49, 92, 73)"
+        },
+        {
+          "text": "↗",
+          "color": "rgb(49, 92, 73)"
+        },
+        {
+          "text": "哔哩哔哩↗",
+          "color": "rgb(49, 92, 73)"
+        },
+        {
+          "text": "↗",
+          "color": "rgb(49, 92, 73)"
+        },
+        {
+          "text": "携程↗",
+          "color": "rgb(49, 92, 73)"
+        },
+        {
+          "text": "↗",
+          "color": "rgb(49, 92, 73)"
+        },
+        {
+          "text": "科大讯飞↗",
+          "color": "rgb(49, 92, 73)"
+        },
+        {
+          "text": "↗",
+          "color": "rgb(49, 92, 73)"
+        },
+        {
+          "text": "深信服↗",
+          "color": "rgb(49, 92, 73)"
+        },
+        {
+          "text": "↗",
+          "color": "rgb(49, 92, 73)"
+        },
+        {
+          "text": "查看知识来源 ↗",
+          "color": "rgb(49, 92, 73)"
+        }
+      ]
+    },
+    {
+      "name": "chat",
+      "width": 1024,
+      "height": 701,
+      "scale": 1.5,
+      "mainWidth": 826,
+      "mainScrollWidth": 826,
+      "mainScrollTop": 0,
+      "sidebarScrollTop": 0,
+      "sidebarHeight": 665,
+      "sidebarScrollHeight": 650,
+      "sidebarViewport": 434,
+      "bottomTop": 566.6666870117188,
+      "bottomBottom": 683.3333587646484,
+      "titleHeight": 36,
+      "titleColor": "rgb(247, 248, 245)",
+      "scrollbarWidth": "6px",
+      "scrollbarThumb": "rgba(32, 32, 32, 0.22)",
+      "font": "\"Microsoft YaHei UI\", \"Microsoft YaHei\", \"Segoe UI\", sans-serif",
+      "coloredText": [
+        {
+          "text": "✧",
+          "color": "rgb(106, 132, 96)"
+        }
+      ]
+    },
+    {
+      "name": "interview",
+      "width": 1024,
+      "height": 701,
+      "scale": 1.5,
+      "mainWidth": 826,
+      "mainScrollWidth": 826,
+      "mainScrollTop": 0,
+      "sidebarScrollTop": 0,
+      "sidebarHeight": 665,
+      "sidebarScrollHeight": 650,
+      "sidebarViewport": 434,
+      "bottomTop": 566.6666870117188,
+      "bottomBottom": 683.3333587646484,
+      "titleHeight": 36,
+      "titleColor": "rgb(247, 248, 245)",
+      "scrollbarWidth": "6px",
+      "scrollbarThumb": "rgba(32, 32, 32, 0.22)",
+      "font": "\"Microsoft YaHei UI\", \"Microsoft YaHei\", \"Segoe UI\", sans-serif",
+      "coloredText": []
+    },
+    {
+      "name": "jobs",
+      "width": 1024,
+      "height": 701,
+      "scale": 1.5,
+      "mainWidth": 826,
+      "mainScrollWidth": 826,
+      "mainScrollTop": 0,
+      "sidebarScrollTop": 0,
+      "sidebarHeight": 665,
+      "sidebarScrollHeight": 650,
+      "sidebarViewport": 434,
+      "bottomTop": 566.6666870117188,
+      "bottomBottom": 683.3333587646484,
+      "titleHeight": 36,
+      "titleColor": "rgb(247, 248, 245)",
+      "scrollbarWidth": "6px",
+      "scrollbarThumb": "rgba(32, 32, 32, 0.22)",
+      "font": "\"Microsoft YaHei UI\", \"Microsoft YaHei\", \"Segoe UI\", sans-serif",
+      "coloredText": []
+    },
+    {
+      "name": "coding",
+      "width": 1024,
+      "height": 701,
+      "scale": 1.5,
+      "mainWidth": 826,
+      "mainScrollWidth": 826,
+      "mainScrollTop": 0,
+      "sidebarScrollTop": 0,
+      "sidebarHeight": 665,
+      "sidebarScrollHeight": 650,
+      "sidebarViewport": 434,
+      "bottomTop": 566.6666870117188,
+      "bottomBottom": 683.3333587646484,
+      "titleHeight": 36,
+      "titleColor": "rgb(247, 248, 245)",
+      "scrollbarWidth": "6px",
+      "scrollbarThumb": "rgba(32, 32, 32, 0.22)",
+      "font": "\"Microsoft YaHei UI\", \"Microsoft YaHei\", \"Segoe UI\", sans-serif",
+      "coloredText": []
+    },
+    {
+      "name": "learn",
+      "width": 1024,
+      "height": 701,
+      "scale": 1.5,
+      "mainWidth": 826,
+      "mainScrollWidth": 826,
+      "mainScrollTop": 0,
+      "sidebarScrollTop": 0.6666666865348816,
+      "sidebarHeight": 665,
+      "sidebarScrollHeight": 650,
+      "sidebarViewport": 434,
+      "bottomTop": 566.6666870117188,
+      "bottomBottom": 683.3333587646484,
+      "titleHeight": 36,
+      "titleColor": "rgb(247, 248, 245)",
+      "scrollbarWidth": "6px",
+      "scrollbarThumb": "rgba(32, 32, 32, 0.22)",
+      "font": "\"Microsoft YaHei UI\", \"Microsoft YaHei\", \"Segoe UI\", sans-serif",
+      "coloredText": []
+    },
+    {
+      "name": "settings",
+      "width": 1024,
+      "height": 701,
+      "scale": 1.5,
+      "mainWidth": 826,
+      "mainScrollWidth": 826,
+      "mainScrollTop": 0,
+      "sidebarScrollTop": 0.6666666865348816,
+      "sidebarHeight": 665,
+      "sidebarScrollHeight": 650,
+      "sidebarViewport": 434,
+      "bottomTop": 566.6666870117188,
+      "bottomBottom": 683.3333587646484,
+      "titleHeight": 36,
+      "titleColor": "rgb(247, 248, 245)",
+      "scrollbarWidth": "6px",
+      "scrollbarThumb": "rgba(32, 32, 32, 0.22)",
+      "font": "\"Microsoft YaHei UI\", \"Microsoft YaHei\", \"Segoe UI\", sans-serif",
+      "coloredText": []
+    }
+  ],
+  "sidebarWheel": true,
+  "pinnedFooter": true,
+  "routeResetsScroll": true,
+  "nativeControlsVisible": true,
+  "darkSystemTheme": true,
+  "errors": []
+}

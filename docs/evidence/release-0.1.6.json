@@ -1,0 +1,12 @@
+{
+  "version": "0.1.6",
+  "passed": true,
+  "piSourceFilesVerified": 1839,
+  "piSourceDigest": "b4f2d31cc38be3a3fa181235d85d1395eacb17ef79a4463115ad6d4217d67abc",
+  "portable": {
+    "crcAllFiles": true,
+    "PiCareer.exe": "c21c718766bd937ed9ad70992379785e60e2ffae6428272880fcac1a4e48f5bf",
+    "resources/app.asar": "1e886ec4e2638274556cba2586638e02384b975ba74333350fdce2344fa1b034",
+    "resources/resources/pi/worker.mjs": "0b6fec049663ff5c6545960b2281c59b0f87df3679223228cf04e2e4d110fe12"
+  }
+}

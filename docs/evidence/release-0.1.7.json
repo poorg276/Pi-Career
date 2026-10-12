@@ -1,0 +1,13 @@
+{
+  "version": "0.1.7",
+  "passed": true,
+  "piSourceFiles": 1839,
+  "piSourceUnchanged": true,
+  "portableCRC": true,
+  "portableFiles": 18135,
+  "keyFilesMatch": [
+    "PiCareer.exe",
+    "resources/app.asar",
+    "resources/resources/pi/worker.mjs"
+  ]
+}

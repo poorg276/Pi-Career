@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "api": true,
+  "encryptedCredentials": true,
+  "restartContext": true,
+  "toolAllowDeny": true,
+  "cancel": true,
+  "interview8": true,
+  "learning113": true,
+  "nativeReadSearchFindPowerShell": true,
+  "oauthCancel": true,
+  "workerCrash": true,
+  "modelRateLimitInvalidTokenDisconnect": true,
+  "cleanPath": false,
+  "requests": 36
+}

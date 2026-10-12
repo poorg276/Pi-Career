@@ -1,0 +1,19 @@
+{
+  "version": "0.1.5",
+  "passed": true,
+  "portableZipCRC": true,
+  "matchesTestedUnpackedFiles": [
+    {
+      "file": "PiCareer.exe",
+      "sha256": "cca909206d2c41362253b1794561e49430e9a258b2392420ff09e252d4ff86dd"
+    },
+    {
+      "file": "resources/app.asar",
+      "sha256": "e85016ce6be583dff109ad0774a9e126202c58aada4f4b2022924ff3eee2540d"
+    },
+    {
+      "file": "resources/resources/pi/worker.mjs",
+      "sha256": "9e533def669be4147ea3d3af57f4401f356418e34c76becb19ea9bcf4cbc2e5b"
+    }
+  ]
+}

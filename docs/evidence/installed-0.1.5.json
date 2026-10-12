@@ -1,0 +1,30 @@
+{
+  "version": "0.1.5",
+  "databasePreserved": true,
+  "installerExitCode": 0,
+  "files": [
+    {
+      "sha256": "CCA909206D2C41362253B1794561E49430E9A258B2392420FF09E252D4FF86DD",
+      "file": "PiCareer.exe"
+    },
+    {
+      "sha256": "E85016CE6BE583DFF109AD0774A9E126202C58AADA4F4B2022924FF3EEE2540D",
+      "file": "resources\\app.asar"
+    },
+    {
+      "sha256": "9E533DEF669BE4147EA3D3AF57F4401F356418E34C76BECB19EA9BCF4CBC2E5B",
+      "file": "resources\\resources\\pi\\worker.mjs"
+    },
+    {
+      "sha256": "1B3B766722940528820AFB2674C8F3A3BE8B704E00DDC4C203203BD35DAE3736",
+      "file": "resources\\resources\\pi\\node_modules\\@earendil-works\\pi-ai\\dist\\picareer-compat.json"
+    }
+  ],
+  "passed": true,
+  "shortcutTarget": "C:\\Users\\HP\\AppData\\Local\\Programs\\PiCareer\\PiCareer.exe",
+  "databaseBefore": "0BC32123FBF9F1F67FD32C1BE9E17E43E6BC4E4982EBAC4495C114D1111FEDA8",
+  "databaseAfter": "0BC32123FBF9F1F67FD32C1BE9E17E43E6BC4E4982EBAC4495C114D1111FEDA8",
+  "at": "2026-10-10T20:12:22.3924199+08:00",
+  "installedExe": "C:\\Users\\HP\\AppData\\Local\\Programs\\PiCareer\\PiCareer.exe",
+  "realAccountLogin": "verified_existing_account_keyless_search_and_public_web"
+}

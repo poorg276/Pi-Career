@@ -1,0 +1,23 @@
+{
+  "version": "0.1.9",
+  "scale": "1.5",
+  "passed": true,
+  "clipboardAndDerivedURL": true,
+  "failureAndRetry": true,
+  "oldDraftPreserved": true,
+  "pageSwitchPreserved": true,
+  "attemptSaveRecovery": true,
+  "draftSaveRecovery": true,
+  "independentAttemptsAndEdits": true,
+  "all100RenderedOffline": true,
+  "threeImagesRendered": true,
+  "noRunnerLoaded": true,
+  "geometry": {
+    "width": 806,
+    "viewport": 1060,
+    "scroll": 1060
+  },
+  "restartPreserved": true,
+  "errors": [],
+  "at": "2026-10-11T03:44:16.126Z"
+}

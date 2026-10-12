@@ -1,0 +1,13 @@
+{
+  "version": "0.1.8",
+  "scale": "1.5",
+  "passed": true,
+  "strictRelatedFallback": true,
+  "minimumFont": 13,
+  "returnJDAndScroll": true,
+  "favoritesAndSettingsReturn": true,
+  "cancelRetry": true,
+  "runningNavigationAndNewRequestIsolation": true,
+  "legacyJDGuard": true,
+  "errors": []
+}

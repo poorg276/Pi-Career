@@ -1,0 +1,18 @@
+[
+  {
+    "file": "PiCareer.exe",
+    "verified": true
+  },
+  {
+    "file": "resources\\app.asar",
+    "verified": true
+  },
+  {
+    "file": "resources\\resources\\pi\\worker.mjs",
+    "verified": true
+  },
+  {
+    "file": "resources\\resources\\bin\\rg.exe",
+    "verified": true
+  }
+]

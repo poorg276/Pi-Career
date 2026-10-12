@@ -1,0 +1,25 @@
+{
+  "version": "0.1.11",
+  "scale": "1.5",
+  "passed": true,
+  "requests": 3,
+  "offlineDraft": true,
+  "textPDFDOCXAndScannedPDFParsed": true,
+  "credentialExclusion": true,
+  "visionCapabilityGuard": true,
+  "actualPiWithMockModel": true,
+  "evidenceAndQuestions": true,
+  "clipboard": true,
+  "preview": true,
+  "docxAndPDFExport": true,
+  "photoAndResearchTemplate": true,
+  "overflowBlocked": true,
+  "restartRecovery": true,
+  "deletePreservesOriginal": true,
+  "geometry": {
+    "width": 1080,
+    "scroll": 882,
+    "viewport": 882
+  },
+  "errors": []
+}
