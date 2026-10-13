@@ -121,6 +121,8 @@ test("Agent role can match explicit responsibilities but not generic AI", () => 
 			"负责大模型服务的运行维护以及后端应用开发，熟悉 Python 编程和基本数据库管理，需要优秀的沟通能力。",
 	});
 	assert.equal(classifyPosting(f.source, f.p, filters), undefined);
+	f = make({role: "全栈开发工程师", description: "负责业务前后端开发、微服务维护和常规接口设计，保障业务系统稳定运行。任职要求：有相关Agent开发经验者优先。"});
+	assert.equal(classifyPosting(f.source, f.p, filters), undefined);
 });
 test("summary evidence stays related; unknown fields are not silently filled", () => {
 	const { p, source } = make();
@@ -259,7 +261,7 @@ test("structured partner employer is not a Huawei strict match", () => {
 		"different",
 	);
 });
-test("six query groups, twelve documents and concurrency three bound a search", async () => {
+test("six query groups, twenty-four documents and concurrency three bound a search", async () => {
 	const f = fixture();
 	let active = 0,
 		peak = 0,
@@ -287,7 +289,7 @@ test("six query groups, twelve documents and concurrency three bound a search", 
 		new AbortController().signal,
 		() => {},
 	);
-	assert.equal(reads, 12);
+	assert.equal(reads, 24);
 	assert.ok(peak <= 3);
 	assert.ok(queries.size <= 6);
 	assert.equal(r.matched.length, 0);

@@ -30,12 +30,16 @@ export async function toolsServer() {
 				req.socket.destroy();
 				return;
 			}
-			if (fixture.mode === "429") {
-				res.writeHead(429);
+			if (fixture.mode === "429" || fixture.mode === "403") {
+				res.writeHead(Number(fixture.mode));
 				res.end();
 				return;
 			}
 			const url = new URL(req.url, `https://${req.headers.host}`);
+			if (url.pathname.startsWith("/redirect-")) {
+				const targets = { "/redirect-public": "https://example.com/jobs/1", "/redirect-private": "http://127.0.0.1/secret", "/redirect-verification": "https://example.com/web/passport/zp/verify.html" };
+				res.writeHead(302, { Location: targets[url.pathname] ?? "https://example.com/jobs/1" }); res.end(); return;
+			}
 			if (fixture.mode === "jobs") {
 				res.setHeader("Content-Type", "text/html; charset=utf-8");
 				if (url.hostname === "www.bing.com") {

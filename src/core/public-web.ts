@@ -1,11 +1,20 @@
 import { isIP } from "node:net";
+import { trustedZhiyeHost } from "./recruitment.ts";
 
 export interface WebPage {
 	url: string;
 	body: string;
 	contentType: string;
 }
-export type WebReader = (url: string, signal?: AbortSignal) => Promise<WebPage>;
+export interface RecruitmentRequest { pageIndex: number; category: "1" | "2" | "3" }
+export type WebReader = (url: string, signal?: AbortSignal, request?: RecruitmentRequest) => Promise<WebPage>;
+export function validateRecruitmentRequest(url: string, request: RecruitmentRequest): void {
+	const u = publicUrl(url);
+	if (!trustedZhiyeHost(url) || u.pathname !== "/api/Jobad/GetJobAdPageList" || u.search ||
+		!Number.isInteger(request.pageIndex) || request.pageIndex < 0 || request.pageIndex > 4 ||
+		!["1", "2", "3"].includes(request.category))
+		throw new WebError("ADDRESS", "仅允许读取已核验招聘站点的公开职位列表。");
+}
 function abortable<T>(task: Promise<T>, signal: AbortSignal): Promise<T> {
 	return new Promise((resolve, reject) => {
 		const abort = () => {
@@ -96,6 +105,7 @@ export async function readPublicPage(
 	resolveHost: (host: string, url: string) => Promise<string[]>,
 	parent?: AbortSignal,
 	timeout = 20000,
+	allowJSON = false,
 ): Promise<WebPage> {
 	const signal = AbortSignal.any([
 		...(parent ? [parent] : []),
@@ -105,6 +115,10 @@ export async function readPublicPage(
 		let url = publicUrl(input);
 		for (let redirects = 0; redirects <= 5; redirects++) {
 			signal.throwIfAborted();
+			if (/\/(?:[^/]+\/)*(?:verify|captcha|challenge)(?:\.html)?(?:\/|$)/i.test(url.pathname))
+				throw new WebError("VERIFICATION", "网站要求安全验证，可在系统浏览器打开官方入口；未将验证页作为岗位正文。");
+			if (/\/(?:login|signin)(?:\.html)?(?:\/|$)/i.test(url.pathname))
+				throw new WebError("LOGIN", "网站要求登录，可在系统浏览器打开招聘入口查看。");
 			const host = url.hostname.replace(/^\[|\]$/g, "");
 			const addresses = isIP(host)
 				? [host]
@@ -140,7 +154,8 @@ export async function readPublicPage(
 			}
 			const contentType = res.headers.get("content-type") ?? "";
 			if (
-				!/^(text\/(html|plain)|application\/xhtml\+xml)\b/i.test(contentType)
+				!/^(text\/(html|plain)|application\/xhtml\+xml)\b/i.test(contentType) &&
+				!(allowJSON && /^application\/json\b/i.test(contentType))
 			) {
 				await res.body?.cancel();
 				throw new WebError(
@@ -191,9 +206,10 @@ export async function readPublicPage(
 		if (signal.aborted)
 			throw new WebError("TIMEOUT", "网页请求超时，请稍后重试。");
 		if (error instanceof WebError) throw error;
-		throw new WebError(
-			"NETWORK",
-			"网页连接失败，请检查网络和系统代理；未绕过代理。",
-		);
+		const message = error instanceof Error ? error.message : String(error);
+		const proxy = /PROXY|TUNNEL/i.test(message);
+		throw new WebError(proxy ? "PROXY" : "NETWORK", proxy
+			? "系统代理连接失败；未绕过代理。"
+			: "网页连接失败，请检查网络或稍后重试。");
 	}
 }

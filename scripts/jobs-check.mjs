@@ -26,6 +26,7 @@ const app = await electron.launch({
 	env: {
 		...process.env,
 		PICAREER_TEST_DATA: mkdtempSync(join(out, "data-")),
+		PICAREER_DASHBOARD_AUTOSTART: "0",
 		NODE_EXTRA_CA_CERTS: join(root, "tests/fixtures/tools-test-cert.pem"),
 	},
 	timeout: 60000,
@@ -45,6 +46,12 @@ try {
 			session.fromPartition = (...args) => {
 				const isolated = original(...args);
 				if (String(args[0]).startsWith("picareer-web-"))
+				{
+					// The proxy fixture never reaches real servers. Pin only its three
+					// synthetic hosts so OS proxy DNS caches cannot make this test flaky.
+					const resolveHost = isolated.resolveHost.bind(isolated);
+					isolated.resolveHost = (host, options) => ["www.bing.com", "html.duckduckgo.com", "example.com"].includes(host)
+						? Promise.resolve({endpoints:[{address:"93.184.216.34",family:"ipv4"}],aliases:[]}) : resolveHost(host, options);
 					isolated.setCertificateVerifyProc((request, callback) => {
 						const fixtureHost = [
 							"www.bing.com",
@@ -58,6 +65,7 @@ try {
 								: -3,
 						);
 					});
+				}
 				return isolated;
 			};
 		},
@@ -74,6 +82,13 @@ try {
 			method,
 			input,
 		});
+	fixture.mode = "ok";
+	assert.match(await call("jd", { text: "https://example.com/redirect-public" }), /模拟公开网页/);
+	await assert.rejects(() => call("jd", { text: "https://example.com/redirect-private" }), /公开|内网/);
+	await assert.rejects(() => call("jd", { text: "https://example.com/redirect-verification" }), /验证/);
+	assert.ok(!fixture.calls.some(c => /verify\.html|\/secret/.test(c.path)));
+	evidence.manualRedirectValidation = true;
+	fixture.mode = "jobs";
 	await call("settings", {
 		provider: "custom",
 		model: "fixture-long-model-name-".repeat(4),
@@ -250,6 +265,17 @@ try {
 	);
 	await page.getByRole("button", { name: "取消", exact: true }).click();
 	evidence.legacyJDGuard = true;
+	fixture.mode = "403";
+	await assert.rejects(() => call("jd", { text: "https://example.com/agent" }), /HTTP 403/);
+	fixture.mode = "429";
+	await assert.rejects(() => call("jd", { text: "https://example.com/agent" }), /HTTP 429/);
+	fixture.mode = "disconnect";
+	await assert.rejects(() => call("jd", { text: "https://example.com/agent" }), /连接|中断/);
+	await app.evaluate(async ({ session }) => session.defaultSession.setProxy({proxyRules:"127.0.0.1:9"}));
+	const networkCalls = fixture.calls.length;
+	await assert.rejects(() => call("jd", { text: "https://example.com/agent" }), /代理|连接/);
+	assert.equal(fixture.calls.length,networkCalls);
+	evidence.httpLimitDisconnectAndNoProxyBypass = true;
 	assert.deepEqual(errors, []);
 	evidence.passed = true;
 	evidence.errors = errors;

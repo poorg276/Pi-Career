@@ -3,7 +3,7 @@ import { Service } from "../core/service.ts";
 import type { AppEvent, PromptEvent, ArtifactTarget } from "../shared/types.ts";
 import { createCodexFetch } from "../core/codex-network.ts";
 import { createServiceFetch } from "../core/service-network.ts";
-import type { WebPage, WebReader } from "../core/public-web.ts";
+import { WebError, type WebPage, type WebReader } from "../core/public-web.ts";
 type ParentPort = {
 	postMessage(value: unknown): void;
 	on(
@@ -90,7 +90,7 @@ const webPending = new Map<
 	string,
 	{ resolve: (page: WebPage) => void; reject: (error: Error) => void }
 >();
-const readWeb: WebReader = (url, signal) =>
+const readWeb: WebReader = (url, signal, recruitment) =>
 	new Promise((resolve, reject) => {
 		const id = randomUUID();
 		const cleanup = () => {
@@ -123,7 +123,7 @@ const readWeb: WebReader = (url, signal) =>
 				reject(error);
 			},
 		});
-		port.postMessage({ type: "webRead", id, url });
+		port.postMessage({ type: "webRead", id, url, recruitment });
 	});
 const trashArtifact = (target: ArtifactTarget): Promise<void> =>
 	new Promise((resolve, reject) => {
@@ -150,7 +150,7 @@ ready
 port.on("message", async ({ data: m }) => {
 	if (m.type === "webReply") {
 		const task = webPending.get(String(m.id));
-		if (m.error) task?.reject(new Error(String(m.error)));
+		if (m.error) task?.reject(new WebError(String(m.code ?? "NETWORK"), String(m.error)));
 		else task?.resolve(m.value as WebPage);
 		return;
 	}

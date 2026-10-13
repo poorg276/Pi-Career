@@ -26,7 +26,7 @@ const launch = async () => {
 			...(process.env.PICAREER_EXE ? [] : [root]),
 			`--force-device-scale-factor=${scale}`,
 		],
-		env: { ...process.env, PICAREER_TEST_DATA: data },
+		env: { ...process.env, PICAREER_TEST_DATA: data, PICAREER_DASHBOARD_AUTOSTART: "0" },
 		timeout: 60000,
 	});
 	page = await app.firstWindow();

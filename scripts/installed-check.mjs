@@ -58,7 +58,7 @@ try {
 	await page
 		.getByRole("heading", { name: "PiCareer工作台" })
 		.waitFor({ timeout: 60000 });
-	if(["0.1.12","0.1.13"].includes(version)) {
+	if(["0.1.12","0.1.13","0.1.14"].includes(version)) {
 		assert.equal(await page.title(),"PiCareer·辅助求职Agent");
 		assert.equal(await app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].getTitle()),"PiCareer·辅助求职Agent");
 		assert.deepEqual(await page.locator(".feature h3").allTextContents(),["模拟面试","企业岗位检索","LeetCode Hot100","八股知识背诵","简历优化"]);
@@ -71,7 +71,7 @@ try {
 		await page.waitForTimeout(500);
 	} while(Date.now()<end);
 	assert.equal(dashboard.news.length,3,JSON.stringify(dashboard.warnings));
-	if(["0.1.12","0.1.13"].includes(version) && skipDaily) {
+	if(["0.1.12","0.1.13","0.1.14"].includes(version) && skipDaily) {
 		assert.equal(dashboard.attemptedAt,dashboardBefore.news?.attemptedAt);
 		assert.equal(dashboard.requestId,undefined);
 	}
@@ -86,7 +86,7 @@ try {
 	assert.equal(afterWake.requestId,dashboard.requestId);
 	assert.equal(afterWake.attemptedAt,dashboard.attemptedAt);
 	assert.equal(await app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows().length),1);
-	assert.equal(await page.locator(".recruitment-link").count(),16);
+	assert.equal(await page.locator(".recruitment-link").count(),17);
 	assert.equal(await page.locator(".hero").count(),0);
 	await page.screenshot({path:join(root,`docs/screenshots/installed-dashboard-${version}.png`)});
 	const state = await page.evaluate(() => window.picareer.call("state", null));
@@ -137,7 +137,7 @@ try {
 	await page.screenshot({
 		path: join(root, `docs/screenshots/installed-jobs-${version}.png`),
 	});
-	if (["0.1.8", "0.1.9", "0.1.10", "0.1.11", "0.1.12", "0.1.13"].includes(version)) {
+	if (["0.1.8", "0.1.9", "0.1.10", "0.1.11", "0.1.12", "0.1.13", "0.1.14"].includes(version)) {
 		await page
 			.getByRole("button", { name: "＋ 手动录入目标岗位", exact: true })
 			.first()
@@ -171,7 +171,7 @@ try {
 	await page.getByRole("button",{name:"简历优化",exact:true}).click();
 	await page.getByRole("heading",{name:"简历优化",exact:true}).waitFor();
 	assert.equal(await page.locator(".side-note").count(),0);
-	if(version==="0.1.13") {
+	if(["0.1.13","0.1.14"].includes(version)) {
 		const resume=page.locator(".resume-page:visible");
 		assert.equal(await resume.locator(".resume-content").count(),0);
 		const draftsBefore=await page.evaluate(()=>window.picareer.call("resumeList",null));

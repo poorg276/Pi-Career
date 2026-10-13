@@ -146,6 +146,7 @@ export function extractPage(page: WebPage): Source {
 	}
 	const document = documentFor(page),
 		title = clean(document.title);
+	const requiresScripts = document.querySelectorAll("script[src]").length > 0;
 	if (document.querySelectorAll("*").length > 25000)
 		throw new WebError("SIZE", "网页结构过大，无法提取正文。");
 	for (const node of document.querySelectorAll(
@@ -166,7 +167,7 @@ export function extractPage(page: WebPage): Source {
 		.trim();
 	if (!article || !content || content.length < 100)
 		throw new WebError(
-			"EXTRACT",
+			requiresScripts ? "DYNAMIC" : "EXTRACT",
 			"网页正文不足或无法提取，可能需要登录或加载脚本；未将导航或搜索摘要当作正文。",
 		);
 	return {

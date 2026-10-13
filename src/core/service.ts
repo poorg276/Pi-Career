@@ -71,6 +71,7 @@ export class Service {
 		}, readWeb);
 		this.jobSearch = new JobSearch(this.search, (text, signal) =>
 			this.pi.complete(JOB_EXTRACTION_PROMPT, text, signal),
+			this.store,
 		);
 		this.pi.search = this.search;
 		this.pi.artifacts = this.artifacts;
@@ -147,7 +148,7 @@ export class Service {
 			case "resumeCopyText": { const d=this.resumes.get(str("id",100)); return d.experiences.filter(x=>!args.experienceId||x.id===args.experienceId).map(experienceText).join("\n\n"); }
 			case "resumeExportData": {const d=this.resumes.idle(str("id",100)); if(d.mode==="experience"?!d.experiences.length:!d.layout.order.some(k=>!d.layout.hidden.includes(k)&&d.fields[k].trim()))throw new Error("请先填写简历栏目或生成经历，再导出"); if(hasPlaceholders(d)&&!args.allowPlaceholders)throw new Error("简历含占位信息，请替换或选择作为草稿导出");return {html:resumeHTML(d),docx:args.format==="docx"?await resumeDOCX(d):undefined,pages:d.layout.pages};}
 			case "dashboard": return this.dashboard.state();
-			case "ensureDashboardUpdated": return this.dashboard.ensureUpdated();
+			case "ensureDashboardUpdated": return process.env.PICAREER_DASHBOARD_AUTOSTART === "0" ? this.dashboard.state() : this.dashboard.ensureUpdated();
 			case "refreshDashboard": return this.dashboard.refresh();
 			case "nextDashboardKnowledge": return this.dashboard.nextKnowledge();
 			case "state":
@@ -317,7 +318,7 @@ export class Service {
 						},
 						requestId,
 						controller.signal,
-						(stage) => this.emit({ type: "jobProgress", requestId, stage }),
+						(stage, portals) => this.emit({ type: "jobProgress", requestId, stage, portals }),
 					);
 				} finally {
 					this.jobTasks.delete(requestId);

@@ -1,0 +1,121 @@
+{
+  "version": "0.1.14",
+  "typecheck": true,
+  "automatedTests": 139,
+  "passed": true,
+  "checks": {
+    "jobs-0.1.14-dev-1.25": {
+      "version": "0.1.14",
+      "scale": "1.25",
+      "passed": true,
+      "manualRedirectValidation": true,
+      "strictRelatedFallback": true,
+      "minimumFont": 13,
+      "returnJDAndScroll": true,
+      "favoritesAndSettingsReturn": true,
+      "cancelRetry": true,
+      "runningNavigationAndNewRequestIsolation": true,
+      "legacyJDGuard": true,
+      "httpLimitDisconnectAndNoProxyBypass": true,
+      "errors": []
+    },
+    "jobs-0.1.14-dev-1.5": {
+      "version": "0.1.14",
+      "scale": "1.5",
+      "passed": true,
+      "manualRedirectValidation": true,
+      "strictRelatedFallback": true,
+      "minimumFont": 13,
+      "returnJDAndScroll": true,
+      "favoritesAndSettingsReturn": true,
+      "cancelRetry": true,
+      "runningNavigationAndNewRequestIsolation": true,
+      "legacyJDGuard": true,
+      "errors": []
+    },
+    "jobs-0.1.14-packaged-1.5": {
+      "version": "0.1.14",
+      "scale": "1.5",
+      "passed": true,
+      "manualRedirectValidation": true,
+      "strictRelatedFallback": true,
+      "minimumFont": 13,
+      "returnJDAndScroll": true,
+      "favoritesAndSettingsReturn": true,
+      "cancelRetry": true,
+      "runningNavigationAndNewRequestIsolation": true,
+      "legacyJDGuard": true,
+      "httpLimitDisconnectAndNoProxyBypass": true,
+      "errors": []
+    },
+    "manual-jobs-0.1.14-dev-1.25": {
+      "version": "0.1.14",
+      "scale": "1.25",
+      "passed": true,
+      "dialogGeometry": {
+        "top": 48,
+        "bottom": 744,
+        "viewport": 760,
+        "footerBottom": 743.2000045776367,
+        "scrollable": true,
+        "horizontalOverflow": false
+      },
+      "failedSaveRetainsDraft": true,
+      "offlineCreateEditJD": true,
+      "restartRestored": true,
+      "legacyPreserved": true,
+      "optionalSourceAndDeletion": true,
+      "errors": []
+    },
+    "manual-jobs-0.1.14-packaged-1.5": {
+      "version": "0.1.14",
+      "scale": "1.5",
+      "passed": true,
+      "dialogGeometry": {
+        "top": 48,
+        "bottom": 744,
+        "viewport": 760,
+        "footerBottom": 743.3333587646484,
+        "scrollable": true,
+        "horizontalOverflow": false
+      },
+      "failedSaveRetainsDraft": true,
+      "offlineCreateEditJD": true,
+      "restartRestored": true,
+      "legacyPreserved": true,
+      "optionalSourceAndDeletion": true,
+      "errors": []
+    },
+    "codex-0.1.14-1.25": {
+      "passed": true,
+      "version": "0.1.14",
+      "scale": "1.25",
+      "stages": [
+        "preparing",
+        "browser",
+        "exchanging",
+        "validating",
+        "saving",
+        "refreshing",
+        "complete"
+      ],
+      "actualElectron": true,
+      "contextFromSDK": {
+        "tokens": 20,
+        "contextWindow": 128000,
+        "percent": 0.015625
+      },
+      "windowsEncryptedLongCredential": true,
+      "restartRestoresCredential": true,
+      "proxyTokenExchange": true,
+      "proxyRefreshToken": true,
+      "proxySSE": true,
+      "cancellationRetry": true,
+      "httpAndTokenAndStorageFailures": true,
+      "refreshOnlyAction": true,
+      "realAccountLogin": "not_verified",
+      "productionCertificateValidation": "enabled; test CA trusted only in isolated test process",
+      "errors": []
+    }
+  }
+}

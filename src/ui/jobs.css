@@ -224,3 +224,5 @@
 .job-manual > p {
 	white-space: pre-line;
 }
+
+.job-portal-link{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:12px}.job-portal-link details{flex-basis:100%;font-size:13px}.job-portal-link details p{overflow-wrap:anywhere;font-size:13px}

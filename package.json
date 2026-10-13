@@ -1,6 +1,6 @@
 {
   "name": "picareer",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "private": true,
   "type": "module",
   "description": "基于本地 Pi SDK 的个人 Agent 与求职工作台",

@@ -1,0 +1,42 @@
+{
+  "version": "0.1.14",
+  "passed": true,
+  "existingOAuthRestored": true,
+  "model": "gpt-6-luna",
+  "chatCount": 1,
+  "contextRestored": true,
+  "officialHot100Loaded": true,
+  "allRecordsUnchanged": true,
+  "dashboardDailyPolicy": true,
+  "sameDayStartupSkipped": true,
+  "secondInstanceDidNotRefresh": true,
+  "dashboardWarnings": [
+    "blog.langchain.com：网页连接失败，请检查网络和系统代理；未绕过代理。",
+    "www.langchain.com：不是相关技术更新",
+    "github.com：技术正文不足",
+    "openai.com：The operation was aborted due to timeout",
+    "中文整理暂不可用，已保留官方摘录。"
+  ],
+  "threeVerifiedNews": [
+    {
+      "title": "langgraph-checkpoint-postgres 3.1.3：版本更新",
+      "url": "https://github.com/langchain-ai/langgraph/releases/tag/checkpointpostgres%3D%3D3.1.3",
+      "publishedAt": "2026-10-12T23:05:31.000Z",
+      "summary": "官方发布涉及Agent 框架。原文摘录：fix(checkpoint-postgres,checkpoint-sqlite): treat an empty checkpoint_id as the latest in delta history (#9262) perf(checkpoint-postgres): start the delta walk at the target (#9248) fix(checkpoint,checkpoint-postgres,checkpoint-sqlite): val"
+    },
+    {
+      "title": "langgraph-checkpoint-sqlite 3.1.2：版本更新",
+      "url": "https://github.com/langchain-ai/langgraph/releases/tag/checkpointsqlite%3D%3D3.1.2",
+      "publishedAt": "2026-10-12T22:54:47.000Z",
+      "summary": "官方发布涉及Agent 框架。原文摘录：fix(checkpoint-postgres,checkpoint-sqlite): treat an empty checkpoint_id as the latest in delta history (#9262) fix(checkpoint,checkpoint-postgres,checkpoint-sqlite): validate namespace labels before store dispatch (#9217) fix: order delta "
+    },
+    {
+      "title": "langgraph-sdk 0.4.7：版本更新",
+      "url": "https://github.com/langchain-ai/langgraph/releases/tag/sdk%3D%3D0.4.7",
+      "publishedAt": "2026-10-12T22:54:19.000Z",
+      "summary": "官方发布涉及Agent 框架。原文摘录：fix(sdk-py): end a thread stream's run only on a root lifecycle event (#9228) fix: order delta channel replay by task path (#8544)"
+    }
+  ],
+  "errors": [],
+  "at": "2026-10-13T08:58:14.966Z"
+}

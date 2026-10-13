@@ -65,12 +65,26 @@ export interface JobFilters {
 	company: string;
 	role: string;
 }
+export interface JobRecruitmentPortal extends Source {
+	company?: string;
+	verifiedAt?: string;
+	verificationSource?: string;
+	associationEvidence?: string;
+	readStatus?: "cached" | "ready" | "restricted" | "failed";
+}
+export interface JobDiagnostic {
+	stage: "discovery" | "read" | "verify";
+	code: string;
+	message: string;
+	source?: string;
+}
 export interface JobSearchResult {
 	requestId: string;
 	filters: JobFilters;
 	matched: Job[];
 	related: Job[];
-	portals: Source[];
+	portals: JobRecruitmentPortal[];
+	diagnostics?: JobDiagnostic[];
 	warnings: string[];
 	retrievedAt: string;
 	status: "complete" | "cancelled" | "timeout";
@@ -369,7 +383,7 @@ export interface PromptEvent {
 export type AppEvent =
 	| { type: "resumeUpdate"; draft: import("./resume.ts").ResumeDraft }
 	| { type: "dashboardUpdate"; state: DashboardState }
-	| { type: "jobProgress"; requestId: string; stage: string }
+	| { type: "jobProgress"; requestId: string; stage: string; portals?: JobRecruitmentPortal[] }
 	| { type: "authorization"; state: AuthorizationState }
 	| { type: "chatUpdate"; chatId: string; turnId?: string; chat: Chat }
 	| { type: "chatDeleted"; chatId: string }

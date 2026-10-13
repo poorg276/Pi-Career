@@ -259,11 +259,12 @@ app.whenReady().then(async () => {
 			try {
 				if (typeof m.id !== "string" || typeof m.url !== "string")
 					throw new Error("网页请求无效。");
-				const value = await publicWeb.read(m.id, m.url);
+				const value = await publicWeb.read(m.id, m.url, m.recruitment);
 				reply({ value });
 			} catch (error) {
 				reply({
 					error: error instanceof Error ? error.message : "网页读取失败。",
+					code: error && typeof error === "object" && "code" in error ? String(error.code) : "NETWORK",
 				});
 			}
 			return;

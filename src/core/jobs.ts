@@ -6,18 +6,21 @@ import type {
 	JobJD,
 	JobSearchResult,
 	Source,
+	JobRecruitmentPortal,
 } from "../shared/types.ts";
 import type { Search } from "./search.ts";
 import { extractPage } from "./web-content.ts";
-import { publicUrl, type WebPage } from "./public-web.ts";
+import { publicUrl, WebError, type WebPage } from "./public-web.ts";
+import { companyIdentity, officialEmployer, knownPortals, trustedZhiyeHost } from "./recruitment.ts";
+import { readZhiyePage } from "./zhiye-jobs.ts";
+import type { Store } from "./store.ts";
 
 const normalize = (s: string) =>
 	s.normalize("NFKC").toLowerCase().replace(/\s+/g, "");
 const contains = (s: string, part: string) =>
 	!!part && normalize(s).includes(normalize(part));
 const unknown = "未提供";
-const official = (url: string) =>
-	/(^|\.)career\.huawei\.com$/.test(new URL(url).hostname);
+const official = (url: string) => !!officialEmployer(url);
 const agentRole = (s: string) => /\bagent\b|智能体/i.test(s);
 const recruiting = (s: string) =>
 	/招聘|岗位职责|任职要求|职位描述|应聘|responsibilit|qualifications|job description/i.test(
@@ -25,7 +28,8 @@ const recruiting = (s: string) =>
 	);
 const excluded = (s: Source) =>
 	/百科|旅游|游玩|攻略|技术教程|培训课程|培训招生|白皮书/.test(s.title) ||
-	/(^|\.)baike\./.test(new URL(s.url).hostname);
+	/(^|\.)baike\./.test(new URL(s.url).hostname) ||
+	/^(?:news\.|finance\.)|(?:^|\.)(?:icswb\.com|hunantoday\.cn|voc\.com\.cn)$/.test(new URL(s.url).hostname);
 export function jobQueries(f: JobFilters): string[] {
 	const values = Object.values(f).map((v) => v.trim());
 	if (!values.some(Boolean)) throw new Error("城市、企业、岗位至少填写一项。");
@@ -39,13 +43,14 @@ export function jobQueries(f: JobFilters): string[] {
 	for (const role of roles.slice(1)) out.push(`${base} ${role} 招聘`);
 	out.push(`${f.company} ${f.role} ${f.city} 招聘 任职要求`);
 	out.push(`${base} ${f.role} 招聘 工作地点`);
+	if (f.company.trim()) out.push(`${base} ${f.role} 官方 招聘官网`);
 	return [...new Set(out.map((s) => s.replace(/\s+/g, " ").trim()))].slice(
 		0,
 		6,
 	);
 }
 type Quote = { value: string; quote: string };
-type Posting = {
+export type Posting = {
 	block: string;
 	role?: Quote;
 	company?: Quote;
@@ -58,7 +63,7 @@ type Parsed = {
 	pageType: "posting" | "portal" | "irrelevant";
 	postings: Posting[];
 };
-type Document = { source: Source; structured: Posting[] };
+export type Document = { source: Source; structured: Posting[]; corporateFooter?: string; links?: { title: string; url: string }[] };
 export type JobExtractor = (
 	text: string,
 	signal: AbortSignal,
@@ -163,7 +168,14 @@ export function jobDocument(page: WebPage): Document {
 			retrievedAt: new Date().toISOString(),
 		};
 	}
-	return { source, structured };
+	const links: { title: string; url: string }[] = [];
+	for (const node of document.querySelectorAll("a[href]")) {
+		const title = node.textContent?.trim() ?? "";
+		if (!/招聘|careers|加入我们|join us/i.test(title)) continue;
+		try { links.push({ title, url: publicUrl(new URL(node.getAttribute("href")!, page.url).href).href }); } catch { /* Non-public links are ignored. */ }
+		if (links.length >= 12) break;
+	}
+	return { source, structured, links, corporateFooter: document.querySelector("footer, #footer, .footer")?.textContent ?? "" };
 }
 
 function checkedField(
@@ -242,8 +254,8 @@ export function classifyPosting(
 		)
 	)
 		city = undefined;
-	if (!company && official(source.url))
-		company = { value: "华为", quote: "华为招聘官网 career.huawei.com" };
+	if (!company && !p.company && official(source.url))
+		company = { value: officialEmployer(source.url)!, quote: `企业官网归属：${officialEmployer(source.url)} · ${new URL(source.url).hostname}` };
 	const fields = {
 		role: role.value,
 		company: company?.value ?? unknown,
@@ -271,16 +283,18 @@ export function classifyPosting(
 			continue;
 		}
 		let yes = contains(fields[key], wanted);
+		if (key === "company") yes = contains(companyIdentity(fields.company), companyIdentity(wanted)) && !/生态|伙伴|客户|供应商|服务商|外包/.test(fields.company);
 		if (key === "city") yes = contains(fields.city, wanted.replace(/市$/, ""));
 		if (key === "company" && /^(huawei|华为)$/i.test(wanted))
 			yes =
 				/华为|huawei/i.test(fields.company) &&
 				!/生态|伙伴|客户|供应商|服务商|外包/.test(fields.company);
 		if (key === "role" && agentRole(wanted)) {
+			const responsibilities = desc.value.split(/任职要求|任职资格|岗位要求|招聘要求|qualifications|requirements/i)[0];
 			yes =
 				agentRole(fields.role) ||
 				/(?:Agent|智能体).{0,45}(?:开发|研发|构建|编排)|(?:开发|研发|构建|编排).{0,45}(?:Agent|智能体)/i.test(
-					desc.value,
+					responsibilities,
 				);
 			if (yes) evidence.role = role.quote + "\n" + desc.quote;
 		} else if (key === "role" && !yes) {
@@ -361,15 +375,33 @@ function localPosting(source: Source): Posting | undefined {
 export class JobSearch {
 	search: Search;
 	extract?: JobExtractor;
-	constructor(search: Search, extract?: JobExtractor) {
+	store?: Store;
+	constructor(search: Search, extract?: JobExtractor, store?: Store) {
 		this.search = search;
 		this.extract = extract;
+		this.store = store;
 	}
 	async document(url: string, signal: AbortSignal): Promise<Document> {
-		if (this.search.readWeb)
-			return jobDocument(
-				await this.search.readWeb(publicUrl(url).href, signal),
-			);
+		if (this.search.readWeb) {
+			const target = publicUrl(url);
+			if (trustedZhiyeHost(url) && /^\/(campus|social)\/detail$/.test(target.pathname)) {
+				const id = target.searchParams.get("jobAdId");
+				if (!id || !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id)) throw new WebError("ADDRESS", "职位编号无效。");
+				for (let page = 0; page < 5; page++) {
+					const data = await readZhiyePage(this.search.readWeb, url, page, signal, target.pathname.startsWith("/campus") ? "2" : "1");
+					const doc = data.documents.find(d => new URL(d.source.url).searchParams.get("jobAdId") === id);
+					if (doc) return doc;
+					if ((page+1)*20 >= data.count) break;
+				}
+				throw new WebError("UNAVAILABLE", "官方列表中未找到该职位的完整职责与要求，职位可能已变更。请打开原文查看。");
+			}
+			try { return jobDocument(await this.search.readWeb(publicUrl(url).href, signal)); }
+			catch (error) {
+				signal.throwIfAborted();
+				if (!(await this.search.key()) || error instanceof WebError && ["ADDRESS", "PROXY", "VERIFICATION"].includes(error.code)) throw error;
+				return { source: await this.search.tavilyExtract(url, signal), structured: [] };
+			}
+		}
 		return { source: await this.search.extract(url, signal), structured: [] };
 	}
 	async postings(doc: Document, signal: AbortSignal): Promise<Parsed> {
@@ -397,167 +429,151 @@ export class JobSearch {
 		};
 	}
 	async run(
-		f: JobFilters,
-		requestId: string,
-		parent: AbortSignal,
-		progress: (stage: string) => void,
-		timeout = 90000,
+		f: JobFilters, requestId: string, parent: AbortSignal,
+		progress: (stage: string, portals?: JobRecruitmentPortal[]) => void, timeout = 90000,
 	): Promise<JobSearchResult> {
-		const queries = jobQueries(f),
-			deadline = AbortSignal.timeout(timeout),
-			signal = AbortSignal.any([parent, deadline]);
-		const result: JobSearchResult = {
-			requestId,
-			filters: f,
-			matched: [],
-			related: [],
-			portals: [],
-			warnings: [],
-			retrievedAt: new Date().toISOString(),
-			status: "complete",
+		const queries = jobQueries(f), deadline = AbortSignal.timeout(timeout), signal = AbortSignal.any([parent, deadline]);
+		const result: JobSearchResult = { requestId, filters: f, matched: [], related: [], portals: [], diagnostics: [], warnings: [], retrievedAt: new Date().toISOString(), status: "complete" };
+		const cached = this.store?.get<JobRecruitmentPortal[]>("recruitment", companyIdentity(f.company)) ?? [];
+		const addPortal = (portal: JobRecruitmentPortal) => {
+			const index = result.portals.findIndex(p => p.url === portal.url);
+			if (index < 0 && result.portals.length >= 4) return;
+			if (index >= 0) result.portals[index] = portal; else result.portals.push(portal);
+			this.store?.put("recruitment", companyIdentity(f.company), result.portals);
+			progress("已找到官方招聘入口，正在核验岗位", [...result.portals]);
 		};
-		const seen = new Set<string>(),
-			jobs = new Map<string, Job>();
+		for (const p of [...knownPortals(f.company), ...cached]) {
+			if (!p.verificationSource || !p.associationEvidence) continue;
+			try { publicUrl(p.url); publicUrl(p.verificationSource); addPortal({ ...p, readStatus: "cached" }); } catch { /* Invalid cache is ignored. */ }
+		}
+		const jobs = new Map<string, Job>(), seen = new Set<string>();
 		let readCount = 0;
-		if (/^(华为|huawei)$/i.test(f.company.trim()))
-			result.portals.push({
-				title: "华为招聘官网",
-				url: "https://career.huawei.com/",
-				content: "前往官网继续筛选；此入口不计作岗位。",
-				kind: "official",
-				retrievedAt: result.retrievedAt,
+		const warn = (message: string, stage: "discovery" | "read" | "verify" = "read", source?: string, error?: unknown) => {
+			if (!result.warnings.includes(message)) {
+				result.warnings.push(message);
+				result.diagnostics!.push({ stage, source, message, code: error instanceof WebError ? error.code : "UNAVAILABLE" });
+			}
+		};
+		const sortedJobs = () => {
+			const fingerprints = new Set<string>(), kept: Job[] = [];
+			const identity = (j: Job) => [companyIdentity(j.company), j.role.replace(/【[^】]*】/g,""),
+				j.city.replace(/[\u3400-\u9fff]+省/g,"").replace(/[·市\s]/g,"").split(/[、,，/]/).sort().join("、")].map(normalize).join("\0");
+			const grams = (s: string) => { const n = normalize(s); return new Set(Array.from({length:Math.max(0,n.length-2)},(_,i)=>n.slice(i,i+3))); };
+			return [...jobs.values()].sort((a,b) => b.score-a.score || (Date.parse(b.publishedAt ?? "") || 0)-(Date.parse(a.publishedAt ?? "") || 0))
+				.filter(j => {
+					const key = normalize([j.role,j.company,j.city,j.content].join("\0"));
+					if (fingerprints.has(key)) return false;
+					for (const previous of kept) if (new URL(previous.url).hostname !== new URL(j.url).hostname && identity(previous) === identity(j)) {
+						const a = grams(previous.content), b = grams(j.content);
+						const overlap = [...a].filter(t => b.has(t)).length / Math.max(1, Math.min(a.size,b.size));
+						if (overlap >= 0.85) return false;
+					}
+					fingerprints.add(key); kept.push(j); return true;
+				});
+		};
+		const enough = () => sortedJobs().filter(j => j.score >= 100).length >= 10;
+		const discover = (doc: Document) => {
+			const company = f.company.trim();
+			if (!company || !doc.source.fullText || !contains(doc.source.title, company) ||
+				!doc.corporateFooter || !contains(doc.corporateFooter, company) || !/版权所有|copyright/i.test(doc.corporateFooter)) return;
+			for (const link of doc.links ?? []) addPortal({
+				title: `${company} · ${link.title}`, company, url: link.url, kind: "official", content: "企业网站指向的招聘入口，需到原站继续筛选。",
+				verifiedAt: new Date().toISOString().slice(0,10), retrievedAt: result.retrievedAt, readStatus: "cached",
+				verificationSource: doc.source.url, associationEvidence: `${doc.source.title}\n${doc.corporateFooter.trim().slice(0,600)}\n招聘链接：${link.title} → ${link.url}`,
 			});
-		const engines: ("Tavily" | "Bing" | "DuckDuckGo")[] =
-			(await this.search.key())
-				? ["Tavily", "Bing", "DuckDuckGo"]
-				: ["Bing", "DuckDuckGo"];
-		const warn = (text: string) => {
-			if (!result.warnings.includes(text)) result.warnings.push(text);
+		};
+		const collect = async (doc: Document) => {
+			const parsed = await this.postings(doc, signal);
+			signal.throwIfAborted();
+			if (parsed.pageType !== "posting") return;
+			for (const posting of parsed.postings) {
+				if (readCount >= 24) break;
+				readCount++;
+				const job = classifyPosting(doc.source, posting, f, doc.structured.includes(posting));
+				if (job) jobs.set(job.id, job);
+			}
 		};
 		try {
-			for (const engine of engines) {
-				const engineBudget =
-					Math.ceil(12 / engines.length) * (engines.indexOf(engine) + 1);
-				for (let batch = 0; batch < queries.length; batch += 3) {
-					signal.throwIfAborted();
-					progress(`正在检索招聘来源 · ${engine}`);
-					const sources = (
-						await Promise.all(
-							queries.slice(batch, batch + 3).map(async (q) => {
-								try {
-									return await this.search.engineSearch(engine, q, signal);
-								} catch (e) {
-									signal.throwIfAborted();
-									warn(`${engine}：${(e as Error).message}`);
-									return [];
-								}
-							}),
-						)
-					).flat();
-					const batchUrls = new Set<string>();
-					const candidates = sources
-						.filter((s) => {
-							if (excluded(s) || seen.has(s.url) || batchUrls.has(s.url))
-								return false;
-							batchUrls.add(s.url);
-							return recruiting(s.title + " " + s.content) || official(s.url);
-						})
-						.sort((a, b) => candidateScore(b, f) - candidateScore(a, f));
-					for (
-						let i = 0;
-						i < candidates.length && readCount < engineBudget;
-						i += 3
-					) {
-						signal.throwIfAborted();
-						progress("正在读取正文并核验招聘企业、工作地点与职责");
-						await Promise.all(
-							candidates.slice(i, i + 3).map(async (source) => {
-								if (readCount >= Math.min(12, engineBudget)) return;
-								readCount++;
-								seen.add(source.url);
-								let doc: Document;
-								try {
-									doc = await this.document(source.url, signal);
-									doc.source.searchEngine = engine;
-								} catch (e) {
-									signal.throwIfAborted();
-									warn(
-										`${new URL(source.url).hostname}：正文读取失败（${(e as Error).message}），结果可能不完整。`,
-									);
-									doc = {
-										source: { ...source, fullText: false },
-										structured: [],
-									};
-								}
-								try {
-									const parsed = await this.postings(doc, signal);
-									if (parsed.pageType === "portal") {
-										if (
-											official(source.url) &&
-											!result.portals.some((p) => p.url === source.url)
-										)
-											result.portals.push({ ...source, kind: "official" });
-										return;
-									}
-									if (parsed.pageType !== "posting") return;
-									for (const p of parsed.postings) {
-										const job = classifyPosting(
-											doc.source,
-											p,
-											f,
-											doc.structured.includes(p),
-										);
-										if (job) jobs.set(job.id, job);
-									}
-								} catch (e) {
-									signal.throwIfAborted();
-									warn("部分候选无法完成证据核验，未列入已核实岗位。");
-								}
-							}),
-						);
+			// Read public ATS data first; ownership comes from the verified corporate link,
+			// never from a generic *.zhiye.com suffix or from a model assertion.
+			if (this.search.readWeb) for (const portal of result.portals.filter(p => trustedZhiyeHost(p.url))) {
+				try {
+					for (let page = 0; page < 5 && readCount < 24 && !enough(); page++) {
+						signal.throwIfAborted(); progress("正在读取官方职位列表", [...result.portals]);
+						const data = await readZhiyePage(this.search.readWeb, portal.url, page, signal);
+						for (const doc of data.documents) {
+							// Structured rows can be screened without model calls. Unrelated roles
+							// do not exhaust the budget before other providers get a chance.
+							if (classifyPosting(doc.source, doc.structured[0], f, true)) await collect(doc);
+							if (readCount >= 24) break;
+						}
+						addPortal({ ...portal, readStatus: "ready", retrievedAt: result.retrievedAt });
+						if ((page+1)*20 >= data.count) break;
 					}
-					if (
-						[...jobs.values()].some((j) => j.score >= 100) ||
-						readCount >= engineBudget
-					)
-						break;
+				} catch (error) {
+					signal.throwIfAborted(); addPortal({ ...portal, readStatus: "failed" });
+					warn(`${new URL(portal.url).hostname}：${(error as Error).message}；可打开官方入口继续查找。`, "read", portal.url, error);
 				}
-				if ([...jobs.values()].some((j) => j.score >= 100)) break;
-				warn(
-					`${engine} 未取得符合全部条件且有正文证据的岗位${engine !== engines.at(-1) ? "，继续尝试其他来源" : ""}。`,
-				);
 			}
-		} catch (e) {
-			if (signal.aborted)
-				result.status = parent.aborted ? "cancelled" : "timeout";
-			else throw e;
+			const engines: ("Tavily" | "Bing" | "DuckDuckGo")[] = await this.search.key() ? ["Tavily", "Bing", "DuckDuckGo"] : ["Bing", "DuckDuckGo"];
+			for (const engine of engines) {
+				if (enough() || readCount >= 24) break;
+				const engineBudget = Math.min(24, readCount + Math.ceil((24-readCount)/(engines.length-engines.indexOf(engine))));
+				for (let batch = 0; batch < queries.length && !enough() && readCount < engineBudget; batch += 3) {
+					signal.throwIfAborted(); progress(`正在检索招聘来源 · ${engine}`);
+					const sources = (await Promise.all(queries.slice(batch,batch+3).map(async query => {
+						try { return await this.search.engineSearch(engine, query, signal); }
+						catch (error) { signal.throwIfAborted(); warn(`${engine}：${(error as Error).message}`, "discovery", undefined, error); return []; }
+					}))).flat();
+					const batchUrls = new Set<string>();
+					const candidates = sources.filter(source => {
+						if (excluded(source) || seen.has(source.url) || batchUrls.has(source.url)) return false;
+						batchUrls.add(source.url); return recruiting(source.title+" "+source.content) || official(source.url);
+					}).sort((a,b) => candidateScore(b,f)-candidateScore(a,f));
+					for (let i = 0; i < candidates.length && readCount < engineBudget && !enough(); i += 3) {
+						signal.throwIfAborted(); progress("正在读取职位正文并核验条件");
+						await Promise.all(candidates.slice(i,i+Math.min(3,engineBudget-readCount)).map(async source => {
+							seen.add(source.url);
+							let readSucceeded = false;
+							try {
+								const doc = await this.document(source.url, signal); doc.source.searchEngine = engine; discover(doc);
+								readSucceeded = true;
+								if (!doc.structured.length) {
+									// A verified recruiting host may be a portal even when generic article extraction is short.
+									const owner = officialEmployer(source.url);
+									if (owner && companyIdentity(f.company) === owner) {
+										const known = knownPortals(owner).find(p => new URL(p.url).hostname === new URL(source.url).hostname)!;
+										addPortal({ ...known, readStatus: "ready" });
+									}
+								}
+								const before = readCount; await collect(doc);
+								if (readCount === before && readCount < 24) readCount++;
+							} catch (error) {
+								signal.throwIfAborted(); if (readCount < 24) readCount++;
+								warn(`${new URL(source.url).hostname}：正文读取或核验失败（${(error as Error).message}），结果可能不完整。`, readSucceeded ? "verify" : "read", source.url, error);
+								if (readSucceeded) return;
+								// Summaries can support related candidates, never strict matches or a ready JD.
+								try {
+									const doc = { source: { ...source, fullText: false }, structured: [] };
+									const parsed = await this.postings(doc, signal);
+									signal.throwIfAborted();
+									for (const p of parsed.postings) { const job = classifyPosting(doc.source,p,f); if(job) jobs.set(job.id,job); }
+								} catch { signal.throwIfAborted(); }
+							}
+						}));
+					}
+				}
+				if (!enough()) warn(`${engine} 结果不足10条${engine !== engines.at(-1) ? "，继续尝试其他来源" : ""}。`, "discovery");
+			}
+		} catch (error) {
+			if (signal.aborted) result.status = parent.aborted ? "cancelled" : "timeout"; else throw error;
 		}
-		if (result.status !== "complete")
-			warn(
-				result.status === "cancelled"
-					? "检索已取消；保留此前已核验的结果。"
-					: "检索达到 90 秒时限；以下仅为已完成核验的结果。",
-			);
-		if (readCount >= 12)
-			warn("本次已达到 12 篇正文核验上限，可调整关键词继续查找。");
-		const sorted = [...jobs.values()].sort(
-			(a, b) =>
-				b.score - a.score ||
-				(Date.parse(b.publishedAt ?? "") || 0) -
-					(Date.parse(a.publishedAt ?? "") || 0),
-		);
-		const fingerprints = new Set<string>();
-		const unique = sorted.filter((j) => {
-			// Exact title/employer/location/body copies are one posting; ranking already preferred the strongest source.
-			const key = normalize([j.role, j.company, j.city, j.content].join("\0"));
-			if (fingerprints.has(key)) return false;
-			fingerprints.add(key);
-			return true;
-		});
-		result.matched = unique.filter((j) => j.score >= 100);
-		result.related = unique.filter((j) => j.score < 100);
-		progress("检索完成");
-		return result;
+		if (result.status !== "complete") warn(result.status === "cancelled" ? "检索已取消；保留此前已核验的结果。" : "检索达到时限；以下仅为已完成核验的结果。");
+		if (readCount >= 24 && !enough()) warn("本次已达到24个待核验职位上限；可打开官方入口继续查找。");
+		const unique = sortedJobs();
+		result.matched = unique.filter(j => j.score >= 100).slice(0,10);
+		result.related = unique.filter(j => j.score < 100);
+		progress("检索完成", [...result.portals]); return result;
 	}
 	async prepare(job: Job, signal: AbortSignal): Promise<JobJD> {
 		const url = publicUrl(job.url).href;

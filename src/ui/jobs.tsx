@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import type { Job, JobFilters, JobSearchResult } from "../shared/types";
+import type { Job, JobFilters, JobSearchResult, JobRecruitmentPortal } from "../shared/types";
 import "./jobs.css";
 import { ManualJobDialogs, useManualJobsWorkspace } from "./manual-jobs.tsx";
 const api = window.picareer;
@@ -11,6 +11,7 @@ export function useJobsWorkspace() {
 		role: "",
 	});
 	const [result, setResult] = useState<JobSearchResult>();
+	const [portals, setPortals] = useState<JobRecruitmentPortal[]>([]);
 	const [favoriteOnly, setFavoriteOnly] = useState(false),
 		[expanded, setExpanded] = useState(false);
 	const [running, setRunning] = useState(false),
@@ -21,8 +22,10 @@ export function useJobsWorkspace() {
 	useEffect(
 		() =>
 			api.onEvent((e) => {
-				if (e.type === "jobProgress" && e.requestId === active.current)
+				if (e.type === "jobProgress" && e.requestId === active.current) {
 					setStage(e.stage);
+					if (e.portals) setPortals(e.portals);
+				}
 				if (e.type === "backendExited") {
 					active.current = undefined;
 					setRunning(false);
@@ -40,9 +43,10 @@ export function useJobsWorkspace() {
 		setFavoriteOnly(false);
 		setExpanded(false);
 		setResult(undefined);
+		setPortals([]);
 		try {
 			const next = await api.call("jobs", { ...filters, requestId });
-			if (active.current === requestId) setResult(next);
+			if (active.current === requestId) { setResult(next); setPortals(next.portals); }
 		} catch (e) {
 			if (active.current === requestId) setError(String(e));
 		} finally {
@@ -65,6 +69,7 @@ export function useJobsWorkspace() {
 		filters,
 		setFilters,
 		result,
+		portals,
 		favoriteOnly,
 		setFavoriteOnly,
 		expanded,
@@ -226,7 +231,7 @@ export function JobsPage({
 						</button>
 					</div>
 					<div className="jobs-search-footer">
-						<span>按职位证据核验 · 官方来源优先 · 招聘有效性以原文为准</span>
+						<span>最多10条已核验岗位 · 官方招聘入口独立展示 · 招聘有效性以原文为准</span>
 						<button
 							type="button"
 							className="model-chip jobs-model"
@@ -270,6 +275,19 @@ export function JobsPage({
 						</details>
 					)}
 				</>
+			)}
+			{!w.favoriteOnly && w.portals.length > 0 && (
+				<section className="panel padded jobs-portals" aria-label="官方招聘入口">
+					<h2>官方招聘入口</h2>
+					<p className="muted">入口不计入岗位数量；职位读取受限时，可在官网继续筛选。</p>
+					{w.portals.map(p => (
+						<div className="job-portal-link" key={p.url}>
+							<button onClick={() => api.call("openExternal", { url: p.url })}>{p.title} ↗</button>
+							<span className="muted small">核验于 {p.verifiedAt ?? "未记录"} · {p.readStatus === "ready" ? "已读取" : p.readStatus === "failed" || p.readStatus === "restricted" ? "当前读取受限，可打开官网" : "已核验入口缓存"}</span>
+							<details className="job-evidence"><summary>查看官方归属依据</summary><p>{p.associationEvidence}</p></details>
+						</div>
+					))}
+				</section>
 			)}
 			<div className="section-heading">
 				<h2>
@@ -322,20 +340,7 @@ export function JobsPage({
 							{w.result.related.map(card)}
 						</details>
 					)}
-					{!!w.result?.portals.length && (
-						<section className="panel padded jobs-portals">
-							<h2>招聘入口</h2>
-							<p className="muted">入口不计入岗位数量，需到原站继续筛选。</p>
-							{w.result.portals.map((p) => (
-								<button
-									key={p.url}
-									onClick={() => api.call("openExternal", { url: p.url })}
-								>
-									{p.title} ↗
-								</button>
-							))}
-						</section>
-					)}
+
 				</>
 			)}
 			<ManualJobDialogs

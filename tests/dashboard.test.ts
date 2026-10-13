@@ -174,7 +174,7 @@ test("daily knowledge is offline, version-locked, same-day stable, rotates witho
 		s.store.put("plan", "test", { completed: 50 });
 		s.store.put("chat", "test", { title: "existing" });
 		const first = s.dashboard.state();
-		assert.equal(first.portals.length, 16);
+		assert.equal(first.portals.length, 17);
 		assert.ok(
 			["LLM", "RAG", "Agent", "框架", "评测", "部署"].includes(
 				first.knowledge.category,
