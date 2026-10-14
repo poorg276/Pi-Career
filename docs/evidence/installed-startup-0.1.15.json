@@ -1,0 +1,39 @@
+{
+  "version": "0.1.15",
+  "passed": true,
+  "existingOAuthRestored": true,
+  "model": "gpt-6-luna",
+  "chatCount": 1,
+  "contextRestored": true,
+  "officialHot100Loaded": true,
+  "allRecordsUnchanged": true,
+  "dashboardDailyPolicy": true,
+  "sameDayStartupSkipped": true,
+  "secondInstanceDidNotRefresh": true,
+  "dashboardWarnings": [
+    "www.langchain.com：不是相关技术更新",
+    "中文整理暂不可用，已保留官方摘录。"
+  ],
+  "threeVerifiedNews": [
+    {
+      "title": "langgraph-cli 0.4.34：版本更新",
+      "url": "https://github.com/langchain-ai/langgraph/releases/tag/cli%3D%3D0.4.34",
+      "publishedAt": "2026-10-13T21:18:10.000Z",
+      "summary": "官方发布涉及Agent 框架。原文摘录：feat(cli): add --json to deploy listeners list (#9243)"
+    },
+    {
+      "title": "Agent 框架更新｜How Orange Business Built Live Intelligence on LangChain and LangSmith",
+      "url": "https://www.langchain.com/blog/how-orange-business-built-live-intelligence-on-langchain-and-langsmith",
+      "publishedAt": "2026-10-13T16:50:00.000Z",
+      "summary": "官方发布涉及Agent 框架。原文摘录：Live Intelligence Portal lets employees create simple AI agents and trigger basic API calls—capabilities that work for entry-level personal tasks. \"The observability capabilities in LangSmith were significantly ahead of what we could realis"
+    },
+    {
+      "title": "AI 模型与 Agent 进展｜Search agent traces by behavior with AI Search in LangSmith",
+      "url": "https://www.langchain.com/blog/agent-traces-ai-search-langsmith",
+      "publishedAt": "2026-10-13T13:00:00.000Z",
+      "summary": "官方发布涉及AI 模型与 Agent 。原文摘录：That makes traces uniquely valuable for understanding user behavior and improving agent performance, but traditional data platforms weren’t built for large, unstructured payloads like this.To make trace data useful, teams need infrastructur"
+    }
+  ],
+  "errors": [],
+  "at": "2026-10-14T10:04:42.314Z"
+}
