@@ -1,0 +1,17 @@
+{
+  "version": "0.1.15",
+  "passed": true,
+  "portableCRCVerified": true,
+  "requiredFiles": [
+    "PiCareer.exe",
+    "resources/app.asar",
+    "resources/resources/pi/worker.mjs",
+    "resources/resources/pi/resume-material-worker.mjs",
+    "resources/resources/pi/node_modules/@napi-rs/canvas-win32-x64-msvc/skia.win32-x64-msvc.node",
+    "resources/resources/pi/node_modules/pdfjs-dist/legacy/build/pdf.mjs",
+    "resources/resources/pi/node_modules/mammoth/lib/index.js",
+    "resources/resources/pi/node_modules/docx/dist/index.mjs"
+  ],
+  "entries": 19936,
+  "noUserDatabase": true
+}

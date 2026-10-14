@@ -382,7 +382,7 @@ export function ResumePage({
 									/>
 								</label>
 								<p id="resume-overview-help" className="muted">
-									可灵活介绍项目与科研内容；不必拆分栏目。请区分本人贡献与团队成果。
+									可灵活介绍项目与科研内容。独立完成的项目说明“本人独立完成”即可，无须成员分工；团队项目说明本人负责的工作。不同项目请分别说明。
 								</p>
 								{!!draft.inputIssues?.length && (
 									<div className="alert error" role="alert">
@@ -423,7 +423,7 @@ export function ResumePage({
 								</div>
 								<p className="muted">
 									本地读取，不执行代码。支持
-									PDF、DOCX、TXT、Markdown、PNG/JPG；仅发送勾选片段。未读取或跳过的文件不会视为已审阅。
+									PDF、DOCX、TXT、Markdown、PNG/JPG及源码文件；源码目录会排除依赖、构建与缓存，最多读取10000份源码。仅发送勾选片段，较大材料自动分批分析。未读取或跳过的文件不会视为已审阅。
 								</p>
 								{draft.materials
 									.filter(
@@ -455,6 +455,13 @@ export function ResumePage({
 											</div>
 											<details>
 												<summary>读取清单、片段选择与失败提示</summary>
+												<div className="resume-inline">
+													{[true, false].map((selected) => (
+														<button key={String(selected)} disabled={running} onClick={() => edit((d) => {
+															for (const u of d.materials.find((x) => x.id === m.id)!.units) u.selected = selected;
+														})}>{selected ? "全选此材料" : "取消此材料"}</button>
+													))}
+												</div>
 												{m.skipped.length > 0 && (
 													<div className="alert">
 														<ul>
@@ -515,7 +522,7 @@ export function ResumePage({
 									{selected
 										.reduce((n, u) => n + u.text.length, 0)
 										.toLocaleString()}{" "}
-									字符，{selected.filter((u) => u.image).length} 张图片）。
+									字符，{selected.filter((u) => u.image).length} 张图片）。超过单批范围时将自动分批。
 								</p>
 								<details>
 									<summary>查看本次发送的材料范围</summary>
@@ -552,6 +559,12 @@ export function ResumePage({
 											</button>
 										)}
 									</div>
+								)}
+								{!!draft.generationWarnings?.length && (
+									<details className="alert">
+										<summary>材料校验说明（{draft.generationWarnings.length}项）</summary>
+										<ul>{draft.generationWarnings.map((warning, i) => <li key={i}>{warning}</li>)}</ul>
+									</details>
 								)}
 							</div>
 							{!!draft.experiences.length && (

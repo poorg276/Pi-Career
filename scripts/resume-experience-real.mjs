@@ -78,7 +78,7 @@ try {
 		let value = await call("generateResumeExperience", { id });
 		if (
 			value.run.status === "failed" &&
-			/AUTH_NETWORK_ERROR|网络|每项经历需|模型生成格式|模型经历结构|材料引用无法核对/.test(
+			/AUTH_NETWORK_ERROR|网络|每项经历需|模型生成格式|模型经历结构|材料引用无法核对|文稿质量核验未通过/.test(
 				value.run.stage,
 			)
 		) {
@@ -193,6 +193,41 @@ try {
 	assert.match(JSON.stringify(d.experiences), /草稿|未投稿/);
 	result.stages.push("unpublished_paper_research_category");
 	writeFileSync(join(out, "paper-review.json"), JSON.stringify(d, null, 2));
+	// Large synthetic source tree plus three documents reproduces the reported
+	// fourth-import failure without opening or sending the user's own materials.
+	const largeName = "独立六维采集项目";
+	const largeRoot = join(root, ".test-data/resume-fixtures", largeName);
+	mkdirSync(largeRoot, { recursive: true });
+	mkdirSync(join(largeRoot, "node_modules"), { recursive: true });
+	mkdirSync(join(largeRoot, ".test-data"), { recursive: true });
+	for (let i = 0; i < 1600; i++) writeFileSync(join(largeRoot, `image${i}.png`), "synthetic asset");
+	writeFileSync(join(largeRoot, "node_modules/dependency.js"), "excluded dependency");
+	writeFileSync(join(largeRoot, ".test-data/private.txt"), "excluded test output");
+	writeFileSync(join(largeRoot, "collect.py"), 'def calibrate(signal, baseline):\n    return [value - zero for value, zero in zip(signal, baseline)]\n\n# 六维传感器采集项目；进行原始信号记录和零点校正。\n' + "# 采集过程只记录六维传感器的原始信号并执行零点校正，不推断准确率或性能增益。\n".repeat(2600));
+	d = await call("createResume", { mode: "experience" });
+	for (const name of ["采集设计.txt", "校正方法.txt", "项目说明.txt"]) {
+		writeFileSync(join(root, ".test-data/resume-fixtures", name), "合成项目技术说明：六维传感器原始信号采集与零点校正。记录采集设计、校正方法和源码验证。没有性能实验，不是论文或专利成果。\n");
+		await material("project", name);
+	}
+	await app.evaluate(({ dialog }, path) => { dialog.showOpenDialog = async () => ({ canceled: false, filePaths: [path] }); }, largeRoot);
+	d = await call("chooseResumeMaterials", { id: d.id, purpose: "project", directory: true });
+	assert.equal(d.run.status, "complete", d.run.stage);
+	assert.equal(d.materials.length, 4);
+	assert.ok(!JSON.stringify(d.materials.flatMap((m) => m.units)).includes("excluded"));
+	e = edit(d);
+	e.overview = "这是合成测试：独立六维采集项目由我一个人全部完成，没有其他成员，不需成员分工。三份文档和源码目录都是此项目材料。我负责六维传感器原始信号采集流程设计、编写按基线逐项相减的零点校正函数及整理验证方法；这只是原型和项目技术记录，不是论文或专利。时间未知，没有实测准确率或性能增益，没有论文发表、获奖或专利申请授权。";
+	e.jd = "Python采集程序与传感器数据处理。";
+	d = await call("saveResume", e);
+	assert.ok(d.materials.flatMap((m) => m.units.filter((u) => u.selected)).reduce((n, u) => n + u.text.length, 0) > 90000);
+	d = await generate(d.id);
+	assert.equal(d.run.status, "complete", d.run.stage);
+	assert.ok(d.run.batch.total > 1);
+	assert.equal(d.inputIssues.length, 0);
+	assert.ok(d.experiences.every((x) => x.kind === "project" && x.bullets.length >= 2 && x.bullets.length <= 4));
+	assert.ok(!JSON.stringify(d.experiences).includes("%"));
+	result.stages.push("three_documents_plus_large_filtered_source", "independent_contribution_without_team_questions", "automatic_multi_batch_real_model");
+	result.largeMaterial = { materials: d.materials.length, batches: d.run.batch.total, units: d.materials.reduce((n, m) => n + m.units.length, 0), warnings: d.generationWarnings };
+	writeFileSync(join(out, "large-review.json"), JSON.stringify(d, null, 2));
 	const previous = JSON.stringify(d.experiences);
 	e = edit(d);
 	e.overview =

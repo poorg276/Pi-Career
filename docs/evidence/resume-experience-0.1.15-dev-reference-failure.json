@@ -1,0 +1,11 @@
+{
+  "version": "0.1.15",
+  "passed": false,
+  "stages": [
+    "pure_text_without_JD",
+    "mixed_project_research_with_JD"
+  ],
+  "model": "gpt-6-luna",
+  "vision": true,
+  "error": "生成内容缺少已确认事实依据，请重新分析\n+ actual - expected\n\n+ 'failed'\n- 'complete'\n"
+}

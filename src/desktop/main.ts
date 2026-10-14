@@ -23,6 +23,7 @@ import { randomUUID } from "node:crypto";
 import type { AppEvent, LoginInput } from "../shared/types.ts";
 import { AuthorizationBrowser } from "./authorization-browser.ts";
 import { allowedProxyOrigin } from "../shared/network-origins.ts";
+import { sourceExtensions } from "../shared/resume-limits.ts";
 import { PublicWeb } from "./public-web.ts";
 import problemCatalog from "../../content/problems.json";
 protocol.registerSchemesAsPrivileged([
@@ -356,7 +357,7 @@ app.whenReady().then(async () => {
 			const id=String(arg?.id),purpose=String(arg?.purpose);
 			await backendCall("resumePreview",{id});
 			if(!["project","research","template","photo"].includes(purpose)|| (arg?.directory&&purpose!=="project"))throw new Error("材料用途无效");
-			const chosen=await dialog.showOpenDialog(win,{title:arg?.directory?"选择项目源码目录":"导入简历材料",properties:arg?.directory?["openDirectory"]:["openFile","multiSelections"],filters:arg?.directory?undefined:[{name:"材料",extensions:purpose==="photo"?["png","jpg","jpeg"]:["pdf","docx","txt","md","png","jpg","jpeg","zip"]}]});
+			const chosen=await dialog.showOpenDialog(win,{title:arg?.directory?"选择项目源码目录":"导入简历材料",properties:arg?.directory?["openDirectory"]:["openFile","multiSelections"],filters:arg?.directory?undefined:[{name:"材料",extensions:purpose==="photo"?["png","jpg","jpeg"]:["pdf","docx","png","jpg","jpeg","zip",...sourceExtensions]}]});
 			if(chosen.canceled)return undefined;
 			return backendCall("importResumeMaterials",{id,purpose,paths:chosen.filePaths});
 		}

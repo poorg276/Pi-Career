@@ -76,6 +76,7 @@ export interface ResumeDraft {
 	jd: string;
 	overview?: string;
 	inputIssues?: string[];
+	generationWarnings?: string[];
 	experienceSources?: ResumeExperienceSource[];
 	fields: ResumeFields;
 	materials: ResumeMaterial[];
@@ -96,6 +97,7 @@ export interface ResumeDraft {
 		requestId: string;
 		status: "running" | "complete" | "failed" | "cancelled";
 		stage: string;
+		batch?: { current: number; total: number };
 	};
 }
 export type ResumeEdit = Pick<

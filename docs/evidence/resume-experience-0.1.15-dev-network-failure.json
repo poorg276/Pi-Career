@@ -1,0 +1,10 @@
+{
+  "version": "0.1.15",
+  "passed": false,
+  "stages": [
+    "guarded_failure_preserved_previous_then_manual_retry"
+  ],
+  "model": "gpt-6-luna",
+  "vision": true,
+  "error": "AUTH_NETWORK_ERROR\n+ actual - expected\n\n+ 'failed'\n- 'complete'\n"
+}

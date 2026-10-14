@@ -1,0 +1,458 @@
+{
+  "version": "0.1.15",
+  "passed": true,
+  "stages": [
+    "pure_text_without_JD",
+    "mixed_project_research_with_JD",
+    "unpublished_paper_research_category",
+    "three_documents_plus_large_filtered_source",
+    "independent_contribution_without_team_questions",
+    "automatic_multi_batch_real_model",
+    "missing_contribution_identity_gate"
+  ],
+  "model": "gpt-6-luna",
+  "vision": true,
+  "largeMaterial": {
+    "materials": 4,
+    "batches": 2,
+    "units": 25,
+    "warnings": []
+  },
+  "syntheticCases": [
+    {
+      "case": "text-review.json",
+      "overview": "这是合成测试项目。本人独立编写 Python 资料检索函数，实现按关键词筛选文档和空结果状态处理，编写单元测试检查 found/not_found 分支。没有团队其他贡献；项目时间未知，性能和准确率未测量，没有获奖或商业部署。",
+      "experiences": [
+        {
+          "id": "50b900bd-4e36-4d9d-843b-16a1a5e04791",
+          "kind": "project",
+          "name": "合成测试项目",
+          "time": "",
+          "role": "独立开发",
+          "bullets": [
+            {
+              "text": "独立编写 Python 资料检索函数，实现按关键词筛选文档及空结果状态处理。",
+              "factIds": [
+                "overview"
+              ]
+            },
+            {
+              "text": "编写单元测试，检查 found 与 not_found 分支。",
+              "factIds": [
+                "overview"
+              ]
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "overview",
+          "text": "这是合成测试项目。本人独立编写 Python 资料检索函数，实现按关键词筛选文档和空结果状态处理，编写单元测试检查 found/not_found 分支。没有团队其他贡献；项目时间未知，性能和准确率未测量，没有获奖或商业部署。",
+          "origin": "overview",
+          "evidence": []
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "case": "mixed-review.json",
+      "overview": "这都是合成测试材料。中文 Agent 项目对应源码；本人独立编写 retrieve 和 agent 函数及 test_agent.py，负责关键词检索、found/not_found 状态包装与无结果测试，时间2026年6月至2026年8月。README 的工具路由指设计思路，当前代码没有外部工具执行，不宣称已有复杂 Agent 功能。研究记录.pdf及扫描材料.pdf是同一内部设计记录的两种版本；本人为记录撰写者/测试作者，负责检索与测试方法整理，该记录未投稿、未录用、未发表，不是专利，无专利申请或授权；不填写论文作者排序。全部没有实测性能增益和获奖。",
+      "experiences": [
+        {
+          "id": "9ba133b7-4ee6-4663-81d1-270b77ad167b",
+          "kind": "project",
+          "name": "中文 Agent 项目",
+          "time": "2026年6月—2026年8月",
+          "role": "独立开发",
+          "bullets": [
+            {
+              "text": "独立编写 Python 关键词检索函数 retrieve，按查询词筛选文档并返回匹配结果。",
+              "factIds": [
+                "overview",
+                "material:1",
+                "material:2"
+              ]
+            },
+            {
+              "text": "独立编写 agent 函数，将检索证据封装为 found/not_found 状态；编写单元测试覆盖检索命中与无结果场景。",
+              "factIds": [
+                "overview",
+                "material:2",
+                "material:3"
+              ]
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "overview",
+          "text": "这都是合成测试材料。中文 Agent 项目对应源码；本人独立编写 retrieve 和 agent 函数及 test_agent.py，负责关键词检索、found/not_found 状态包装与无结果测试，时间2026年6月至2026年8月。README 的工具路由指设计思路，当前代码没有外部工具执行，不宣称已有复杂 Agent 功能。研究记录.pdf及扫描材料.pdf是同一内部设计记录的两种版本；本人为记录撰写者/测试作者，负责检索与测试方法整理，该记录未投稿、未录用、未发表，不是专利，无专利申请或授权；不填写论文作者排序。全部没有实测性能增益和获奖。",
+          "origin": "overview",
+          "evidence": []
+        },
+        {
+          "id": "material:1",
+          "text": "项目实现 Python 关键词检索接口与检索结果状态包装，不含外部工具执行。",
+          "origin": "material",
+          "evidence": [
+            {
+              "quote": "项目实现 Python 关键词检索接口与检索结果状态包装，不含外部工具执行。",
+              "locations": [
+                {
+                  "unitId": "9f52800e-5206-4af5-a4ea-1d1e26c7dd3a",
+                  "location": "README.md:L1-L5",
+                  "selected": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "material:2",
+          "text": "代码通过 query 是否出现在文档中筛选结果，并返回检索证据及 found/not_found 状态。",
+          "origin": "material",
+          "evidence": [
+            {
+              "quote": "def retrieve(query, documents):\r\n    return [doc for doc in documents if query in doc]\r\n\r\ndef agent(question, documents):\r\n    evidence = retrieve(question, documents)\r\n    return {\"evidence\": evidence, \"status\": \"found\" if evidence else \"not_found\"}",
+              "locations": [
+                {
+                  "unitId": "0b160854-b26a-4e41-87a2-95f8c7b004f3",
+                  "location": "agent.py:L1-L7",
+                  "selected": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "material:3",
+          "text": "单元测试覆盖检索命中与无结果两种状态。",
+          "origin": "material",
+          "evidence": [
+            {
+              "quote": "assert agent(\"检索\", [\"检索系统\"]) [\"status\"] == \"found\"\r\nassert agent(\"不存在\", [\"检索系统\"]) [\"status\"] == \"not_found\"",
+              "locations": [
+                {
+                  "unitId": "d6ac76b2-214e-4994-ae1b-0ff49155e91a",
+                  "location": "test_agent.py:L1-L4",
+                  "selected": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "material:4",
+          "text": "项目时间为2026年6月至2026年8月。",
+          "origin": "material",
+          "evidence": [
+            {
+              "quote": "项目时间：2026年6月至2026年8月。",
+              "locations": [
+                {
+                  "unitId": "9f52800e-5206-4af5-a4ea-1d1e26c7dd3a",
+                  "location": "README.md:L1-L5",
+                  "selected": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "material:5",
+          "text": "项目未测量准确率或性能增益。",
+          "origin": "material",
+          "evidence": [
+            {
+              "quote": "工具调用编排仅为设计思路，未测量准确率或性能增益。",
+              "locations": [
+                {
+                  "unitId": "9f52800e-5206-4af5-a4ea-1d1e26c7dd3a",
+                  "location": "README.md:L1-L5",
+                  "selected": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "material:6",
+          "text": "研究记录注明未投稿、未录用、未发表。",
+          "origin": "material",
+          "evidence": [
+            {
+              "quote": "测试论文材料：未投稿、未录用、未发表。",
+              "locations": [
+                {
+                  "unitId": "b983699b-74be-4bac-8d51-b57d83cf6d2a",
+                  "location": "研究记录.pdf 第1页",
+                  "selected": true
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "case": "paper-review.json",
+      "overview": "上传的未投稿研究论文.txt为合成测试论文草稿。本人为测试作者、第一作者，合作作者仅参与讨论。我提出检索证据约束的回答流程，设计无证据时拒答策略，完成方法和边界分析撰写；目前是理论设计，不宣称代码已实现该策略。论文未投稿、未录用、未发表，无专利申请或授权；项目时间未知，尚未进行实验，没有实测增益。",
+      "experiences": [
+        {
+          "id": "4fca5737-f241-41c3-8f89-e50b723aa40b",
+          "kind": "research",
+          "name": "检索证据约束回答研究（论文草稿，未投稿）",
+          "time": "",
+          "role": "第一作者",
+          "bullets": [
+            {
+              "text": "提出检索证据约束的回答流程，设计无证据时拒答策略，并撰写方法与边界分析。",
+              "factIds": [
+                "overview",
+                "material:1",
+                "material:2"
+              ]
+            },
+            {
+              "text": "将检索、证据校验与回答阶段分开分析，并讨论关键词检索缺少语义匹配的问题；目前为理论设计，尚未开展性能实验。",
+              "factIds": [
+                "overview",
+                "material:4",
+                "material:6"
+              ]
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "overview",
+          "text": "上传的未投稿研究论文.txt为合成测试论文草稿。本人为测试作者、第一作者，合作作者仅参与讨论。我提出检索证据约束的回答流程，设计无证据时拒答策略，完成方法和边界分析撰写；目前是理论设计，不宣称代码已实现该策略。论文未投稿、未录用、未发表，无专利申请或授权；项目时间未知，尚未进行实验，没有实测增益。",
+          "origin": "overview",
+          "evidence": []
+        },
+        {
+          "id": "material:1",
+          "text": "本人为论文第一作者。",
+          "origin": "material",
+          "evidence": [
+            {
+              "quote": "作者：测试作者（第一作者）、合作作者",
+              "locations": [
+                {
+                  "unitId": "f35d0b9c-2f6a-4b02-a207-2b57d0de2a2a",
+                  "location": "未投稿研究论文.txt L1",
+                  "selected": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "material:2",
+          "text": "提出检索证据约束的回答流程，设计无证据时拒绝回答的策略，撰写方法与边界分析。",
+          "origin": "material",
+          "evidence": [
+            {
+              "quote": "第一作者工作：提出检索证据约束的回答流程，设计无证据时拒绝回答的策略，撰写方法与边界分析。",
+              "locations": [
+                {
+                  "unitId": "f35d0b9c-2f6a-4b02-a207-2b57d0de2a2a",
+                  "location": "未投稿研究论文.txt L1",
+                  "selected": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "material:3",
+          "text": "合作作者仅参与讨论。",
+          "origin": "material",
+          "evidence": [
+            {
+              "quote": "合作作者仅参与讨论。",
+              "locations": [
+                {
+                  "unitId": "f35d0b9c-2f6a-4b02-a207-2b57d0de2a2a",
+                  "location": "未投稿研究论文.txt L1",
+                  "selected": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "material:4",
+          "text": "研究分析将检索、证据校验和回答阶段分开，并讨论关键词检索缺少语义匹配的问题。",
+          "origin": "material",
+          "evidence": [
+            {
+              "quote": "将检索、证据校验和回答阶段分开，分析关键词检索缺少语义匹配的问题。",
+              "locations": [
+                {
+                  "unitId": "f35d0b9c-2f6a-4b02-a207-2b57d0de2a2a",
+                  "location": "未投稿研究论文.txt L1",
+                  "selected": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "material:5",
+          "text": "论文草稿未投稿、未录用、未发表；无专利。",
+          "origin": "material",
+          "evidence": [
+            {
+              "quote": "成果状态：论文草稿，未投稿、未录用、未发表；无专利",
+              "locations": [
+                {
+                  "unitId": "f35d0b9c-2f6a-4b02-a207-2b57d0de2a2a",
+                  "location": "未投稿研究论文.txt L1",
+                  "selected": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "material:6",
+          "text": "目前仅完成流程设计和理论分析，尚未开展性能实验，无已测量效果。",
+          "origin": "material",
+          "evidence": [
+            {
+              "quote": "目前仅完成流程设计和理论分析，尚未开展性能实验，无已测量效果。",
+              "locations": [
+                {
+                  "unitId": "f35d0b9c-2f6a-4b02-a207-2b57d0de2a2a",
+                  "location": "未投稿研究论文.txt L1",
+                  "selected": true
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "case": "large-review.json",
+      "overview": "这是合成测试：独立六维采集项目由我一个人全部完成，没有其他成员，不需成员分工。三份文档和源码目录都是此项目材料。我负责六维传感器原始信号采集流程设计、编写按基线逐项相减的零点校正函数及整理验证方法；这只是原型和项目技术记录，不是论文或专利。时间未知，没有实测准确率或性能增益，没有论文发表、获奖或专利申请授权。",
+      "experiences": [
+        {
+          "id": "98d0f921-7a61-45bd-9810-30c52f098432",
+          "kind": "project",
+          "name": "独立六维传感器采集与零点校正原型",
+          "time": "",
+          "role": "独立完成",
+          "bullets": [
+            {
+              "text": "设计六维传感器原始信号采集流程，记录原始信号并执行零点校正。",
+              "factIds": [
+                "overview",
+                "material:1",
+                "material:4"
+              ]
+            },
+            {
+              "text": "编写零点校正函数，按对应基线逐项从信号值中相减。",
+              "factIds": [
+                "overview",
+                "material:2"
+              ]
+            },
+            {
+              "text": "整理项目验证方法，围绕原始信号采集与零点校正开展验证。",
+              "factIds": [
+                "overview",
+                "material:1",
+                "material:4"
+              ]
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "overview",
+          "text": "这是合成测试：独立六维采集项目由我一个人全部完成，没有其他成员，不需成员分工。三份文档和源码目录都是此项目材料。我负责六维传感器原始信号采集流程设计、编写按基线逐项相减的零点校正函数及整理验证方法；这只是原型和项目技术记录，不是论文或专利。时间未知，没有实测准确率或性能增益，没有论文发表、获奖或专利申请授权。",
+          "origin": "overview",
+          "evidence": []
+        },
+        {
+          "id": "material:1",
+          "text": "项目记录涉及六维传感器原始信号采集与零点校正。",
+          "origin": "material",
+          "evidence": [
+            {
+              "quote": "六维传感器原始信号采集与零点校正",
+              "locations": [
+                {
+                  "unitId": "7a46cb88-cbbb-4a8a-b4d5-2e6bd4aae129",
+                  "location": "采集设计.txt L1",
+                  "selected": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "material:2",
+          "text": "源码中的校正函数逐项从信号值中减去对应基线值。",
+          "origin": "material",
+          "evidence": [
+            {
+              "quote": "return [value - zero for value, zero in zip(signal, baseline)]",
+              "locations": [
+                {
+                  "unitId": "effdaa83-9f33-44a7-a560-6df9d9e459ae",
+                  "location": "collect.py:L1-L120",
+                  "selected": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "material:3",
+          "text": "项目材料说明没有性能实验，且不是论文或专利成果。",
+          "origin": "material",
+          "evidence": [
+            {
+              "quote": "没有性能实验，不是论文或专利成果。",
+              "locations": [
+                {
+                  "unitId": "7a46cb88-cbbb-4a8a-b4d5-2e6bd4aae129",
+                  "location": "采集设计.txt L1",
+                  "selected": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "material:4",
+          "text": "项目采集过程记录六维传感器原始信号并执行零点校正，不推断准确率或性能增益。",
+          "origin": "material",
+          "evidence": [
+            {
+              "quote": "采集过程只记录六维传感器的原始信号并执行零点校正，不推断准确率或性能增益。",
+              "locations": [
+                {
+                  "unitId": "cbe092fd-6627-4c22-86ff-a8c8707b718a",
+                  "location": "collect.py:L1681-L1800",
+                  "selected": true
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

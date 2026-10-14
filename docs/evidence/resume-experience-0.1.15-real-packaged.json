@@ -1,0 +1,477 @@
+{
+  "version": "0.1.15",
+  "passed": true,
+  "stages": [
+    "pure_text_without_JD",
+    "mixed_project_research_with_JD",
+    "unpublished_paper_research_category",
+    "three_documents_plus_large_filtered_source",
+    "independent_contribution_without_team_questions",
+    "automatic_multi_batch_real_model",
+    "missing_contribution_identity_gate"
+  ],
+  "model": "gpt-6-luna",
+  "vision": true,
+  "largeMaterial": {
+    "materials": 4,
+    "batches": 2,
+    "units": 25,
+    "warnings": []
+  },
+  "syntheticCases": [
+    {
+      "case": "text-review.json",
+      "overview": "这是合成测试项目。本人独立编写 Python 资料检索函数，实现按关键词筛选文档和空结果状态处理，编写单元测试检查 found/not_found 分支。没有团队其他贡献；项目时间未知，性能和准确率未测量，没有获奖或商业部署。",
+      "experiences": [
+        {
+          "id": "b696ed9a-3a74-4105-9731-0c36a1d0af3a",
+          "kind": "project",
+          "name": "合成测试项目",
+          "time": "",
+          "role": "",
+          "bullets": [
+            {
+              "text": "独立编写 Python 资料检索函数，按关键词筛选文档并处理空结果状态。",
+              "factIds": [
+                "overview"
+              ]
+            },
+            {
+              "text": "编写单元测试，检查 found/not_found 分支。",
+              "factIds": [
+                "overview"
+              ]
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "overview",
+          "text": "这是合成测试项目。本人独立编写 Python 资料检索函数，实现按关键词筛选文档和空结果状态处理，编写单元测试检查 found/not_found 分支。没有团队其他贡献；项目时间未知，性能和准确率未测量，没有获奖或商业部署。",
+          "origin": "overview",
+          "evidence": []
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "case": "mixed-review.json",
+      "overview": "这都是合成测试材料。中文 Agent 项目对应源码；本人独立编写 retrieve 和 agent 函数及 test_agent.py，负责关键词检索、found/not_found 状态包装与无结果测试，时间2026年6月至2026年8月。README 的工具路由指设计思路，当前代码没有外部工具执行，不宣称已有复杂 Agent 功能。研究记录.pdf及扫描材料.pdf是同一内部设计记录的两种版本；本人为记录撰写者/测试作者，负责检索与测试方法整理，该记录未投稿、未录用、未发表，不是专利，无专利申请或授权；不填写论文作者排序。全部没有实测性能增益和获奖。",
+      "experiences": [
+        {
+          "id": "17d78ef7-179d-4412-bb56-50fb212434e0",
+          "kind": "project",
+          "name": "中文 Agent 项目",
+          "time": "2026年6月—2026年8月",
+          "role": "独立开发",
+          "bullets": [
+            {
+              "text": "独立编写 Python 关键词检索函数 retrieve，实现检索接口。",
+              "factIds": [
+                "overview",
+                "material:1"
+              ]
+            },
+            {
+              "text": "独立编写 agent 函数，将检索结果包装为 found/not_found 状态。",
+              "factIds": [
+                "overview",
+                "material:1"
+              ]
+            },
+            {
+              "text": "编写 test_agent.py，测试检索有结果与无结果时的状态。",
+              "factIds": [
+                "overview",
+                "material:3"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "c641915d-2347-45f6-9a3f-ba4052a00e0e",
+          "kind": "research",
+          "name": "检索与测试方法内部设计记录",
+          "time": "",
+          "role": "记录撰写者、测试作者",
+          "bullets": [
+            {
+              "text": "整理检索与测试方法，撰写内部设计记录。",
+              "factIds": [
+                "overview"
+              ]
+            },
+            {
+              "text": "记录未投稿、未录用、未发表，且未开展性能评测。",
+              "factIds": [
+                "overview",
+                "material:4",
+                "material:5"
+              ]
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "overview",
+          "text": "这都是合成测试材料。中文 Agent 项目对应源码；本人独立编写 retrieve 和 agent 函数及 test_agent.py，负责关键词检索、found/not_found 状态包装与无结果测试，时间2026年6月至2026年8月。README 的工具路由指设计思路，当前代码没有外部工具执行，不宣称已有复杂 Agent 功能。研究记录.pdf及扫描材料.pdf是同一内部设计记录的两种版本；本人为记录撰写者/测试作者，负责检索与测试方法整理，该记录未投稿、未录用、未发表，不是专利，无专利申请或授权；不填写论文作者排序。全部没有实测性能增益和获奖。",
+          "origin": "overview",
+          "evidence": []
+        },
+        {
+          "id": "material:1",
+          "text": "项目实现 Python 关键词检索接口与检索结果状态包装，不含外部工具执行。",
+          "origin": "material",
+          "evidence": [
+            {
+              "quote": "项目实现 Python 关键词检索接口与检索结果状态包装，不含外部工具执行。",
+              "locations": [
+                {
+                  "unitId": "e92ac47f-beeb-4b46-b620-048eeaaaa042",
+                  "location": "README.md:L1-L5",
+                  "selected": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "material:2",
+          "text": "项目时间为2026年6月至2026年8月。",
+          "origin": "material",
+          "evidence": [
+            {
+              "quote": "项目时间：2026年6月至2026年8月。",
+              "locations": [
+                {
+                  "unitId": "e92ac47f-beeb-4b46-b620-048eeaaaa042",
+                  "location": "README.md:L1-L5",
+                  "selected": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "material:3",
+          "text": "单元测试覆盖检索有结果与无结果的状态。",
+          "origin": "material",
+          "evidence": [
+            {
+              "quote": "assert agent(\"检索\", [\"检索系统\"]) [\"status\"] == \"found\"\r\nassert agent(\"不存在\", [\"检索系统\"]) [\"status\"] == \"not_found\"",
+              "locations": [
+                {
+                  "unitId": "38d86469-b883-4dc9-b098-7f484e24f814",
+                  "location": "test_agent.py:L1-L4",
+                  "selected": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "material:4",
+          "text": "研究记录未投稿、未录用、未发表。",
+          "origin": "material",
+          "evidence": [
+            {
+              "quote": "测试论文材料：未投稿、未录用、未发表。",
+              "locations": [
+                {
+                  "unitId": "da54c851-0f03-4e14-8450-477d2f80cfe9",
+                  "location": "研究记录.pdf 第1页",
+                  "selected": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "material:5",
+          "text": "研究记录未开展性能评测，不能据此认定准确率或增益。",
+          "origin": "material",
+          "evidence": [
+            {
+              "quote": "本文未开展性能评测，不能据此认定准确率或增益。",
+              "locations": [
+                {
+                  "unitId": "da54c851-0f03-4e14-8450-477d2f80cfe9",
+                  "location": "研究记录.pdf 第1页",
+                  "selected": true
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "case": "paper-review.json",
+      "overview": "上传的未投稿研究论文.txt为合成测试论文草稿。本人为测试作者、第一作者，合作作者仅参与讨论。我提出检索证据约束的回答流程，设计无证据时拒答策略，完成方法和边界分析撰写；目前是理论设计，不宣称代码已实现该策略。论文未投稿、未录用、未发表，无专利申请或授权；项目时间未知，尚未进行实验，没有实测增益。",
+      "experiences": [
+        {
+          "id": "14cdc40b-f0ff-4d94-8b16-6a6d56fececf",
+          "kind": "research",
+          "name": "检索证据约束下的智能体回答流程研究（论文草稿，未投稿）",
+          "time": "",
+          "role": "第一作者",
+          "bullets": [
+            {
+              "text": "提出检索证据约束的回答流程，设计无证据时拒答策略。",
+              "factIds": [
+                "overview",
+                "material:3"
+              ]
+            },
+            {
+              "text": "完成方法与边界分析撰写；目前为理论设计，尚未开展实验。",
+              "factIds": [
+                "overview",
+                "material:3",
+                "material:6"
+              ]
+            },
+            {
+              "text": "论文未投稿、未录用、未发表；无专利申请或授权。",
+              "factIds": [
+                "overview",
+                "material:5"
+              ]
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "overview",
+          "text": "上传的未投稿研究论文.txt为合成测试论文草稿。本人为测试作者、第一作者，合作作者仅参与讨论。我提出检索证据约束的回答流程，设计无证据时拒答策略，完成方法和边界分析撰写；目前是理论设计，不宣称代码已实现该策略。论文未投稿、未录用、未发表，无专利申请或授权；项目时间未知，尚未进行实验，没有实测增益。",
+          "origin": "overview",
+          "evidence": []
+        },
+        {
+          "id": "material:1",
+          "text": "论文标题为《检索证据约束下的智能体回答流程研究》。",
+          "origin": "material",
+          "evidence": [
+            {
+              "quote": "未投稿论文草稿：检索证据约束下的智能体回答流程研究",
+              "locations": [
+                {
+                  "unitId": "073ce12a-29dd-40a9-b86f-ff96a9555680",
+                  "location": "未投稿研究论文.txt L1",
+                  "selected": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "material:2",
+          "text": "材料标注测试作者为第一作者，合作作者仅参与讨论。",
+          "origin": "material",
+          "evidence": [
+            {
+              "quote": "作者：测试作者（第一作者）、合作作者",
+              "locations": [
+                {
+                  "unitId": "073ce12a-29dd-40a9-b86f-ff96a9555680",
+                  "location": "未投稿研究论文.txt L1",
+                  "selected": true
+                }
+              ]
+            },
+            {
+              "quote": "合作作者仅参与讨论。",
+              "locations": [
+                {
+                  "unitId": "073ce12a-29dd-40a9-b86f-ff96a9555680",
+                  "location": "未投稿研究论文.txt L1",
+                  "selected": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "material:3",
+          "text": "材料记载第一作者提出检索证据约束的回答流程，设计无证据时拒绝回答的策略，并撰写方法与边界分析。",
+          "origin": "material",
+          "evidence": [
+            {
+              "quote": "第一作者工作：提出检索证据约束的回答流程，设计无证据时拒绝回答的策略，撰写方法与边界分析。",
+              "locations": [
+                {
+                  "unitId": "073ce12a-29dd-40a9-b86f-ff96a9555680",
+                  "location": "未投稿研究论文.txt L1",
+                  "selected": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "material:4",
+          "text": "方法将检索、证据校验和回答阶段分开，并分析关键词检索缺少语义匹配的问题。",
+          "origin": "material",
+          "evidence": [
+            {
+              "quote": "将检索、证据校验和回答阶段分开，分析关键词检索缺少语义匹配的问题。",
+              "locations": [
+                {
+                  "unitId": "073ce12a-29dd-40a9-b86f-ff96a9555680",
+                  "location": "未投稿研究论文.txt L1",
+                  "selected": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "material:5",
+          "text": "论文草稿未投稿、未录用、未发表；材料注明无专利。",
+          "origin": "material",
+          "evidence": [
+            {
+              "quote": "成果状态：论文草稿，未投稿、未录用、未发表；无专利",
+              "locations": [
+                {
+                  "unitId": "073ce12a-29dd-40a9-b86f-ff96a9555680",
+                  "location": "未投稿研究论文.txt L1",
+                  "selected": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "material:6",
+          "text": "目前仅完成流程设计和理论分析，尚未开展性能实验，无已测量效果。",
+          "origin": "material",
+          "evidence": [
+            {
+              "quote": "目前仅完成流程设计和理论分析，尚未开展性能实验，无已测量效果。",
+              "locations": [
+                {
+                  "unitId": "073ce12a-29dd-40a9-b86f-ff96a9555680",
+                  "location": "未投稿研究论文.txt L1",
+                  "selected": true
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "case": "large-review.json",
+      "overview": "这是合成测试：独立六维采集项目由我一个人全部完成，没有其他成员，不需成员分工。三份文档和源码目录都是此项目材料。我负责六维传感器原始信号采集流程设计、编写按基线逐项相减的零点校正函数及整理验证方法；这只是原型和项目技术记录，不是论文或专利。时间未知，没有实测准确率或性能增益，没有论文发表、获奖或专利申请授权。",
+      "experiences": [
+        {
+          "id": "002b4bf4-92f0-4b18-bbae-46d669d87256",
+          "kind": "project",
+          "name": "独立六维传感器采集与零点校正原型",
+          "time": "",
+          "role": "独立完成",
+          "bullets": [
+            {
+              "text": "设计六维传感器原始信号采集流程，整理项目技术记录。",
+              "factIds": [
+                "overview",
+                "material:1",
+                "material:4"
+              ]
+            },
+            {
+              "text": "编写按对应基线逐项相减的零点校正函数，并整理验证方法。",
+              "factIds": [
+                "overview",
+                "material:2"
+              ]
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "overview",
+          "text": "这是合成测试：独立六维采集项目由我一个人全部完成，没有其他成员，不需成员分工。三份文档和源码目录都是此项目材料。我负责六维传感器原始信号采集流程设计、编写按基线逐项相减的零点校正函数及整理验证方法；这只是原型和项目技术记录，不是论文或专利。时间未知，没有实测准确率或性能增益，没有论文发表、获奖或专利申请授权。",
+          "origin": "overview",
+          "evidence": []
+        },
+        {
+          "id": "material:1",
+          "text": "项目涉及六维传感器原始信号采集与零点校正。",
+          "origin": "material",
+          "evidence": [
+            {
+              "quote": "六维传感器原始信号采集与零点校正",
+              "locations": [
+                {
+                  "unitId": "0c5d4d7f-b8cf-4f6d-b73d-b11121e7b302",
+                  "location": "采集设计.txt L1",
+                  "selected": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "material:2",
+          "text": "源码中的校正函数按对应基线逐项相减。",
+          "origin": "material",
+          "evidence": [
+            {
+              "quote": "return [value - zero for value, zero in zip(signal, baseline)]",
+              "locations": [
+                {
+                  "unitId": "89ca3915-c7af-482f-9ca2-a6f794837dd9",
+                  "location": "collect.py:L1-L120",
+                  "selected": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "material:3",
+          "text": "项目记录未进行性能实验，且不是论文或专利成果。",
+          "origin": "material",
+          "evidence": [
+            {
+              "quote": "没有性能实验，不是论文或专利成果。",
+              "locations": [
+                {
+                  "unitId": "0c5d4d7f-b8cf-4f6d-b73d-b11121e7b302",
+                  "location": "采集设计.txt L1",
+                  "selected": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "material:4",
+          "text": "采集过程记录六维传感器原始信号并执行零点校正，不推断准确率或性能增益。",
+          "origin": "material",
+          "evidence": [
+            {
+              "quote": "采集过程只记录六维传感器的原始信号并执行零点校正，不推断准确率或性能增益。",
+              "locations": [
+                {
+                  "unitId": "186278db-c19e-46e8-a60a-120af9c549f0",
+                  "location": "collect.py:L1681-L1800",
+                  "selected": true
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

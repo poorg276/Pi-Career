@@ -1,0 +1,24 @@
+{
+  "version": "0.1.15",
+  "passed": true,
+  "typeCheck": true,
+  "automatedTests": 149,
+  "resumeTests": 31,
+  "lateBatchCancellation": true,
+  "realModel": "gpt-6-luna",
+  "syntheticInputsOnly": true,
+  "devRealModel": true,
+  "packagedRealModel": true,
+  "portableIntegrity": true,
+  "sourceFiles": {
+    "src/core/resume.ts": "65beded0cba5e3e405d7f05c5a0e559099acabb82605976730c07268cf06870f",
+    "src/core/resume-analysis.ts": "dff9ade9a709d671993f6702e3e28f8f2b7c35537128bf2b63f64972e80e863a",
+    "src/core/resume-evidence.ts": "26108c615a3db3a3258f89ea7eb795ea894cedc08ad1df8ad79f1ec69470660c",
+    "src/core/resume-material-worker.ts": "d30c69f8fa4cd9d400b0d7ced3b105c244d5c88ae6673a09eba90bf684dc3b0d",
+    "src/shared/resume-limits.ts": "c0a53deb87134728c89f0cf5b8bd091beb04074cdb2dfafad82001814e92a28e",
+    "src/shared/resume.ts": "4d8b5e408f0d2134adf856e789c735d3bc783920c515f2eb556b7d12b91574fb",
+    "src/ui/resume.tsx": "2f2371a71d147f470fc9f4dcd85a03bd8a22388d8a519e51863a6e9a894a1553",
+    "src/desktop/main.ts": "e395e6ba55cdbc1b17fc70558f79ceaa107bace0bd4180a7c0d50b415fddaf6c"
+  },
+  "at": "2026-10-14T10:00:26.018140+00:00"
+}

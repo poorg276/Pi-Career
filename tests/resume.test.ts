@@ -289,7 +289,7 @@ test("material summary cannot introduce metrics absent from quoted evidence", as
 		s.manager.put(d);
 		d = await s.manager.generateExperience(d.id);
 		assert.equal(d.run?.status, "failed");
-		assert.match(d.run!.stage, /原文引用未支持的数字/);
+		assert.match(d.generationWarnings!.join("\n"), /原文引用未支持的数字/);
 		assert.equal(d.experiences.length, 0);
 	} finally {
 		s.close();

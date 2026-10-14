@@ -8,37 +8,15 @@ import type {
 	MaterialUnit,
 	MaterialPurpose,
 } from "../shared/resume.ts";
+import { sourceExtensions, sourceFileLimit } from "../shared/resume-limits.ts";
 const MAX_FILE = 30 * 1024 * 1024,
 	MAX_TOTAL = 100 * 1024 * 1024,
-	MAX_ENTRIES = 1500;
+	MAX_ENTRIES = 100000;
 const ignored =
-	/^(node_modules|\.git|\.venv|venv|dist|build|target|__pycache__|\.next|coverage|vendor|\.aws|\.ssh|\.codex)$/i;
+	/^(node_modules|\.git|\.venv|venv|dist|build|target|__pycache__|\.next|coverage|vendor|release|releases|archive|archives|\.cache|\.test-data|\.pytest_cache|\.mypy_cache|\.ruff_cache|\.idea|\.vscode|\.aws|\.ssh|\.codex)$/i;
 const secret =
 	/(^|\/)(\.env(?:\..*)?|.*\.(pem|key|p12|pfx)|credentials(?:\..*)?|auth\.json|.*(?:secret|token|password).*\.(json|ya?ml|txt))$/i;
-const textExtensions = new Set([
-	".txt",
-	".md",
-	".py",
-	".js",
-	".ts",
-	".tsx",
-	".jsx",
-	".json",
-	".yaml",
-	".yml",
-	".toml",
-	".ini",
-	".go",
-	".java",
-	".c",
-	".cpp",
-	".h",
-	".rs",
-	".ipynb",
-	".sql",
-	".css",
-	".html",
-]);
+const textExtensions = new Set(sourceExtensions.map((ext) => `.${ext}`));
 const fail = (message: string): never => {
 	throw new Error(message);
 };
@@ -61,7 +39,7 @@ function eligible(name: string) {
 		textExtensions.has(extname(name).toLowerCase())
 	);
 }
-function zipEntries(path: string): Promise<{ name: string; buffer: Buffer }[]> {
+function zipEntries(path: string, skipped: string[]): Promise<{ name: string; buffer: Buffer }[]> {
 	return new Promise((resolve, reject) => {
 		yauzl.open(
 			path,
@@ -74,6 +52,7 @@ function zipEntries(path: string): Promise<{ name: string; buffer: Buffer }[]> {
 				const rows: { name: string; buffer: Buffer }[] = [];
 				let total = 0,
 					count = 0,
+					sources = 0,
 					done = false;
 				const stop = (e: unknown) => {
 					if (!done) {
@@ -103,6 +82,10 @@ function zipEntries(path: string): Promise<{ name: string; buffer: Buffer }[]> {
 						if (name.endsWith("/") || !eligible(name)) {
 							zip.readEntry();
 							return;
+						}
+						if (++sources > sourceFileLimit) {
+							skipped.push(`${name}：超过10000份源码文件上限，未读取`);
+							zip.readEntry(); return;
 						}
 						if (entry.uncompressedSize > 512000) {
 							rows.push({ name, buffer: Buffer.alloc(0) });
@@ -174,12 +157,10 @@ async function parse(
 		skipped: [],
 		createdAt: new Date().toISOString(),
 	};
-	let selectedChars = 0;
 	const text = (location: string, value: string) => {
 		for (let start = 0; start < value.length; start += 8000) {
 			const chunk = value.slice(start, start + 8000);
-			const selected = selectedChars + chunk.length <= 60000;
-			if (selected) selectedChars += chunk.length;
+			const selected = true;
 			out.units.push({
 				id: randomUUID(),
 				location: start
@@ -194,13 +175,14 @@ async function parse(
 		const rows: { name: string; buffer: Buffer }[] = [];
 		if (info.isDirectory()) {
 			let count = 0,
+				sources = 0,
 				total = 0;
 			const walk = async (dir: string) => {
 				for (const entry of await fs.readdir(dir, { withFileTypes: true })) {
 					const abs = join(dir, entry.name),
 						name = relative(path, abs).replaceAll("\\", "/");
 					if (++count > MAX_ENTRIES)
-						fail("项目超过1500个条目，请选择较小的源码目录或 ZIP");
+						fail("目录扫描超过100000个条目，请缩小范围；此次目录未导入");
 					if (entry.isSymbolicLink()) {
 						out.skipped.push(`${name}：链接未读取`);
 						continue;
@@ -222,7 +204,14 @@ async function parse(
 						out.skipped.push(`${name}：不读取链接`);
 						continue;
 					}
-					if ((total += stat.size) > MAX_TOTAL) fail("项目文本超过100MB");
+					if (++sources > sourceFileLimit) {
+						out.skipped.push(`${name}：超过10000份源码文件上限，未读取`);
+						continue;
+					}
+					if ((total += stat.size) > MAX_TOTAL) {
+						out.skipped.push(`${name}：源码累计超过100MB，未读取`);
+						continue;
+					}
 					rows.push({
 						name,
 						buffer:
@@ -232,7 +221,7 @@ async function parse(
 			};
 			await walk(path);
 		} else {
-			rows.push(...(await zipEntries(path)));
+			rows.push(...(await zipEntries(path, out.skipped)));
 			out.skipped.push("ZIP 中非源码、依赖、构建和凭据文件已排除");
 		}
 		rows.sort(
@@ -270,8 +259,10 @@ async function parse(
 				);
 		}
 	};
-	if (info.isDirectory() || extname(path).toLowerCase() === ".zip")
+	if (info.isDirectory() || extname(path).toLowerCase() === ".zip") {
+		if (!info.isDirectory() && info.size > MAX_FILE) fail("单个材料超过30MB，请拆分后导入");
 		await project();
+	}
 	else {
 		if (info.size > MAX_FILE) fail("单个材料超过30MB，请拆分后导入");
 		const buffer = await fs.readFile(path),
@@ -339,10 +330,6 @@ async function parse(
 		else if (textExtensions.has(ext))
 			text(`${out.name} L1`, buffer.toString("utf8"));
 		else fail("不支持此格式，请使用 PDF、DOCX、文本、图片或 ZIP");
-	}
-	if (out.units.length > 800) {
-		out.skipped.push("超过800个文本片段的部分未读取，请缩小材料范围");
-		out.units = out.units.slice(0, 800);
 	}
 	if (!out.units.length && purpose !== "template")
 		fail("未提取到可分析内容，请检查文件或粘贴文本");

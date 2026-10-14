@@ -19,7 +19,8 @@ const out = join(
 mkdirSync(out, { recursive: true });
 const data = mkdtempSync(join(out, "data-"));
 let requests = 0,
-	delay = false;
+	delay = false,
+	numericFault = false;
 const server = createServer(async (req, res) => {
 	let body = "";
 	for await (const chunk of req) body += chunk;
@@ -35,7 +36,9 @@ const server = createServer(async (req, res) => {
 						.join("\n"),
 		input = JSON.parse(raw);
 	let content;
-	if (input.units)
+	if (input.problems)
+		content = { facts: [{ text: "实现检索函数", evidence: [{ unitId: input.units[0].id, quote: input.units[0].text.slice(0, 60) }] }] };
+	else if (input.units)
 		content = {
 			issues: input.overview.includes("贡献不明")
 				? ["请说明本人负责的检索和测试工作及对应材料"]
@@ -44,7 +47,7 @@ const server = createServer(async (req, res) => {
 				.filter((u) => u.text)
 				.slice(0, 1)
 				.map((u) => ({
-					text: "实现检索函数",
+					text: numericFault ? "实现检索函数，准确率99%" : "实现检索函数",
 					evidence: [{ unitId: u.id, quote: u.text.slice(0, 60) }],
 				})),
 		};
@@ -115,7 +118,7 @@ const launch = async () => {
 		.waitFor({ timeout: 60000 });
 	await app.evaluate(({ BrowserWindow }) => {
 		const w = BrowserWindow.getAllWindows()[0];
-		w.setSize(1080, 800);
+		w.setSize(1024, 700);
 		w.showInactive();
 	});
 };
@@ -262,6 +265,21 @@ try {
 		.first()
 		.click();
 	await section().getByRole("button", { name: "保存", exact: true }).click();
+	numericFault = true;
+	const repairPreviousRequest = (await call("resumeList")).find((d) => d.id === id).run.requestId;
+	await generate().click();
+	await page.waitForFunction(async ({ id, previous }) => {
+		const current = (await window.picareer.call("resumeList", null)).find((d) => d.id === id);
+		return current?.run?.requestId !== previous && current?.run?.status !== "running";
+	}, { id, previous: repairPreviousRequest });
+	await ready();
+	d = (await call("resumeList")).find((d) => d.id === id);
+	assert.equal(d.run.status, "complete", d.run.stage);
+	assert.match(d.generationWarnings.join("\n"), /99%/);
+	assert.ok(!JSON.stringify(d.experiences).includes("99"));
+	assert.equal(await section().getByText(/^材料校验说明/).count(), 1);
+	numericFault = false;
+	result.numericRepairWithActualSDK = true;
 	delay = true;
 	await generate().click();
 	await section().getByRole("button", { name: "停止", exact: true }).waitFor();
